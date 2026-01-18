@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Study Resources | SRIRAM's IAS</title>
+    <meta name="description"
+        content="Access high-quality free UPSC study material, NCERT notes, current affairs modules, and previous year papers from SRIRAM's IAS.">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700&display=swap"
+        rel="stylesheet">
+
+    <!-- Remix Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        /* Specific Styles for Free Resources Page */
+        .resources-hero {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            padding: 4rem 0;
+            color: white;
+            text-align: center;
+        }
+
+        .resources-hero h1 {
+            font-size: 3rem;
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 1rem;
+        }
+
+        .resources-hero p {
+            font-size: 1.1rem;
+            color: #94a3b8;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .resource-category-section {
+            padding: 4rem 0;
+            background: #f8fafc;
+        }
+
+        .resource-card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .free-resource-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid #e2e8f0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .free-resource-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        .resource-card-thumb {
+            height: 160px;
+            background: #e2e8f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .resource-card-thumb i {
+            font-size: 4rem;
+            opacity: 0.2;
+            color: #334155;
+        }
+
+        .resource-type-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 99px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .resource-card-content {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .resource-card-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            color: #1e293b;
+        }
+
+        .resource-card-desc {
+            font-size: 0.9rem;
+            color: #64748b;
+            margin-bottom: 1.5rem;
+            line-height: 1.5;
+        }
+
+        .resource-footer {
+            margin-top: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 1rem;
+            border-top: 1px solid #f1f5f9;
+        }
+
+        .download-count {
+            font-size: 0.8rem;
+            color: #94a3b8;
+        }
+
+        .btn-download-sm {
+            color: var(--primary-color);
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        .btn-download-sm:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar (Simplified) -->
+    <header class="navbar" style="position:relative; background:white; padding: 1rem 0;">
+        <div class="container navbar-container">
+            <a href="index.html" class="logo">
+                <span class="logo-text-fallback">SRIRAM's<span>IAS</span></span>
+            </a>
+            <a href="index.html" class="btn btn-outline-primary">Back to Home</a>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="resources-hero">
+        <div class="container">
+            <h1>Free Study Materials</h1>
+            <p>Unlock your potential with our curated collection of free resources, including NCERT notes, daily
+                modules, and previous year papers.</p>
+        </div>
+    </section>
+
+    <!-- Resources Grid -->
+    <section class="resource-category-section">
+        <div class="container">
+            <!-- category 1 -->
+            <h2 style="font-size: 1.5rem; margin-bottom: 1rem; color: #334155;">Essential NCERT Summaries</h2>
+            <div class="resource-card-grid">
+                <!-- Card 1 -->
+                <div class="free-resource-card">
+                    <div class="resource-card-thumb" style="background: #eff6ff;">
+                        <i class="ri-book-read-line" style="color: #2563eb;"></i>
+                        <span class="resource-type-badge">History</span>
+                    </div>
+                    <div class="resource-card-content">
+                        <h3 class="resource-card-title">Ancient India (RS Sharma) Summary</h3>
+                        <p class="resource-card-desc">Comprehensive chapter-wise summary of Old NCERT Ancient India.
+                            Essential for Prelims Art & Culture.</p>
+                        <div class="resource-footer">
+                            <span class="download-count"><i class="ri-download-cloud-line"></i> 15k+ Downloads</span>
+                            <a href="#" class="btn-download-sm">Download PDF <i class="ri-arrow-right-line"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="free-resource-card">
+                    <div class="resource-card-thumb" style="background: #f0fdf4;">
+                        <i class="ri-earth-line" style="color: #16a34a;"></i>
+                        <span class="resource-type-badge">Geography</span>
+                    </div>
+                    <div class="resource-card-content">
+                        <h3 class="resource-card-title">Class 11 Physical Geography Notes</h3>
+                        <p class="resource-card-desc">Detailed notes on Geomorphology, Climatology, and Oceanography
+                            with diagrams.</p>
+                        <div class="resource-footer">
+                            <span class="download-count"><i class="ri-download-cloud-line"></i> 12k+ Downloads</span>
+                            <a href="#" class="btn-download-sm">Download PDF <i class="ri-arrow-right-line"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="free-resource-card">
+                    <div class="resource-card-thumb" style="background: #fff7ed;">
+                        <i class="ri-government-line" style="color: #ea580c;"></i>
+                        <span class="resource-type-badge">Polity</span>
+                    </div>
+                    <div class="resource-card-content">
+                        <h3 class="resource-card-title">Class 11 Indian Constitution at Work</h3>
+                        <p class="resource-card-desc">Key concepts of the Constitution explained simply. Foundation for
+                            Laxmikanth.</p>
+                        <div class="resource-footer">
+                            <span class="download-count"><i class="ri-download-cloud-line"></i> 18k+ Downloads</span>
+                            <a href="#" class="btn-download-sm">Download PDF <i class="ri-arrow-right-line"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- category 2 -->
+            <h2 style="font-size: 1.5rem; margin-top: 4rem; margin-bottom: 1rem; color: #334155;">Current Affairs
+                Modules</h2>
+            <div class="resource-card-grid">
+                <!-- Card 4 -->
+                <div class="free-resource-card">
+                    <div class="resource-card-thumb" style="background: #faf5ff;">
+                        <i class="ri-calendar-event-line" style="color: #9333ea;"></i>
+                        <span class="resource-type-badge">Monthly</span>
+                    </div>
+                    <div class="resource-card-content">
+                        <h3 class="resource-card-title">January 2026 Monthly Magazine</h3>
+                        <p class="resource-card-desc">Consolidated current affairs analysis for Jan 2026. Covers Polity,
+                            Economy, IR, and Science.</p>
+                        <div class="resource-footer">
+                            <span class="download-count"><i class="ri-download-cloud-line"></i> 5k+ Downloads</span>
+                            <a href="#" class="btn-download-sm">Download PDF <i class="ri-arrow-right-line"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card 5 -->
+                <div class="free-resource-card">
+                    <div class="resource-card-thumb" style="background: #fff1f2;">
+                        <i class="ri-pie-chart-line" style="color: #e11d48;"></i>
+                        <span class="resource-type-badge">Budget</span>
+                    </div>
+                    <div class="resource-card-content">
+                        <h3 class="resource-card-title">Union Budget 2026 Highlights</h3>
+                        <p class="resource-card-desc">Key schemes, allocations, and economic indicators from the Interim
+                            Budget 2026.</p>
+                        <div class="resource-footer">
+                            <span class="download-count"><i class="ri-download-cloud-line"></i> 8k+ Downloads</span>
+                            <a href="#" class="btn-download-sm">Download PDF <i class="ri-arrow-right-line"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer (Simplified) -->
+    <footer style="background: #0f172a; color: white; padding: 2rem 0; text-align: center;">
+        <div class="container">
+            <p>&copy; 2026 SRIRAM's IAS. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>

@@ -20,85 +20,85 @@
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="live-styles.css">
 </head>
 
 <body>
 
+    <!-- Top Bar Removed -->
+
     <!-- Navbar -->
     <header class="navbar">
         <div class="container navbar-container">
+            <!-- 1. Logo -->
             <a href="#" class="logo">
-                SRIRAM's <span>IAS</span>
+                <span class="logo-text-fallback">SRIRAM's<span>IAS</span></span>
             </a>
+
+            <!-- 2. Primary Navigation (Left-Center) -->
             <nav class="nav-menu">
-                <a href="live-courses.html" class="nav-link">Live Courses</a>
                 <div class="nav-item dropdown">
                     <a href="#courses" class="nav-link">Courses <i class="ri-arrow-down-s-line"></i></a>
                     <div class="mega-menu">
+                        <!-- Mega Menu Sidebar -->
                         <div class="mega-sidebar">
                             <div class="mega-category active" data-target="foundation">
-                                <i class="ri-government-line"></i>
                                 <span>Foundation Courses</span>
                                 <i class="ri-arrow-right-s-line arrow"></i>
                             </div>
                             <div class="mega-category" data-target="prelims">
-                                <i class="ri-checkbox-circle-line"></i>
                                 <span>Prelims Focused</span>
                                 <i class="ri-arrow-right-s-line arrow"></i>
                             </div>
                             <div class="mega-category" data-target="mains">
-                                <i class="ri-pen-nib-line"></i>
                                 <span>Mains Focused</span>
                                 <i class="ri-arrow-right-s-line arrow"></i>
                             </div>
                             <div class="mega-category" data-target="optional">
-                                <i class="ri-book-mark-line"></i>
                                 <span>Optional Subjects</span>
                                 <i class="ri-arrow-right-s-line arrow"></i>
                             </div>
                             <div class="mega-category" data-target="current-affairs">
-                                <i class="ri-newspaper-line"></i>
                                 <span>Current Affairs</span>
                                 <i class="ri-arrow-right-s-line arrow"></i>
                             </div>
                             <div class="mega-category" data-target="interview">
-                                <i class="ri-user-voice-line"></i>
                                 <span>Interview / Personality</span>
                                 <i class="ri-arrow-right-s-line arrow"></i>
                             </div>
                             <div class="mega-category" data-target="mentorship-prog">
-                                <i class="ri-team-line"></i>
                                 <span>Mentorship</span>
                                 <i class="ri-arrow-right-s-line arrow"></i>
                             </div>
                             <div class="mega-category" data-target="special">
-                                <i class="ri-star-line"></i>
                                 <span>Special Programs</span>
                                 <i class="ri-arrow-right-s-line arrow"></i>
                             </div>
                         </div>
+                        <!-- Mega Menu Content Area -->
                         <div class="mega-content-area">
                             <!-- Foundation -->
                             <div id="foundation" class="mega-panel active">
                                 <h3 class="panel-title">Foundation Courses</h3>
                                 <div class="panel-grid">
                                     <a href="#" class="mega-link">UPSC Foundation Course (Prelims + Mains)</a>
-                                    <a href="#" class="mega-link">UPSC Foundation (Hindi Medium)</a>
-                                    <a href="#" class="mega-link">UPSC Foundation (English Medium)</a>
-                                    <a href="#" class="mega-link">1-Year Integrated Foundation Program</a>
-                                    <a href="#" class="mega-link">2-Year Foundation Program (College Students)</a>
+                                    <a href="#" class="mega-link">3 Years Integrated Foundation Program</a>
+                                    <a href="#" class="mega-link">General Studies Foundation (Hindi)</a>
+                                    <a href="#" class="mega-link">GS Foundation (English)</a>
                                 </div>
+                                <a href="#" class="view-all-link">View All Courses <i
+                                        class="ri-arrow-right-line"></i></a>
                             </div>
                             <!-- Prelims -->
                             <div id="prelims" class="mega-panel">
                                 <h3 class="panel-title">Prelims Focused Courses</h3>
                                 <div class="panel-grid">
-                                    <a href="#" class="mega-link">UPSC Prelims Crash Course</a>
+                                    <a href="#" class="mega-link">UPSC Prelims Crash Course 2026</a>
                                     <a href="#" class="mega-link">GS Prelims Test Series</a>
                                     <a href="#" class="mega-link">CSAT Qualifying Course</a>
-                                    <a href="#" class="mega-link">Current Affairs for Prelims</a>
-                                    <a href="#" class="mega-link">Prelims Revision Program</a>
                                 </div>
+                                <a href="#" class="view-all-link">View All Courses <i
+                                        class="ri-arrow-right-line"></i></a>
                             </div>
                             <!-- Mains -->
                             <div id="mains" class="mega-panel">
@@ -168,13 +168,311 @@
                         </div>
                     </div>
                 </div>
-                <a href="#blogs" class="nav-link">Blogs</a>
-                <a href="#mentorship" class="nav-link">Mentorship</a>
-                <div class="nav-buttons">
-                    <a href="#" class="btn btn-outline">Login</a>
-                    <a href="#" class="btn btn-primary">Register</a>
+                <!-- Live Mega Menu -->
+                <a href="live-courses.html" class="nav-link">Live Classes</a>
+
+
+                <!-- Test Series Mega Menu -->
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link">Test Series <i class="ri-arrow-down-s-line"></i></a>
+                    <div class="mega-menu">
+                        <div class="mega-sidebar">
+                            <div class="mega-category active" data-target="ts-prelims">
+                                <span>UPSC Prelims</span>
+                                <i class="ri-arrow-right-s-line arrow"></i>
+                            </div>
+                            <div class="mega-category" data-target="ts-csat">
+                                <span>UPSC CSAT</span>
+                                <i class="ri-arrow-right-s-line arrow"></i>
+                            </div>
+                            <div class="mega-category" data-target="ts-mains">
+                                <span>UPSC Mains</span>
+                                <i class="ri-arrow-right-s-line arrow"></i>
+                            </div>
+                            <div class="mega-category" data-target="ts-pyq">
+                                <span>Previous Year Papers</span>
+                                <i class="ri-arrow-right-s-line arrow"></i>
+                            </div>
+                            <div class="mega-category" data-target="ts-optional">
+                                <span>Optional Subjects</span>
+                                <i class="ri-arrow-right-s-line arrow"></i>
+                            </div>
+                            <div class="mega-category" data-target="ts-essay">
+                                <span>Essay Writing</span>
+                                <i class="ri-arrow-right-s-line arrow"></i>
+                            </div>
+                            <div class="mega-category" data-target="ts-integrated">
+                                <span>Integrated (Pre+Mains)</span>
+                                <i class="ri-arrow-right-s-line arrow"></i>
+                            </div>
+                            <div class="mega-category" data-target="ts-interview">
+                                <span>Interview Guidance</span>
+                                <i class="ri-arrow-right-s-line arrow"></i>
+                            </div>
+                        </div>
+
+                        <div class="mega-content-area">
+                            <!-- Prelims Test Series -->
+                            <div id="ts-prelims" class="mega-panel active">
+                                <h3 class="panel-title">UPSC Prelims Test Series</h3>
+                                <div class="mm-card-grid">
+                                    <!-- Card 1 -->
+                                    <div class="mm-card">
+                                        <div class="mm-card-header">
+                                            <span class="mm-badge mm-badge-blue">FULL LENGTH</span>
+                                        </div>
+                                        <h4 class="mm-card-title">UPSC Prelims 2026 – Full Length Test Series</h4>
+                                        <div class="mm-meta">
+                                            <div class="mm-meta-item"><i class="ri-file-list-line"></i> 25 Tests (15 GS
+                                                + 10 CSAT)</div>
+                                            <div class="mm-meta-item"><i class="ri-bar-chart-line"></i> All India
+                                                Ranking</div>
+                                        </div>
+                                        <a href="#" class="mm-cta">View Details <i
+                                                class="ri-arrow-right-s-line"></i></a>
+                                    </div>
+
+                                    <!-- Card 2 -->
+                                    <div class="mm-card">
+                                        <div class="mm-card-header">
+                                            <span class="mm-badge mm-badge-green">SECTIONAL</span>
+                                        </div>
+                                        <h4 class="mm-card-title">UPSC Prelims Sectional Test Series</h4>
+                                        <div class="mm-meta">
+                                            <div class="mm-meta-item"><i class="ri-book-2-line"></i> Subject-wise Tests
+                                            </div>
+                                            <div class="mm-meta-item"><i class="ri-focus-3-line"></i> Concept Building
+                                            </div>
+                                        </div>
+                                        <a href="#" class="mm-cta">View Details <i
+                                                class="ri-arrow-right-s-line"></i></a>
+                                    </div>
+
+                                    <!-- Card 3 -->
+                                    <div class="mm-card">
+                                        <div class="mm-card-header">
+                                            <span class="mm-badge mm-badge-red">CRASH COURSE</span>
+                                        </div>
+                                        <h4 class="mm-card-title">UPSC Prelims Rapid Revision</h4>
+                                        <div class="mm-meta">
+                                            <div class="mm-meta-item"><i class="ri-timer-flash-line"></i> High-Yield
+                                                Questions</div>
+                                            <div class="mm-meta-item"><i class="ri-calendar-check-line"></i> Last 3
+                                                Months</div>
+                                        </div>
+                                        <a href="#" class="mm-cta">View Details <i
+                                                class="ri-arrow-right-s-line"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- CSAT Test Series -->
+                            <div id="ts-csat" class="mega-panel">
+                                <h3 class="panel-title">UPSC CSAT Test Series</h3>
+                                <div class="mm-card-grid">
+                                    <div class="mm-card">
+                                        <div class="mm-card-header">
+                                            <span class="mm-badge mm-badge-orange">QUALIFYING</span>
+                                        </div>
+                                        <h4 class="mm-card-title">UPSC CSAT Qualifying Test Series</h4>
+                                        <div class="mm-meta">
+                                            <div class="mm-meta-item"><i class="ri-checkbox-circle-line"></i> 10 Full
+                                                Length Tests</div>
+                                            <div class="mm-meta-item"><i class="ri-line-chart-line"></i> Difficulty
+                                                Levels</div>
+                                        </div>
+                                        <a href="#" class="mm-cta">View Details <i
+                                                class="ri-arrow-right-s-line"></i></a>
+                                    </div>
+                                    <div class="mm-card">
+                                        <div class="mm-card-header">
+                                            <span class="mm-badge mm-badge-blue">PRACTICE</span>
+                                        </div>
+                                        <h4 class="mm-card-title">CSAT Topic-wise Practice Tests</h4>
+                                        <div class="mm-meta">
+                                            <div class="mm-meta-item"><i class="ri-numbers-line"></i> Quant, Reasoning,
+                                                RC</div>
+                                            <div class="mm-meta-item"><i class="ri-check-double-line"></i> Sectional
+                                                Practice</div>
+                                        </div>
+                                        <a href="#" class="mm-cta">View Details <i
+                                                class="ri-arrow-right-s-line"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Mains Test Series -->
+                            <div id="ts-mains" class="mega-panel">
+                                <h3 class="panel-title">UPSC Mains Test Series</h3>
+                                <div class="mm-card-grid">
+                                    <div class="mm-card">
+                                        <div class="mm-card-header">
+                                            <span class="mm-badge mm-badge-purple">ANSWER WRITING</span>
+                                        </div>
+                                        <h4 class="mm-card-title">UPSC Mains GS Answer Writing</h4>
+                                        <div class="mm-meta">
+                                            <div class="mm-meta-item"><i class="ri-edit-2-line"></i> GS I, II, III, IV
+                                                Coverage</div>
+                                            <div class="mm-meta-item"><i class="ri-user-follow-line"></i> Detailed
+                                                Evaluation</div>
+                                        </div>
+                                        <a href="#" class="mm-cta">View Details <i
+                                                class="ri-arrow-right-s-line"></i></a>
+                                    </div>
+                                    <div class="mm-card">
+                                        <div class="mm-card-header">
+                                            <span class="mm-badge mm-badge-blue">FULL LENGTH</span>
+                                        </div>
+                                        <h4 class="mm-card-title">UPSC Mains 2026 – Full Length</h4>
+                                        <div class="mm-meta">
+                                            <div class="mm-meta-item"><i class="ri-time-line"></i> 3-Hour Simulation
+                                            </div>
+                                            <div class="mm-meta-item"><i class="ri-file-text-line"></i> Model Answers
+                                            </div>
+                                        </div>
+                                        <a href="#" class="mm-cta">View Details <i
+                                                class="ri-arrow-right-s-line"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Optional Test Series -->
+                            <div id="ts-optional" class="mega-panel">
+                                <h3 class="panel-title">Optional Subject Test Series</h3>
+                                <div class="panel-grid">
+                                    <a href="#" class="mega-link">Anthropology Test Series</a>
+                                    <a href="#" class="mega-link">Sociology Test Series</a>
+                                    <a href="#" class="mega-link">Geography Test Series</a>
+                                    <a href="#" class="mega-link">Public Administration Test Series</a>
+                                    <a href="#" class="mega-link">History Test Series</a>
+                                    <a href="#" class="mega-link">PSIR Test Series</a>
+                                    <a href="#" class="mega-link">Philosophy Test Series</a>
+                                </div>
+                            </div>
+
+                            <!-- Previous Year Papers -->
+                            <div id="ts-pyq" class="mega-panel">
+                                <h3 class="panel-title">Previous Year Question Papers</h3>
+                                <div class="mm-card-grid">
+                                    <div class="mm-card">
+                                        <div class="mm-card-header">
+                                            <span class="mm-badge mm-badge-blue">2014-2024</span>
+                                        </div>
+                                        <h4 class="mm-card-title">UPSC Prelims PYQ Papers</h4>
+                                        <div class="mm-meta">
+                                            <div class="mm-meta-item"><i class="ri-file-text-line"></i> GS Paper I & II
+                                                (CSAT)</div>
+                                            <div class="mm-meta-item"><i class="ri-download-line"></i> Download PDF
+                                            </div>
+                                        </div>
+                                        <a href="previous-year-papers.html" class="mm-cta">Practice Now <i
+                                                class="ri-arrow-right-s-line"></i></a>
+                                    </div>
+                                    <div class="mm-card">
+                                        <div class="mm-card-header">
+                                            <span class="mm-badge mm-badge-purple">MAINS</span>
+                                        </div>
+                                        <h4 class="mm-card-title">UPSC Mains PYQ Papers</h4>
+                                        <div class="mm-meta">
+                                            <div class="mm-meta-item"><i class="ri-pencil-line"></i> Subject-wise Papers
+                                            </div>
+                                            <div class="mm-meta-item"><i class="ri-question-answer-line"></i> Model
+                                                Answers</div>
+                                        </div>
+                                        <a href="previous-year-papers.html" class="mm-cta">Practice Now <i
+                                                class="ri-arrow-right-s-line"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Essay Test Series -->
+                            <div id="ts-essay" class="mega-panel">
+                                <h3 class="panel-title">Essay Writing Test Series</h3>
+                                <div class="mm-card-grid">
+                                    <div class="mm-card">
+                                        <div class="mm-card-header">
+                                            <span class="mm-badge mm-badge-green">ESSAY</span>
+                                        </div>
+                                        <h4 class="mm-card-title">UPSC Essay Writing Program</h4>
+                                        <div class="mm-meta">
+                                            <div class="mm-meta-item"><i class="ri-quill-pen-line"></i> Content &
+                                                Structure</div>
+                                            <div class="mm-meta-item"><i class="ri-feedback-line"></i> Expert Feedback
+                                            </div>
+                                        </div>
+                                        <a href="#" class="mm-cta">View Details <i
+                                                class="ri-arrow-right-s-line"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Integrated Test Series -->
+                            <div id="ts-integrated" class="mega-panel">
+                                <h3 class="panel-title">Integrated Test Series</h3>
+                                <div class="mm-card-grid">
+                                    <div class="mm-card">
+                                        <div class="mm-card-header">
+                                            <span class="mm-badge mm-badge-purple">PREMIUM</span>
+                                        </div>
+                                        <h4 class="mm-card-title">UPSC Integrated (Prelims + Mains)</h4>
+                                        <div class="mm-meta">
+                                            <div class="mm-meta-item"><i class="ri-stack-line"></i> Complete Coverage
+                                            </div>
+                                            <div class="mm-meta-item"><i class="ri-stairs-line"></i> Stage-wise
+                                                Progression</div>
+                                        </div>
+                                        <a href="#" class="mm-cta">View Details <i
+                                                class="ri-arrow-right-s-line"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Interview Test Series -->
+                            <div id="ts-interview" class="mega-panel">
+                                <h3 class="panel-title">Interview Guidance</h3>
+                                <div class="mm-card-grid">
+                                    <div class="mm-card">
+                                        <div class="mm-card-header">
+                                            <span class="mm-badge mm-badge-blue">INTERVIEW</span>
+                                        </div>
+                                        <h4 class="mm-card-title">UPSC Interview Mock Test Program</h4>
+                                        <div class="mm-meta">
+                                            <div class="mm-meta-item"><i class="ri-group-line"></i> Board Simulation
+                                            </div>
+                                            <div class="mm-meta-item"><i class="ri-mic-line"></i> Detailed Analysis
+                                            </div>
+                                        </div>
+                                        <a href="#" class="mm-cta">View Details <i
+                                                class="ri-arrow-right-s-line"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
                 </div>
+                <a href="#blog-collection" class="nav-link">Blogs</a>
+                <a href="#mentorship" class="nav-link">Mentorship</a>
             </nav>
+
+            <!-- 3. Global Search Bar (Center-Right) -->
+            <div class="nav-search">
+                <i class="ri-search-line"></i>
+                <input type="text" placeholder="Search courses, test series, blogs...">
+            </div>
+
+            <!-- 4. Utility & Auth (Right Section) -->
+            <div class="nav-right">
+                <div class="utility-links">
+                    <a href="#" class="util-link" title="Download App"><i class="ri-smartphone-line"></i>
+                        <span>App</span></a>
+                    <a href="#" class="util-link" title="Help"><i class="ri-question-line"></i> <span>Help</span></a>
+                </div>
+                <div class="auth-buttons">
+                    <a href="login.html" class="btn btn-outline">Login</a>
+                    <a href="register.html" class="btn btn-primary">Register</a>
+                </div>
+            </div>
+
             <div class="hamburger">
                 <i class="ri-menu-3-line"></i>
             </div>
@@ -188,12 +486,13 @@
             <div class="close-menu"><i class="ri-close-line"></i></div>
         </div>
         <div class="mobile-nav-links">
-            <a href="live-courses.html">Live Courses</a>
             <a href="#courses">Courses</a>
-            <a href="#blogs">Blogs</a>
+            <a href="live-courses.html">Live Classes</a>
+            <a href="#test-series">Test Series</a>
+            <a href="#blog-collection">Blogs</a>
             <a href="#mentorship">Mentorship</a>
-            <a href="#">Login</a>
-            <a href="#" class="highlight">Register</a>
+            <a href="login.html">Login</a>
+            <a href="register.html" class="highlight">Register</a>
         </div>
     </div>
 
@@ -208,7 +507,7 @@
             <div class="hero-overlay"></div>
         </div>
         <div class="container hero-content">
-            <span class="hero-badge">Create Your Legacy</span>
+            <div class="hero-badge"><span class="pulsing-dot"></span> Prelims 2026 Batch – Admissions Open</div>
             <h1 class="hero-title">Crack UPSC with <br> <span class="text-gradient">SRIRAM's IAS</span></h1>
             <p class="hero-subtitle">Join India’s most trusted Civil Services coaching platform. Expert guidance,
                 comprehensive study material, and a legacy of success.</p>
@@ -236,6 +535,8 @@
             </div>
         </div>
     </section>
+
+
 
     <!-- Why Choose Us Section -->
     <section id="why-choose-us" class="section bg-light">
@@ -467,406 +768,627 @@
             </div>
 
             <div class="courses-grid">
-                <!-- Course Card 1 -->
-                <div class="course-card">
-                    <div class="course-icon bg-blue-light">
-                        <i class="ri-book-open-line text-blue"></i>
+                <!-- Course Card 1: Foundation (Bestseller) -->
+                <div class="course-card-premium">
+                    <div class="card-header">
+                        <span class="program-badge badge-bestseller">BESTSELLER</span>
+                        <h3 class="course-title">UPSC Foundation Course (Prelims + Mains) 2026</h3>
                     </div>
-                    <h3 class="course-title">Prelims Crash Course 2026</h3>
-                    <div class="course-details">
-                        <span><i class="ri-time-line"></i> 4 Months</span>
-                        <span><i class="ri-map-pin-line"></i> Offline/Online</span>
+
+                    <div class="meta-info">
+                        <div class="meta-item" title="Duration"><i class="ri-time-line"></i> 18 Months</div>
+                        <div class="meta-item" title="Mode"><i class="ri-broadcast-line"></i> Live Online</div>
+                        <div class="meta-item" title="Language"><i class="ri-translate-2"></i> English</div>
+                        <div class="meta-item" title="Validity"><i class="ri-calendar-check-line"></i> Valid till Mains
+                            2027</div>
                     </div>
-                    <p class="course-desc">Intensive revision program covering all GS subjects and Current Affairs with
-                        mock tests.</p>
-                    <a href="#" class="btn-link">Learn More <i class="ri-arrow-right-line"></i></a>
+
+                    <div class="value-highlights">
+                        <ul>
+                            <li>Comprehensive coverage of GS Prelims & Mains syllabus.</li>
+                            <li>CSAT, Essay, and Current Affairs integrated.</li>
+                            <li>Weekly answer writing & One-to-one mentorship.</li>
+                        </ul>
+                    </div>
+
+                    <div class="pricing-section">
+                        <div class="price-row">
+                            <span class="current-price">₹1,25,000</span>
+                            <span class="original-price">₹1,60,000</span>
+                            <span class="discount-off">22% OFF</span>
+                        </div>
+                        <p class="emi-info">EMI starting at ₹6,250/month</p>
+                    </div>
+
+                    <div class="cta-section">
+                        <a href="#" class="btn btn-view-details">View Details</a>
+                        <a href="#" class="btn btn-enroll-now">Enroll Now</a>
+                    </div>
                 </div>
 
-                <!-- Course Card 2 -->
-                <div class="course-card">
-                    <div class="course-icon bg-orange-light">
-                        <i class="ri-mind-map" style="color: #e65100;"></i>
+                <!-- Course Card 2: 3-Year Integrated (Popular) -->
+                <div class="course-card-premium">
+                    <div class="card-header">
+                        <span class="program-badge badge-popular">POPULAR</span>
+                        <h3 class="course-title">3-Year Integrated Foundation Program</h3>
                     </div>
-                    <h3 class="course-title">CSAT Masterclass</h3>
-                    <div class="course-details">
-                        <span><i class="ri-time-line"></i> 2 Months</span>
-                        <span><i class="ri-computer-line"></i> Live Online</span>
+
+                    <div class="meta-info">
+                        <div class="meta-item"><i class="ri-time-line"></i> 36 Months</div>
+                        <div class="meta-item"><i class="ri-building-line"></i> Offline (Delhi)</div>
+                        <div class="meta-item"><i class="ri-translate-2"></i> English</div>
+                        <div class="meta-item"><i class="ri-calendar-check-line"></i> College Students Spl.</div>
                     </div>
-                    <p class="course-desc">Master the aptitude test with shortcut techniques and practice sessions.</p>
-                    <a href="#" class="btn-link">Learn More <i class="ri-arrow-right-line"></i></a>
+
+                    <div class="value-highlights">
+                        <ul>
+                            <li>Builds a strong base from NCERT to Advanced level.</li>
+                            <li>Gradual progression perfectly suited for undergrads.</li>
+                            <li>Includes degrees support & soft skills training.</li>
+                        </ul>
+                    </div>
+
+                    <div class="pricing-section">
+                        <div class="price-row">
+                            <span class="current-price">₹2,15,000</span>
+                            <span class="original-price">₹2,50,000</span>
+                            <span class="discount-off">14% OFF</span>
+                        </div>
+                        <p class="emi-info">EMI starting at ₹10,500/month</p>
+                    </div>
+
+                    <div class="cta-section">
+                        <a href="#" class="btn btn-view-details">View Details</a>
+                        <a href="#" class="btn btn-enroll-now">Enroll Now</a>
+                    </div>
                 </div>
 
-                <!-- Course Card 3 -->
-                <div class="course-card">
-                    <div class="course-icon bg-green-light">
-                        <i class="ri-user-voice-line" style="color: #2e7d32;"></i>
+                <!-- Course Card 3: Prelims Crash Course (New) -->
+                <div class="course-card-premium">
+                    <div class="card-header">
+                        <span class="program-badge badge-new">NEW BATCH</span>
+                        <h3 class="course-title">Prelims Crash Course 2026</h3>
                     </div>
-                    <h3 class="course-title">Interview Guidance</h3>
-                    <div class="course-details">
-                        <span><i class="ri-time-line"></i> Variable</span>
-                        <span><i class="ri-building-line"></i> Delhi Center</span>
+
+                    <div class="meta-info">
+                        <div class="meta-item"><i class="ri-time-line"></i> 4 Months</div>
+                        <div class="meta-item"><i class="ri-broadcast-line"></i> Live + Recorded</div>
+                        <div class="meta-item"><i class="ri-translate-2"></i> Hinglish</div>
+                        <div class="meta-item"><i class="ri-calendar-check-line"></i> Target Prelims 2026</div>
                     </div>
-                    <p class="course-desc">One-on-one sessions with retired bureaucrats and subject experts to polish
-                        your personality.</p>
-                    <a href="#" class="btn-link">Learn More <i class="ri-arrow-right-line"></i></a>
+
+                    <div class="value-highlights">
+                        <ul>
+                            <li>Rapid revision of entire GS syllabus via clusters.</li>
+                            <li>Special focus on High Yielding Topics (HYT).</li>
+                            <li>Includes Full Length Mock Tests & CSAT Modules.</li>
+                        </ul>
+                    </div>
+
+                    <div class="pricing-section">
+                        <div class="price-row">
+                            <span class="current-price">₹18,000</span>
+                            <span class="original-price">₹25,000</span>
+                            <span class="discount-off">28% OFF</span>
+                        </div>
+                        <p class="emi-info">No Cost EMI available</p>
+                    </div>
+
+                    <div class="cta-section">
+                        <a href="#" class="btn btn-view-details">View Details</a>
+                        <a href="#" class="btn btn-enroll-now">Enroll Now</a>
+                    </div>
                 </div>
 
-                <!-- Course Card 4 -->
-                <div class="course-card">
-                    <div class="course-icon bg-purple-light">
-                        <i class="ri-stack-line" style="color: #6a1b9a;"></i>
+                <!-- Course Card 4: Optional Subject -->
+                <div class="course-card-premium">
+                    <div class="card-header">
+                        <span class="program-badge badge-trending">TRENDING</span>
+                        <h3 class="course-title">Optional Subject: Sociology</h3>
                     </div>
-                    <h3 class="course-title">Foundation Course</h3>
-                    <div class="course-details">
-                        <span><i class="ri-time-line"></i> 12 Months</span>
-                        <span><i class="ri-global-line"></i> Hybrid</span>
+
+                    <div class="meta-info">
+                        <div class="meta-item"><i class="ri-time-line"></i> 5 Months</div>
+                        <div class="meta-item"><i class="ri-macbook-line"></i> Live Online</div>
+                        <div class="meta-item"><i class="ri-translate-2"></i> English</div>
+                        <div class="meta-item"><i class="ri-calendar-check-line"></i> Extensive Theory</div>
                     </div>
-                    <p class="course-desc">Comprehensive General Studies program building concepts from NCERT to
-                        Advanced level.</p>
-                    <a href="#" class="btn-link">Learn More <i class="ri-arrow-right-line"></i></a>
+
+                    <div class="value-highlights">
+                        <ul>
+                            <li>Paper I & II comprehensive coverage.</li>
+                            <li>Answer writing sessions included.</li>
+                            <li>Taught by renowned faculty with 20+ years exp.</li>
+                        </ul>
+                    </div>
+
+                    <div class="pricing-section">
+                        <div class="price-row">
+                            <span class="current-price">₹45,000</span>
+                            <span class="original-price">₹55,000</span>
+                            <span class="discount-off">18% OFF</span>
+                        </div>
+                        <p class="emi-info">EMI starting at ₹3,750/month</p>
+                    </div>
+
+                    <div class="cta-section">
+                        <a href="#" class="btn btn-view-details">View Details</a>
+                        <a href="#" class="btn btn-enroll-now">Enroll Now</a>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Blogs Section -->
-    <section id="blogs" class="section bg-light blog-section">
-        <div class="container">
+    <!-- Free Study Resources Section -->
+    <section id="free-resources" class="free-resources-section">
+        <div class="container text-center">
             <div class="section-header">
-                <h2 class="section-title">Insights & Strategy</h2>
-                <p class="section-desc">Stay updated with current affairs, exam notifications, and preparation
-                    strategies.</p>
+                <span class="program-badge badge-new"
+                    style="background: #dbeafe; color: #1e40af; margin-bottom: 1rem;">Free Access</span>
+                <h2 class="section-title">Free Study Resources</h2>
+                <p class="section-desc">Goldmine of content for serious aspirants. Download high-quality notes, papers,
+                    and magazines for free.</p>
             </div>
 
-            <!-- Flashcards Section -->
-            <div class="flashcards-container mb-12">
-                <h3 class="subsection-title">Quick Revision Cards <i class="ri-flashlight-fill text-warning"></i></h3>
-                <div class="flashcards-scroll">
-                    <!-- Card 1 -->
-                    <div class="flashcard">
-                        <div class="flashcard-inner">
-                            <div class="flashcard-front">
-                                <span class="card-badge">Polity</span>
-                                <h4>Article 32</h4>
-                                <p class="tap-hint"><i class="ri-refresh-line"></i> Tap to Flip</p>
-                            </div>
-                            <div class="flashcard-back">
-                                <h4>Constitutional Remedies</h4>
-                                <p>Right to move the Supreme Court for enforcement of Fundamental Rights. Called the
-                                    "Heart and Soul" of the Constitution.</p>
+            <div class="resource-preview-grid">
+                <!-- Resource 1 -->
+                <a href="free-resources.html" class="resource-preview-card">
+                    <div class="res-icon-wrapper">
+                        <i class="ri-book-open-line text-blue" style="font-size: 1.5rem; color: #2563eb;"></i>
+                    </div>
+                    <h3 class="res-title">NCERT Notes</h3>
+                    <p class="res-desc">Chapter-wise summaries of class 6-12 NCERTs for all subjects.</p>
+                </a>
+
+                <!-- Resource 2 -->
+                <a href="free-resources.html" class="resource-preview-card">
+                    <div class="res-icon-wrapper">
+                        <i class="ri-newspaper-line text-purple" style="font-size: 1.5rem; color: #9333ea;"></i>
+                    </div>
+                    <h3 class="res-title">Current Affairs</h3>
+                    <p class="res-desc">Daily news analysis, monthly magazines, and budget highlights.</p>
+                </a>
+
+                <!-- Resource 3 -->
+                <a href="free-resources.html" class="resource-preview-card">
+                    <div class="res-icon-wrapper">
+                        <i class="ri-file-list-3-line text-orange" style="font-size: 1.5rem; color: #ea580c;"></i>
+                    </div>
+                    <h3 class="res-title">Previous Papers</h3>
+                    <p class="res-desc">Topic-wise segregated PYQs for Prelims (Last 25 Years).</p>
+                </a>
+
+                <!-- Resource 4 -->
+                <a href="free-resources.html" class="resource-preview-card">
+                    <div class="res-icon-wrapper">
+                        <i class="ri-map-pin-line text-green" style="font-size: 1.5rem; color: #16a34a;"></i>
+                        <span class="pulsing-dot" style="top: 0; right: 0;"></span>
+                        <i class="ri-road-map-line" style="font-size: 1.5rem; color: #16a34a;"></i>
+                    </div>
+                    <h3 class="res-title">Mind Maps & Charts</h3>
+                    <p class="res-desc">Visual aids for quick revision of complex topics.</p>
+                </a>
+            </div>
+
+            <a href="free-resources.html" class="btn-explore-resources">Explore All Resources <i
+                    class="ri-arrow-right-line"></i></a>
+        </div>
+
+        <!-- Blogs Section -->
+        <section id="blogs" class="section bg-light blog-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Insights & Strategy</h2>
+                    <p class="section-desc">Stay updated with current affairs, exam notifications, and preparation
+                        strategies.</p>
+                </div>
+
+                <!-- Flashcards Section -->
+                <div class="flashcards-container mb-12">
+                    <h3 class="subsection-title">Quick Revision Cards <i class="ri-flashlight-fill text-warning"></i>
+                    </h3>
+                    <div class="flashcards-scroll">
+                        <!-- Card 1 -->
+                        <div class="flashcard">
+                            <div class="flashcard-inner">
+                                <div class="flashcard-front">
+                                    <span class="card-badge">Polity</span>
+                                    <h4>Article 32</h4>
+                                    <p class="tap-hint"><i class="ri-refresh-line"></i> Tap to Flip</p>
+                                </div>
+                                <div class="flashcard-back">
+                                    <h4>Constitutional Remedies</h4>
+                                    <p>Right to move the Supreme Court for enforcement of Fundamental Rights. Called the
+                                        "Heart and Soul" of the Constitution.</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <!-- Card 2 -->
-                    <div class="flashcard">
-                        <div class="flashcard-inner">
-                            <div class="flashcard-front">
-                                <span class="card-badge">Geography</span>
-                                <h4>Albedo</h4>
-                                <p class="tap-hint"><i class="ri-refresh-line"></i> Tap to Flip</p>
-                            </div>
-                            <div class="flashcard-back">
-                                <h4>Reflection Coefficient</h4>
-                                <p>The proportion of the incident light or radiation that is reflected by a surface.
-                                    Fresh snow has high albedo.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Card 3 -->
-                    <div class="flashcard">
-                        <div class="flashcard-inner">
-                            <div class="flashcard-front">
-                                <span class="card-badge">Economy</span>
-                                <h4>Repo Rate</h4>
-                                <p class="tap-hint"><i class="ri-refresh-line"></i> Tap to Flip</p>
-                            </div>
-                            <div class="flashcard-back">
-                                <h4>Policy Rate</h4>
-                                <p>The rate at which RBI lends money to commercial banks in the event of any shortfall
-                                    of funds.</p>
+                        <!-- Card 2 -->
+                        <div class="flashcard">
+                            <div class="flashcard-inner">
+                                <div class="flashcard-front">
+                                    <span class="card-badge">Geography</span>
+                                    <h4>Albedo</h4>
+                                    <p class="tap-hint"><i class="ri-refresh-line"></i> Tap to Flip</p>
+                                </div>
+                                <div class="flashcard-back">
+                                    <h4>Reflection Coefficient</h4>
+                                    <p>The proportion of the incident light or radiation that is reflected by a surface.
+                                        Fresh snow has high albedo.</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <!-- Card 4 -->
-                    <div class="flashcard">
-                        <div class="flashcard-inner">
-                            <div class="flashcard-front">
-                                <span class="card-badge">History</span>
-                                <h4>Dholavira</h4>
-                                <p class="tap-hint"><i class="ri-refresh-line"></i> Tap to Flip</p>
+                        <!-- Card 3 -->
+                        <div class="flashcard">
+                            <div class="flashcard-inner">
+                                <div class="flashcard-front">
+                                    <span class="card-badge">Economy</span>
+                                    <h4>Repo Rate</h4>
+                                    <p class="tap-hint"><i class="ri-refresh-line"></i> Tap to Flip</p>
+                                </div>
+                                <div class="flashcard-back">
+                                    <h4>Policy Rate</h4>
+                                    <p>The rate at which RBI lends money to commercial banks in the event of any
+                                        shortfall
+                                        of funds.</p>
+                                </div>
                             </div>
-                            <div class="flashcard-back">
-                                <h4>IVC Site</h4>
-                                <p>UNESCO World Heritage site (Gujarat). Known for its unique water management system
-                                    and signage.</p>
+                        </div>
+                        <!-- Card 4 -->
+                        <div class="flashcard">
+                            <div class="flashcard-inner">
+                                <div class="flashcard-front">
+                                    <span class="card-badge">History</span>
+                                    <h4>Dholavira</h4>
+                                    <p class="tap-hint"><i class="ri-refresh-line"></i> Tap to Flip</p>
+                                </div>
+                                <div class="flashcard-back">
+                                    <h4>IVC Site</h4>
+                                    <p>UNESCO World Heritage site (Gujarat). Known for its unique water management
+                                        system
+                                        and signage.</p>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="blog-layout">
+                <div class="blog-layout">
 
 
-                <!-- Blog Grid -->
-                <div class="blog-grid">
-                    <!-- Blog 1 -->
-                    <article class="blog-card">
-                        <div class="blog-thumb">
-                            <img src="assets/blog-pollution.png" alt="Air Pollution in India">
-                            <span class="blog-tag">Environment</span>
-                        </div>
-                        <div class="blog-content">
-                            <div class="blog-meta">
-                                <span><i class="ri-calendar-line"></i> Jan 03, 2026</span>
+                    <!-- Blog Grid -->
+                    <div class="blog-grid">
+                        <!-- Blog 1 -->
+                        <article class="blog-card">
+                            <div class="blog-thumb">
+                                <img src="assets/blog-pollution.png" alt="Air Pollution in India">
+                                <span class="blog-tag">Environment</span>
                             </div>
-                            <h3 class="blog-title"><a href="#">Air Pollution in India: A Silent Public Emergency</a>
-                            </h3>
-                            <p class="blog-summary">India’s air quality crisis has become a silent emergency. This blog
-                                explores causes, health impacts, and policy gaps...</p>
-                            <a href="#" class="read-more">Read More <i class="ri-arrow-right-line"></i></a>
-                        </div>
-                    </article>
-
-                    <!-- Blog 2 -->
-                    <article class="blog-card">
-                        <div class="blog-thumb">
-                            <img src="assets/blog-governance.png" alt="New Policy">
-                            <span class="blog-tag">Governance</span>
-                        </div>
-                        <div class="blog-content">
-                            <div class="blog-meta">
-                                <span><i class="ri-calendar-line"></i> Jan 02, 2026</span>
+                            <div class="blog-content">
+                                <div class="blog-meta">
+                                    <span><i class="ri-calendar-line"></i> Jan 03, 2026</span>
+                                </div>
+                                <h3 class="blog-title"><a href="#">Air Pollution in India: A Silent Public Emergency</a>
+                                </h3>
+                                <p class="blog-summary">India’s air quality crisis has become a silent emergency. This
+                                    blog
+                                    explores causes, health impacts, and policy gaps...</p>
+                                <a href="#" class="read-more">Read More <i class="ri-arrow-right-line"></i></a>
                             </div>
-                            <h3 class="blog-title"><a href="#">Analyzing the New Digital Data Protection Act</a></h3>
-                            <p class="blog-summary">Understanding the implications of the new data privacy laws on
-                                governance and individual rights in the digital age...</p>
-                            <a href="#" class="read-more">Read More <i class="ri-arrow-right-line"></i></a>
-                        </div>
-                    </article>
+                        </article>
 
-                    <!-- Blog 3 -->
-                    <article class="blog-card">
-                        <div class="blog-thumb">
-                            <img src="assets/blog-study.png" alt="Strategy">
-                            <span class="blog-tag">Strategy</span>
-                        </div>
-                        <div class="blog-content">
-                            <div class="blog-meta">
-                                <span><i class="ri-calendar-line"></i> Dec 28, 2025</span>
+                        <!-- Blog 2 -->
+                        <article class="blog-card">
+                            <div class="blog-thumb">
+                                <img src="assets/blog-governance.png" alt="New Policy">
+                                <span class="blog-tag">Governance</span>
                             </div>
-                            <h3 class="blog-title"><a href="#">From Mocks to Marks: Art of Note Making</a></h3>
-                            <p class="blog-summary">Effective note-making is crucial for revision. Learn how to condense
-                                huge volumes of information into crisp notes.</p>
-                            <a href="#" class="read-more">Read More <i class="ri-arrow-right-line"></i></a>
-                        </div>
-                    </article>
+                            <div class="blog-content">
+                                <div class="blog-meta">
+                                    <span><i class="ri-calendar-line"></i> Jan 02, 2026</span>
+                                </div>
+                                <h3 class="blog-title"><a href="#">Analyzing the New Digital Data Protection Act</a>
+                                </h3>
+                                <p class="blog-summary">Understanding the implications of the new data privacy laws on
+                                    governance and individual rights in the digital age...</p>
+                                <a href="#" class="read-more">Read More <i class="ri-arrow-right-line"></i></a>
+                            </div>
+                        </article>
 
-                    <!-- Blog 4 (Placeholder Image Reuse for layout demo) -->
-                    <article class="blog-card">
-                        <div class="blog-thumb">
-                            <img src="assets/blog-study.png" alt="Ethics" style="filter: hue-rotate(45deg);">
-                            <span class="blog-tag">Ethics</span>
-                        </div>
-                        <div class="blog-content">
-                            <div class="blog-meta">
-                                <span><i class="ri-calendar-line"></i> Dec 25, 2025</span>
+                        <!-- Blog 3 -->
+                        <article class="blog-card">
+                            <div class="blog-thumb">
+                                <img src="assets/blog-study.png" alt="Strategy">
+                                <span class="blog-tag">Strategy</span>
                             </div>
-                            <h3 class="blog-title"><a href="#">Case Studies in GS Paper 4: An Approach</a></h3>
-                            <p class="blog-summary">How to tackle ethical dilemmas in the exam with balanced reasoning
-                                and constitutional morality.</p>
-                            <a href="#" class="read-more">Read More <i class="ri-arrow-right-line"></i></a>
-                        </div>
-                    </article>
+                            <div class="blog-content">
+                                <div class="blog-meta">
+                                    <span><i class="ri-calendar-line"></i> Dec 28, 2025</span>
+                                </div>
+                                <h3 class="blog-title"><a href="#">From Mocks to Marks: Art of Note Making</a></h3>
+                                <p class="blog-summary">Effective note-making is crucial for revision. Learn how to
+                                    condense
+                                    huge volumes of information into crisp notes.</p>
+                                <a href="#" class="read-more">Read More <i class="ri-arrow-right-line"></i></a>
+                            </div>
+                        </article>
 
-                    <!-- Blog 5 -->
-                    <article class="blog-card">
-                        <div class="blog-thumb">
-                            <img src="assets/blog-pollution.png" alt="Current Affairs" style="filter: sepia(0.5);">
-                            <span class="blog-tag">Current Affairs</span>
-                        </div>
-                        <div class="blog-content">
-                            <div class="blog-meta">
-                                <span><i class="ri-calendar-line"></i> Dec 24, 2025</span>
+                        <!-- Blog 4 (Placeholder Image Reuse for layout demo) -->
+                        <article class="blog-card">
+                            <div class="blog-thumb">
+                                <img src="assets/blog-study.png" alt="Ethics" style="filter: hue-rotate(45deg);">
+                                <span class="blog-tag">Ethics</span>
                             </div>
-                            <h3 class="blog-title"><a href="#">International Relations: India's G20 Presidency</a></h3>
-                            <p class="blog-summary">A retrospective on key outcomes and the path forward for India's
-                                global diplomatic standing.</p>
-                            <a href="#" class="read-more">Read More <i class="ri-arrow-right-line"></i></a>
-                        </div>
-                    </article>
+                            <div class="blog-content">
+                                <div class="blog-meta">
+                                    <span><i class="ri-calendar-line"></i> Dec 25, 2025</span>
+                                </div>
+                                <h3 class="blog-title"><a href="#">Case Studies in GS Paper 4: An Approach</a></h3>
+                                <p class="blog-summary">How to tackle ethical dilemmas in the exam with balanced
+                                    reasoning
+                                    and constitutional morality.</p>
+                                <a href="#" class="read-more">Read More <i class="ri-arrow-right-line"></i></a>
+                            </div>
+                        </article>
 
-                    <!-- Blog 6 -->
-                    <article class="blog-card">
-                        <div class="blog-thumb">
-                            <img src="assets/blog-governance.png" alt="Motivation" style="filter: contrast(1.2);">
-                            <span class="blog-tag">Motivation</span>
-                        </div>
-                        <div class="blog-content">
-                            <div class="blog-meta">
-                                <span><i class="ri-calendar-line"></i> Dec 20, 2025</span>
+                        <!-- Blog 5 -->
+                        <article class="blog-card">
+                            <div class="blog-thumb">
+                                <img src="assets/blog-pollution.png" alt="Current Affairs" style="filter: sepia(0.5);">
+                                <span class="blog-tag">Current Affairs</span>
                             </div>
-                            <h3 class="blog-title"><a href="#">Overcoming the Plateau in Preparation</a></h3>
-                            <p class="blog-summary">Dealing with burnout and staying motivated during the long marathon
-                                of Civil Services preparation.</p>
-                            <a href="#" class="read-more">Read More <i class="ri-arrow-right-line"></i></a>
+                            <div class="blog-content">
+                                <div class="blog-meta">
+                                    <span><i class="ri-calendar-line"></i> Dec 24, 2025</span>
+                                </div>
+                                <h3 class="blog-title"><a href="#">International Relations: India's G20 Presidency</a>
+                                </h3>
+                                <p class="blog-summary">A retrospective on key outcomes and the path forward for India's
+                                    global diplomatic standing.</p>
+                                <a href="#" class="read-more">Read More <i class="ri-arrow-right-line"></i></a>
+                            </div>
+                        </article>
+
+                        <!-- Blog 6 -->
+                        <article class="blog-card">
+                            <div class="blog-thumb">
+                                <img src="assets/blog-governance.png" alt="Motivation" style="filter: contrast(1.2);">
+                                <span class="blog-tag">Motivation</span>
+                            </div>
+                            <div class="blog-content">
+                                <div class="blog-meta">
+                                    <span><i class="ri-calendar-line"></i> Dec 20, 2025</span>
+                                </div>
+                                <h3 class="blog-title"><a href="#">Overcoming the Plateau in Preparation</a></h3>
+                                <p class="blog-summary">Dealing with burnout and staying motivated during the long
+                                    marathon
+                                    of Civil Services preparation.</p>
+                                <a href="#" class="read-more">Read More <i class="ri-arrow-right-line"></i></a>
+                            </div>
+                        </article>
+                    </div>
+
+                    <!-- Sidebar Filters -->
+                    <aside class="blog-sidebar">
+                        <!-- Exam Tracker Widget -->
+                        <div class="sidebar-widget tracker-widget">
+                            <h3 class="widget-title"><i class="ri-timer-flash-line"></i> UPSC Prelims 2026</h3>
+                            <div id="exam-countdown" class="countdown-timer">
+                                <div class="time-box">
+                                    <span id="days">00</span>
+                                    <label>Days</label>
+                                </div>
+                                <div class="time-box">
+                                    <span id="hours">00</span>
+                                    <label>Hrs</label>
+                                </div>
+                                <div class="time-box">
+                                    <span id="minutes">00</span>
+                                    <label>Mins</label>
+                                </div>
+                                <div class="time-box">
+                                    <span id="seconds">00</span>
+                                    <label>Secs</label>
+                                </div>
+                            </div>
+                            <p class="tracker-note">Target Date: May 26, 2026</p>
                         </div>
-                    </article>
+
+
+                        <!-- Daily Quiz Widget -->
+                        <div class="sidebar-widget quiz-widget">
+                            <h3 class="widget-title"><i class="ri-question-answer-line"></i> Daily Quiz</h3>
+                            <div class="quiz-container">
+                                <p class="quiz-question">Which Article of the Constitution deals with the Uniform Civil
+                                    Code?</p>
+                                <div class="quiz-options">
+                                    <button class="quiz-option" onclick="checkAnswer(this, false)">Article 42</button>
+                                    <button class="quiz-option" onclick="checkAnswer(this, true)">Article 44</button>
+                                    <button class="quiz-option" onclick="checkAnswer(this, false)">Article 45</button>
+                                    <button class="quiz-option" onclick="checkAnswer(this, false)">Article 51A</button>
+                                </div>
+                                <div id="quiz-result" class="quiz-result"></div>
+                            </div>
+                        </div>
+
+                        <div class="sidebar-search">
+                            <input type="text" placeholder="Search...">
+                            <button><i class="ri-search-line"></i></button>
+                        </div>
+
+                        <div id="blog-collection">
+                            <h3 class="sidebar-title">BLOG COLLECTION</h3>
+                            <ul class="category-list">
+                                <li><a href="#">Unconventional Wisdom</a></li>
+                                <li><a href="#">What, Where, When?</a></li>
+                                <li><a href="#">From News - Let's talk..</a></li>
+                                <li><a href="#">From The Arts</a></li>
+                                <li><a href="#">Personalities We Love</a></li>
+                                <li><a href="#">The Universe & Our Environment</a></li>
+                                <li><a href="#">History, Thoughts & The World</a></li>
+                                <li><a href="#">From The World Of Science & Tech</a></li>
+                                <li><a href="#">Law & Society</a></li>
+                                <li><a href="#">Philosophy & Civilisation</a></li>
+                                <li><a href="#">Psychology & The Individual</a></li>
+                                <li><a href="#">Media & Creativity</a></li>
+                                <li><a href="#">Motivating The Self</a></li>
+                                <li><a href="#">UPSC Preparation Tips</a></li>
+                                <li><a href="#">State PCS Preparation: RAS</a></li>
+                                <li><a href="#">State PCS Preparation: UPPCS</a></li>
+                                <li><a href="#">State PCS Preparation: UKPCS</a></li>
+                                <li><a href="#">State PCS Preparation: WBCS</a></li>
+                                <li><a href="#">State PCS Preparation: MPSC</a></li>
+                                <li><a href="#">State PCS Preparation: Punjab PSC</a></li>
+                                <li><a href="#">State PCS Preparation: MPPSC</a></li>
+                                <li><a href="#">State PCS Preparation: BPSC</a></li>
+                                <li><a href="#">Exam Notification</a></li>
+                                <li><a href="#">From Mocks to Marks</a></li>
+                            </ul>
+                        </div>
+
+                    </aside>
                 </div>
+            </div>
+        </section>
 
-                <!-- Sidebar Filters -->
-                <aside class="blog-sidebar">
-                    <!-- Exam Tracker Widget -->
-                    <div class="sidebar-widget tracker-widget">
-                        <h3 class="widget-title"><i class="ri-timer-flash-line"></i> UPSC Prelims 2026</h3>
-                        <div id="exam-countdown" class="countdown-timer">
-                            <div class="time-box">
-                                <span id="days">00</span>
-                                <label>Days</label>
-                            </div>
-                            <div class="time-box">
-                                <span id="hours">00</span>
-                                <label>Hrs</label>
-                            </div>
-                            <div class="time-box">
-                                <span id="minutes">00</span>
-                                <label>Mins</label>
-                            </div>
-                        </div>
-                        <p class="tracker-note">Target Date: May 26, 2026</p>
-                    </div>
+        <!-- Premium Mentorship Section -->
+        <section id="mentorship" class="mentorship-section">
+            <div class="mentorship-container">
+                <div class="mentorship-content">
+                    <span class="mentorship-badge">PREMIUM GUIDANCE</span>
+                    <h2>Get expert 1:1 guidance to unlock your true potential</h2>
+                    <p>Don't prepare in isolation. Get a personalized study plan, answer writing evaluation, and direct
+                        access to mentors who have cracked the code.</p>
 
-                    <!-- Daily Quiz Widget -->
-                    <div class="sidebar-widget quiz-widget">
-                        <h3 class="widget-title"><i class="ri-question-answer-line"></i> Daily Quiz</h3>
-                        <div class="quiz-container">
-                            <p class="quiz-question">Which Article of the Constitution deals with the Uniform Civil
-                                Code?</p>
-                            <div class="quiz-options">
-                                <button class="quiz-option" onclick="checkAnswer(this, false)">Article 42</button>
-                                <button class="quiz-option" onclick="checkAnswer(this, true)">Article 44</button>
-                                <button class="quiz-option" onclick="checkAnswer(this, false)">Article 45</button>
-                                <button class="quiz-option" onclick="checkAnswer(this, false)">Article 51A</button>
-                            </div>
-                            <div id="quiz-result" class="quiz-result"></div>
-                        </div>
-                    </div>
-
-                    <div class="sidebar-search">
-                        <input type="text" placeholder="Search...">
-                        <button><i class="ri-search-line"></i></button>
-                    </div>
-
-                    <h3 class="sidebar-title">BLOG COLLECTION</h3>
-                    <ul class="category-list">
-                        <li><a href="#">Unconventional Wisdom</a></li>
-                        <li><a href="#">What, Where, When?</a></li>
-                        <li><a href="#">From News - Let's talk..</a></li>
-                        <li><a href="#">From The Arts</a></li>
-                        <li><a href="#">Personalities We Love</a></li>
-                        <li><a href="#">The Universe & Our Environment</a></li>
-                        <li><a href="#">History, Thoughts & The World</a></li>
-                        <li><a href="#">From The World Of Science & Tech</a></li>
-                        <li><a href="#">Law & Society</a></li>
-                        <li><a href="#">Philosophy & Civilisation</a></li>
-                        <li><a href="#">Psychology & The Individual</a></li>
-                        <li><a href="#">Media & Creativity</a></li>
-                        <li><a href="#">Motivating The Self</a></li>
-                        <li><a href="#">UPSC Preparation Tips</a></li>
-                        <li><a href="#">State PCS Preparation: RAS</a></li>
-                        <li><a href="#">State PCS Preparation: UPPCS</a></li>
-                        <li><a href="#">State PCS Preparation: UKPCS</a></li>
-                        <li><a href="#">State PCS Preparation: WBCS</a></li>
-                        <li><a href="#">State PCS Preparation: MPSC</a></li>
-                        <li><a href="#">State PCS Preparation: Punjab PSC</a></li>
-                        <li><a href="#">State PCS Preparation: MPPSC</a></li>
-                        <li><a href="#">State PCS Preparation: BPSC</a></li>
-                        <li><a href="#">Exam Notification</a></li>
-                        <li><a href="#">From Mocks to Marks</a></li>
+                    <ul class="mentorship-features">
+                        <li><i class="ri-check-line"></i> Personalized Strategy</li>
+                        <li><i class="ri-check-line"></i> Daily Doubt Solving</li>
+                        <li><i class="ri-check-line"></i> Answer Evaluation</li>
+                        <li><i class="ri-check-line"></i> Mock Interviews</li>
                     </ul>
 
-                    <div class="sidebar-cta">
-                        <h4>Subscribe to Newsletter</h4>
-                        <p>Get daily current affairs in your inbox.</p>
-                        <button class="btn btn-sm btn-outline-primary">Subscribe</button>
-                    </div>
-                </aside>
-            </div>
-        </div>
-    </section>
-
-    <!-- Mentorship CTA -->
-    <section id="mentorship" class="cta-section">
-        <div class="container">
-            <div class="cta-box">
-                <div class="cta-content">
-                    <h2 class="cta-title">"Get expert 1:1 guidance to unlock your true potential"</h2>
-                    <p class="cta-desc">Don't prepare in isolation. Talk to mentors who have cracked the code.</p>
-                    <button class="btn btn-white btn-lg">Schedule a Call <i class="ri-phone-line"></i></button>
+                    <button class="btn btn-primary btn-lg"
+                        style="background: #38bdf8; border: none; color: #0f172a; font-weight: 700;">Book Free Session
+                        <i class="ri-arrow-right-line"></i></button>
                 </div>
-                <div class="cta-decoration">
-                    <i class="ri-graduation-cap-line"></i>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-top">
-                <div class="footer-brand">
-                    <a href="#" class="logo text-white">SRIRAM's <span>IAS</span></a>
-                    <p>Empowering aspirants since 2001. We believe in holistic education that builds character and
-                        competence.</p>
-                    <div class="social-links">
-                        <a href="#"><i class="ri-facebook-fill"></i></a>
-                        <a href="#"><i class="ri-twitter-x-line"></i></a>
-                        <a href="#"><i class="ri-instagram-line"></i></a>
-                        <a href="#"><i class="ri-youtube-line"></i></a>
+                <div class="mentorship-visual">
+                    <!-- Stacked Card Visual -->
+                    <div class="mentor-card-stack">
+                        <div class="stack-card stack-2"></div>
+                        <div class="stack-card stack-1">
+                            <div class="mentor-profile">
+                                <img src="https://ui-avatars.com/api/?name=Raman+Sir&background=0D8ABC&color=fff"
+                                    alt="Mentor">
+                                <div class="mentor-info">
+                                    <h4>Raman Sir</h4>
+                                    <p>Ex-IAS, Senior Mentor</p>
+                                </div>
+                            </div>
+                            <div class="mentor-msg">
+                                <p style="margin:0; font-size: 0.9rem;">"Your answer structure is good, but you need to
+                                    work
+                                    on the introduction. Let's discuss this in our next call at 5 PM."</p>
+                            </div>
+                            <div style="margin-top:auto; display:flex; gap:0.5rem; justify-content:flex-end;">
+                                <small style="color:#94a3b8; font-size: 0.75rem;">Just now</small>
+                            </div>
+                        </div>
                     </div>
                 </div>
+            </div>
+        </section>
 
-                <div class="footer-links">
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Courses</a></li>
-                        <li><a href="#">Faculty</a></li>
-                        <li><a href="#">Results</a></li>
-                        <li><a href="#">Careers</a></li>
-                    </ul>
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-top">
+                    <div class="footer-brand">
+                        <a href="#" class="logo text-white">SRIRAM's <span>IAS</span></a>
+                        <p>Empowering aspirants since 2001. We believe in holistic education that builds character and
+                            competence.</p>
+                        <div class="social-links">
+                            <a href="#"><i class="ri-facebook-fill"></i></a>
+                            <a href="#"><i class="ri-twitter-x-line"></i></a>
+                            <a href="#"><i class="ri-instagram-line"></i></a>
+                            <a href="#"><i class="ri-youtube-line"></i></a>
+                        </div>
+                    </div>
+
+                    <div class="footer-links">
+                        <h4>Quick Links</h4>
+                        <ul>
+                            <li><a href="#">About Us</a></li>
+                            <li><a href="#">Courses</a></li>
+                            <li><a href="#">Faculty</a></li>
+                            <li><a href="#">Results</a></li>
+                            <li><a href="#">Careers</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-links">
+                        <h4>Resources</h4>
+                        <ul>
+                            <li><a href="#">Blogs</a></li>
+                            <li><a href="#">Daily News</a></li>
+                            <li><a href="#">NCERT Notes</a></li>
+                            <li><a href="#">Previous Papers</a></li>
+                            <li><a href="#">Syllabus</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-contact">
+                        <h4>Contact Us</h4>
+                        <p><i class="ri-map-pin-line"></i> Old Rajinder Nagar, New Delhi</p>
+                        <p><i class="ri-phone-line"></i> +91 6201004532</p>
+                        <p><i class="ri-mail-line"></i> piyushranjan6291@gmail.com</p>
+                    </div>
                 </div>
-
-                <div class="footer-links">
-                    <h4>Resources</h4>
-                    <ul>
-                        <li><a href="#">Blogs</a></li>
-                        <li><a href="#">Daily News</a></li>
-                        <li><a href="#">NCERT Notes</a></li>
-                        <li><a href="#">Previous Papers</a></li>
-                        <li><a href="#">Syllabus</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer-contact">
-                    <h4>Contact Us</h4>
-                    <p><i class="ri-map-pin-line"></i> Old Rajinder Nagar, New Delhi</p>
-                    <p><i class="ri-phone-line"></i> +91 6201004532</p>
-                    <p><i class="ri-mail-line"></i> piyushranjan6291@gmail.com</p>
+                <div class="footer-bottom">
+                    <p>&copy; 2026 SRIRAM's IAS. All Rights Reserved.</p>
+                    <div class="footer-legal">
+                        <a href="#">Privacy Policy</a>
+                        <a href="#">Terms of Service</a>
+                    </div>
                 </div>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2026 SRIRAM's IAS. All Rights Reserved.</p>
-                <div class="footer-legal">
-                    <a href="#">Privacy Policy</a>
-                    <a href="#">Terms of Service</a>
+            <!-- Promo Modal -->
+            <div id="promo-modal" class="modal-overlay">
+                <div class="modal-content">
+                    <button class="modal-close"><i class="ri-close-line"></i></button>
+                    <div class="modal-body" style="background-image: url('assets/promo-bg.png');">
+                        <div class="modal-text-content">
+                            <div class="modal-logo">SRIRAM's <span>IAS</span></div>
+                            <div class="modal-year">1 <span class="text-sm">YEAR</span></div>
+                            <h2 class="modal-heading">GS FOUNDATION COURSE <br> <span class="text-lighter">for</span>
+                                <span class="text-highlight">UPSC CSE</span>
+                            </h2>
+
+                            <div class="modal-badges">
+                                <div class="modal-badge-main">
+                                    BATCH STARTS <span>19th JANUARY</span>
+                                </div>
+                                <span class="admission-tag">ADMISSION OPEN</span>
+                            </div>
+
+                            <div class="modal-footer-row">
+                                <div class="modal-modes">
+                                    <span><i class="ri-community-line"></i> OFFLINE</span>
+                                    <span><i class="ri-computer-line"></i> LIVE-ONLINE</span>
+                                </div>
+                                <div class="modal-contact">
+                                    <i class="ri-whatsapp-line text-green"></i> 9811489560
+                                </div>
+                                <a href="#" class="btn btn-warning btn-enroll">ENROLL NOW</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </footer>
 
-    <script src="script.js"></script>
+            <!-- Script -->
+            <script src="script.js"></script>
 </body>
 
 </html>

@@ -75,19 +75,22 @@ document.addEventListener('DOMContentLoaded', () => {
         const days = Math.floor(distance / (1000 * 60 * 60 * 24));
         const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
         const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
         const daysEl = document.getElementById('days');
         const hoursEl = document.getElementById('hours');
         const minsEl = document.getElementById('minutes');
+        const secsEl = document.getElementById('seconds');
 
         if (daysEl) daysEl.innerText = days < 10 ? '0' + days : days;
         if (hoursEl) hoursEl.innerText = hours < 10 ? '0' + hours : hours;
         if (minsEl) minsEl.innerText = minutes < 10 ? '0' + minutes : minutes;
+        if (secsEl) secsEl.innerText = seconds < 10 ? '0' + seconds : seconds;
     }
 
     // Initial call and interval
     updateCountdown();
-    setInterval(updateCountdown, 60000); // Update every minute to save resources
+    setInterval(updateCountdown, 1000); // Update every second for live feel
 
     // 3. Daily Quiz Logic (Global function needed for HTML onclick)
     window.checkAnswer = function (btn, isCorrect) {
@@ -115,46 +118,86 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
 
-    // 4. Mega Menu Interaction
-    const categories = document.querySelectorAll('.mega-category');
-    const panels = document.querySelectorAll('.mega-panel');
+    // 4. Mega Menu Interaction (Scoped)
+    const megaMenus = document.querySelectorAll('.mega-menu');
 
-    categories.forEach(category => {
-        category.addEventListener('mouseenter', () => {
-            // Remove active class from all
-            categories.forEach(c => c.classList.remove('active'));
-            panels.forEach(p => p.classList.remove('active'));
+    megaMenus.forEach(menu => {
+        const categories = menu.querySelectorAll('.mega-category');
+        const panels = menu.querySelectorAll('.mega-panel');
 
-            // Add active class to current
-            category.classList.add('active');
+        categories.forEach(category => {
+            category.addEventListener('mouseenter', () => {
+                // Remove active class from all categories and panels IN THIS MENU ONLY
+                categories.forEach(c => c.classList.remove('active'));
+                panels.forEach(p => p.classList.remove('active'));
 
-            // Show corresponding panel
-            const targetId = category.getAttribute('data-target');
-            const targetPanel = document.getElementById(targetId);
-            if (targetPanel) {
-                targetPanel.classList.add('active');
-            }
+                // Add active class to current category
+                category.classList.add('active');
+
+                // Show corresponding panel
+                const targetId = category.getAttribute('data-target');
+                const targetPanel = menu.querySelector(`#${targetId}`); // Find by ID inside the menu context? ID must be unique document-wide.
+                // Since IDs are unique, document.getElementById is fine, or scoped query if using classes.
+                // The HTML uses IDs like 'foundation', 'ts-prelims'. These are unique.
+                const targetPanelById = document.getElementById(targetId);
+
+                if (targetPanelById) {
+                    targetPanelById.classList.add('active');
+                }
+            });
         });
     });
 
     // 5. Live Courses Tab Switching
-    const liveTabs = document.querySelectorAll('.live-tab-btn');
-    const livePanels = document.querySelectorAll('.live-panel');
+    const liveTabs = document.querySelectorAll('.live-tab-pill');
+    const livePanels = document.querySelectorAll('.live-tab-panel');
 
     if (liveTabs.length > 0) {
         liveTabs.forEach(tab => {
             tab.addEventListener('click', () => {
-                // Remove active class from all
+                // Remove active class from all tabs
                 liveTabs.forEach(t => t.classList.remove('active'));
                 livePanels.forEach(p => p.classList.remove('active'));
 
-                // Add active to clicked
+                // Add active class to clicked tab
                 tab.classList.add('active');
 
                 // Show target panel
-                const target = tab.getAttribute('data-tab');
-                document.getElementById(target).classList.add('active');
+                const targetId = tab.getAttribute('data-tab');
+                const targetPanel = document.getElementById(targetId);
+                if (targetPanel) {
+                    targetPanel.classList.add('active');
+                }
             });
+        });
+    }
+
+
+    // 6. Promo Modal Logic
+    const promoModal = document.getElementById('promo-modal');
+    const modalClose = document.querySelector('.modal-close');
+
+    if (promoModal) {
+        // Show modal after 3 seconds (or check session storage)
+        setTimeout(() => {
+            // if (!sessionStorage.getItem('modalShown')) {
+            promoModal.classList.add('active');
+            // sessionStorage.setItem('modalShown', 'true');
+            // }
+        }, 1500);
+
+        // Close logic
+        function closeModal() {
+            promoModal.classList.remove('active');
+        }
+
+        modalClose.addEventListener('click', closeModal);
+
+        // Close on outside click
+        promoModal.addEventListener('click', (e) => {
+            if (e.target === promoModal) {
+                closeModal();
+            }
         });
     }
 

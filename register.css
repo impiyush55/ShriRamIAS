@@ -1,0 +1,265 @@
+/* Register Page Styles */
+
+body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background-color: #f8fafc;
+}
+
+.register-container {
+    display: flex;
+    min-height: 100vh;
+    width: 100%;
+}
+
+/* Left Side: Branding */
+.register-branding {
+    flex: 1;
+    background-image: url('assets/hero-bg.png');
+    /* Reuse hero image or similar */
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    padding: 3rem;
+}
+
+.branding-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(15, 23, 42, 0.9) 0%, rgba(30, 41, 59, 0.8) 100%);
+    z-index: 1;
+}
+
+.branding-content {
+    position: relative;
+    z-index: 2;
+    max-width: 500px;
+}
+
+.branding-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+}
+
+.text-highlight {
+    color: #38bdf8;
+    /* Match primary color accent */
+}
+
+.branding-desc {
+    font-size: 1.1rem;
+    color: #cbd5e1;
+    margin-bottom: 2.5rem;
+    line-height: 1.6;
+}
+
+.branding-features {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 3rem;
+}
+
+.feature-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 1.05rem;
+}
+
+.feature-item i {
+    color: #38bdf8;
+    font-size: 1.25rem;
+}
+
+.branding-testimonial {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    padding: 1.5rem;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.branding-testimonial p {
+    font-style: italic;
+    margin-bottom: 1rem;
+    color: #e2e8f0;
+}
+
+.topper-mini {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.topper-mini img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid white;
+}
+
+.topper-mini div {
+    display: flex;
+    flex-direction: column;
+    font-size: 0.9rem;
+}
+
+.topper-mini span {
+    font-size: 0.75rem;
+    color: #94a3b8;
+}
+
+/* Right Side: Form */
+.register-form-wrapper {
+    flex: 1;
+    background: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 3rem;
+    overflow-y: auto;
+    /* Handle small screens */
+}
+
+.form-header {
+    width: 100%;
+    max-width: 450px;
+    margin-bottom: 2rem;
+    text-align: left;
+}
+
+.form-header h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #1e293b;
+    margin-bottom: 0.5rem;
+}
+
+.form-header p {
+    color: #64748b;
+}
+
+.form-header a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.register-form {
+    width: 100%;
+    max-width: 450px;
+}
+
+.form-group {
+    margin-bottom: 1.25rem;
+}
+
+.form-group label {
+    display: block;
+    font-size: 0.9rem;
+    color: #334155;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+}
+
+.input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-wrapper i {
+    position: absolute;
+    left: 1rem;
+    color: #94a3b8;
+    font-size: 1.1rem;
+    pointer-events: none;
+}
+
+.input-wrapper input,
+.input-wrapper select {
+    width: 100%;
+    padding: 0.75rem 1rem 0.75rem 2.75rem;
+    /* Space for icon */
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    color: #1e293b;
+    transition: all 0.2s;
+    appearance: none;
+    /* Remove default browser arrow for select */
+    background: white;
+}
+
+.input-wrapper select {
+    cursor: pointer;
+}
+
+.input-wrapper .select-arrow {
+    left: auto;
+    right: 1rem;
+}
+
+.input-wrapper input:focus,
+.input-wrapper select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+    /* Primary color glow */
+}
+
+.form-check {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+    font-size: 0.9rem;
+    color: #64748b;
+}
+
+.form-check a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.btn-block {
+    width: 100%;
+    justify-content: center;
+    padding: 0.85rem;
+    font-size: 1rem;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .register-container {
+        flex-direction: column;
+    }
+
+    .register-branding {
+        padding: 2rem;
+        min-height: 300px;
+        flex: none;
+        /* Auto height based on content */
+    }
+
+    .branding-title {
+        font-size: 2rem;
+    }
+
+    .register-form-wrapper {
+        padding: 2rem 1.5rem;
+        flex: 1;
+    }
+}
