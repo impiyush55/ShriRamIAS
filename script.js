@@ -201,4 +201,21 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+
+    // 7. Mobile Menu Accordion
+    const mobileDropdownHeaders = document.querySelectorAll('.mobile-dropdown-header');
+
+    mobileDropdownHeaders.forEach(header => {
+        header.addEventListener('click', () => {
+            const parent = header.parentElement;
+            // Close others
+            document.querySelectorAll('.mobile-dropdown').forEach(item => {
+                if (item !== parent) {
+                    item.classList.remove('active');
+                }
+            });
+            parent.classList.toggle('active');
+        });
+    });
+
 });
