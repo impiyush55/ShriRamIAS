@@ -1,0 +1,21 @@
+
+import { StrictMode } from 'react'
+import { createRoot } from 'react-dom/client'
+import { BrowserRouter } from 'react-router-dom'
+import App from './App.jsx'
+import './styles/style.css'
+import './styles/live-styles.css'
+import './styles/mentorship.css'
+import './styles/pyq-styles.css'
+import './styles/register.css'
+import './styles/resource-section.css'
+import './styles/resource-widget.css'
+import './styles/sidebar-widgets.css'
+
+createRoot(document.getElementById('root')).render(
+  <StrictMode>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </StrictMode>,
+)
