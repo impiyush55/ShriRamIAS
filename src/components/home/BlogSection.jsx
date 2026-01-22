@@ -3,17 +3,185 @@ import { useState, useEffect } from 'react';
 
 function Flashcard({ badge, frontTitle, backTitle, backDesc }) {
     const [flipped, setFlipped] = useState(false);
+
+    // Helper to get icon for badge
+    const getCategoryIcon = (cat) => {
+        const map = {
+            'Polity': 'ri-government-line',
+            'Economics': 'ri-money-dollar-circle-line',
+            'History': 'ri-ancient-gate-line',
+            'Geography': 'ri-earth-line',
+            'Science': 'ri-flask-line'
+        };
+        return map[cat] || 'ri-book-open-line';
+    };
+
     return (
-        <div className={`flashcard ${flipped ? 'flipped' : ''}`} onClick={() => setFlipped(!flipped)}>
-            <div className="flashcard-inner">
-                <div className="flashcard-front">
-                    <span className="card-badge">{badge}</span>
-                    <h4>{frontTitle}</h4>
-                    <p className="tap-hint"><i className="ri-refresh-line"></i> Tap to Flip</p>
+        <div
+            className={`flashcard-container ${flipped ? 'flipped' : ''}`}
+            onClick={() => setFlipped(!flipped)}
+            style={{
+                minWidth: '280px',
+                height: '340px',
+                perspective: '1500px',
+                cursor: 'pointer',
+                flexShrink: 0
+            }}
+        >
+            <div className="flashcard-inner" style={{
+                position: 'relative',
+                width: '100%',
+                height: '100%',
+                textAlign: 'center',
+                transition: 'transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
+                transformStyle: 'preserve-3d',
+                transform: flipped ? 'rotateY(180deg)' : ''
+            }}>
+                {/* Front Side */}
+                <div className="flashcard-front" style={{
+                    position: 'absolute',
+                    width: '100%',
+                    height: '100%',
+                    backfaceVisibility: 'hidden',
+                    background: 'white',
+                    borderRadius: '24px',
+                    padding: '2rem',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'space-between',
+                    alignItems: 'center',
+                    boxShadow: '0 10px 30px -5px rgba(0,0,0,0.1)',
+                    border: '1px solid rgba(0,0,0,0.05)'
+                }}>
+                    <div className="card-top" style={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
+                        <span style={{
+                            background: '#f3f4f6',
+                            color: '#4b5563',
+                            padding: '6px 16px',
+                            borderRadius: '20px',
+                            fontSize: '0.75rem',
+                            fontWeight: 700,
+                            textTransform: 'uppercase',
+                            letterSpacing: '1px',
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: '6px'
+                        }}>
+                            <i className={getCategoryIcon(badge)}></i> {badge}
+                        </span>
+                    </div>
+
+                    <div className="card-center" style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', width: '100%' }}>
+                        <h3 style={{
+                            fontSize: '2rem',
+                            fontWeight: 800,
+                            color: '#111827',
+                            lineHeight: 1.2,
+                            fontFamily: '"Playfair Display", serif'
+                        }}>
+                            {frontTitle}
+                        </h3>
+                    </div>
+
+                    <div className="card-bottom">
+                        <div style={{
+                            width: '50px',
+                            height: '50px',
+                            borderRadius: '50%',
+                            background: '#f9fafb',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            color: '#6b7280',
+                            border: '1px solid #e5e7eb'
+                        }}>
+                            <i className="ri-arrow-turn-back-line" style={{ fontSize: '1.25rem' }}></i>
+                        </div>
+                        <p style={{ fontSize: '0.8rem', color: '#9ca3af', marginTop: '0.5rem', fontWeight: 500 }}>Tap to Reveal</p>
+                    </div>
                 </div>
-                <div className="flashcard-back">
-                    <h4>{backTitle}</h4>
-                    <p>{backDesc}</p>
+
+                {/* Back Side */}
+                <div className="flashcard-back" style={{
+                    position: 'absolute',
+                    width: '100%',
+                    height: '100%',
+                    backfaceVisibility: 'hidden',
+                    background: '#111827',
+                    backgroundImage: 'linear-gradient(to bottom right, #1f2937, #111827)',
+                    color: 'white',
+                    borderRadius: '24px',
+                    padding: '2.5rem 2rem',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    transform: 'rotateY(180deg)',
+                    boxShadow: '0 20px 40px -5px rgba(0,0,0,0.4)',
+                    border: '1px solid rgba(255,255,255,0.1)'
+                }}>
+                    <div style={{
+                        width: '100%',
+                        height: '100%',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        position: 'relative',
+                        zIndex: 2
+                    }}>
+                        <span style={{
+                            color: '#fbbf24',
+                            fontSize: '0.85rem',
+                            textTransform: 'uppercase',
+                            letterSpacing: '2px',
+                            fontWeight: 800,
+                            marginBottom: '1rem',
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: '8px'
+                        }}>
+                            <i className="ri-lightbulb-flash-line"></i> Answer
+                        </span>
+
+                        <h4 style={{
+                            fontSize: '1.4rem',
+                            marginBottom: '1.5rem',
+                            fontWeight: 700,
+                            textAlign: 'center',
+                            color: '#f9fafb'
+                        }}>{backTitle}</h4>
+
+                        <p style={{
+                            fontSize: '1rem',
+                            lineHeight: 1.6,
+                            textAlign: 'center',
+                            color: '#d1d5db',
+                            fontWeight: 400
+                        }}>{backDesc}</p>
+                    </div>
+
+                    {/* Decorative Elements */}
+                    <div style={{ position: 'absolute', top: '10px', right: '10px', opacity: 0.1 }}>
+                        <i className="ri-double-quotes-r" style={{ fontSize: '4rem', color: 'white' }}></i>
+                    </div>
+
+                    {/* Bottom Flip Button */}
+                    <div style={{
+                        marginTop: 'auto',
+                        width: '40px',
+                        height: '40px',
+                        borderRadius: '50%',
+                        background: 'rgba(255,255,255,0.1)',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        color: 'white',
+                        cursor: 'pointer',
+                        backdropFilter: 'blur(5px)'
+                    }} onClick={(e) => { e.stopPropagation(); setFlipped(false); }}>
+                        <i className="ri-close-line"></i>
+                    </div>
                 </div>
             </div>
         </div>
@@ -173,9 +341,9 @@ export default function BlogSection() {
                                 <div className="blog-meta">
                                     <span><i className="ri-calendar-line"></i> Jan 03, 2026</span>
                                 </div>
-                                <h3 className="blog-title"><a href="#">Air Pollution in India: A Silent Public Emergency</a></h3>
+                                <h3 className="blog-title"><a href="/blogs/1">Air Pollution in India: A Silent Public Emergency</a></h3>
                                 <p className="blog-summary">India’s air quality crisis has become a silent emergency. This blog explores causes, health impacts, and policy gaps...</p>
-                                <a href="#" className="read-more">Read More <i className="ri-arrow-right-line"></i></a>
+                                <a href="/blogs/1" className="read-more">Read More <i className="ri-arrow-right-line"></i></a>
                             </div>
                         </article>
 
@@ -188,9 +356,9 @@ export default function BlogSection() {
                                 <div className="blog-meta">
                                     <span><i className="ri-calendar-line"></i> Jan 02, 2026</span>
                                 </div>
-                                <h3 className="blog-title"><a href="#">Analyzing the New Digital Data Protection Act</a></h3>
+                                <h3 className="blog-title"><a href="/blogs/2">Analyzing the New Digital Data Protection Act</a></h3>
                                 <p className="blog-summary">Understanding the implications of the new data privacy laws on governance and individual rights in the digital age...</p>
-                                <a href="#" className="read-more">Read More <i className="ri-arrow-right-line"></i></a>
+                                <a href="/blogs/2" className="read-more">Read More <i className="ri-arrow-right-line"></i></a>
                             </div>
                         </article>
 
@@ -203,9 +371,9 @@ export default function BlogSection() {
                                 <div className="blog-meta">
                                     <span><i className="ri-calendar-line"></i> Dec 28, 2025</span>
                                 </div>
-                                <h3 className="blog-title"><a href="#">From Mocks to Marks: Art of Note Making</a></h3>
+                                <h3 className="blog-title"><a href="/blogs/3">From Mocks to Marks: Art of Note Making</a></h3>
                                 <p className="blog-summary">Effective note-making is crucial for revision. Learn how to condense huge volumes of information into crisp notes.</p>
-                                <a href="#" className="read-more">Read More <i className="ri-arrow-right-line"></i></a>
+                                <a href="/blogs/3" className="read-more">Read More <i className="ri-arrow-right-line"></i></a>
                             </div>
                         </article>
 
@@ -218,9 +386,9 @@ export default function BlogSection() {
                                 <div className="blog-meta">
                                     <span><i className="ri-calendar-line"></i> Dec 25, 2025</span>
                                 </div>
-                                <h3 className="blog-title"><a href="#">Case Studies in GS Paper 4: An Approach</a></h3>
+                                <h3 className="blog-title"><a href="/blogs/1">Case Studies in GS Paper 4: An Approach</a></h3>
                                 <p className="blog-summary">How to tackle ethical dilemmas in the exam with balanced reasoning and constitutional morality.</p>
-                                <a href="#" className="read-more">Read More <i className="ri-arrow-right-line"></i></a>
+                                <a href="/blogs/1" className="read-more">Read More <i className="ri-arrow-right-line"></i></a>
                             </div>
                         </article>
 
@@ -233,9 +401,9 @@ export default function BlogSection() {
                                 <div className="blog-meta">
                                     <span><i className="ri-calendar-line"></i> Dec 24, 2025</span>
                                 </div>
-                                <h3 className="blog-title"><a href="#">International Relations: India's G20 Presidency</a></h3>
+                                <h3 className="blog-title"><a href="/blogs/2">International Relations: India's G20 Presidency</a></h3>
                                 <p className="blog-summary">A retrospective on key outcomes and the path forward for India's global diplomatic standing.</p>
-                                <a href="#" className="read-more">Read More <i className="ri-arrow-right-line"></i></a>
+                                <a href="/blogs/2" className="read-more">Read More <i className="ri-arrow-right-line"></i></a>
                             </div>
                         </article>
 
@@ -267,30 +435,30 @@ export default function BlogSection() {
                         <div id="blog-collection">
                             <h3 className="sidebar-title">BLOG COLLECTION</h3>
                             <ul className="category-list">
-                                <li><a href="#">Unconventional Wisdom</a></li>
-                                <li><a href="#">What, Where, When?</a></li>
-                                <li><a href="#">From News - Let's talk..</a></li>
-                                <li><a href="#">From The Arts</a></li>
-                                <li><a href="#">Personalities We Love</a></li>
-                                <li><a href="#">The Universe & Our Environment</a></li>
-                                <li><a href="#">History, Thoughts & The World</a></li>
-                                <li><a href="#">From The World Of Science & Tech</a></li>
-                                <li><a href="#">Law & Society</a></li>
-                                <li><a href="#">Philosophy & Civilisation</a></li>
-                                <li><a href="#">Psychology & The Individual</a></li>
-                                <li><a href="#">Media & Creativity</a></li>
-                                <li><a href="#">Motivating The Self</a></li>
-                                <li><a href="#">UPSC Preparation Tips</a></li>
-                                <li><a href="#">State PCS Preparation: RAS</a></li>
-                                <li><a href="#">State PCS Preparation: UPPCS</a></li>
-                                <li><a href="#">State PCS Preparation: UKPCS</a></li>
-                                <li><a href="#">State PCS Preparation: WBCS</a></li>
-                                <li><a href="#">State PCS Preparation: MPSC</a></li>
-                                <li><a href="#">State PCS Preparation: Punjab PSC</a></li>
-                                <li><a href="#">State PCS Preparation: MPPSC</a></li>
-                                <li><a href="#">State PCS Preparation: BPSC</a></li>
-                                <li><a href="#">Exam Notification</a></li>
-                                <li><a href="#">From Mocks to Marks</a></li>
+                                <li><a href="/blogs/1">Unconventional Wisdom</a></li>
+                                <li><a href="/blogs/2">What, Where, When?</a></li>
+                                <li><a href="/blogs/3">From News - Let's talk..</a></li>
+                                <li><a href="/blogs/1">From The Arts</a></li>
+                                <li><a href="/blogs/2">Personalities We Love</a></li>
+                                <li><a href="/blogs/3">The Universe & Our Environment</a></li>
+                                <li><a href="/blogs/1">History, Thoughts & The World</a></li>
+                                <li><a href="/blogs/2">From The World Of Science & Tech</a></li>
+                                <li><a href="/blogs/3">Law & Society</a></li>
+                                <li><a href="/blogs/1">Philosophy & Civilisation</a></li>
+                                <li><a href="/blogs/2">Psychology & The Individual</a></li>
+                                <li><a href="/blogs/3">Media & Creativity</a></li>
+                                <li><a href="/blogs/1">Motivating The Self</a></li>
+                                <li><a href="/blogs/2">UPSC Preparation Tips</a></li>
+                                <li><a href="/blogs/3">State PCS Preparation: RAS</a></li>
+                                <li><a href="/blogs/1">State PCS Preparation: UPPCS</a></li>
+                                <li><a href="/blogs/2">State PCS Preparation: UKPCS</a></li>
+                                <li><a href="/blogs/3">State PCS Preparation: WBCS</a></li>
+                                <li><a href="/blogs/1">State PCS Preparation: MPSC</a></li>
+                                <li><a href="/blogs/2">State PCS Preparation: Punjab PSC</a></li>
+                                <li><a href="/blogs/3">State PCS Preparation: MPPSC</a></li>
+                                <li><a href="/blogs/1">State PCS Preparation: BPSC</a></li>
+                                <li><a href="/blogs/2">Exam Notification</a></li>
+                                <li><a href="/blogs/3">From Mocks to Marks</a></li>
                             </ul>
                         </div>
                     </aside>

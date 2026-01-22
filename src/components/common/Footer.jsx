@@ -41,9 +41,9 @@ export default function Footer() {
 
                     <div className="footer-contact">
                         <h4>Our Centers</h4>
-                        <p style={{ marginBottom: '0.5rem' }}><i className="ri-map-pin-line"></i> <strong>Delhi:</strong> Old Rajinder Nagar</p>
-                        <p style={{ marginBottom: '0.5rem' }}><i className="ri-map-pin-line"></i> <strong>Pune:</strong> Sadashiv Peth</p>
-                        <p style={{ marginBottom: '1.5rem' }}><i className="ri-map-pin-line"></i> <strong>Hyderabad:</strong> Ashland, Ashok Nagar</p>
+                        <p style={{ marginBottom: '0.5rem' }}><i className="ri-map-pin-line"></i> <strong>Delhi</strong> </p>
+                        <p style={{ marginBottom: '0.5rem' }}><i className="ri-map-pin-line"></i> <strong>Pune</strong> </p>
+                        <p style={{ marginBottom: '1.5rem' }}><i className="ri-map-pin-line"></i> <strong>Hyderabad</strong> </p>
 
                         <p><i className="ri-phone-line"></i> +91 6201004532</p>
                         <p><i className="ri-mail-line"></i> piyushranjan6291@gmail.com</p>

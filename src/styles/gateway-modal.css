@@ -1,0 +1,308 @@
+/* CSS for the new Gateway Style Payment Modal */
+
+.gateway-modal {
+    background: #ffffff;
+    width: 90%;
+    max-width: 900px;
+    height: 90vh;
+    max-height: 600px;
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    animation: modalSlideIn 0.3s ease-out;
+}
+
+/* Left Sidebar - Branding & Summary */
+.gateway-sidebar {
+    width: 35%;
+    background: linear-gradient(135deg, #FF6B6B 0%, #EE5253 100%);
+    /* Razorpay-ish red/orange */
+    color: white;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    border-right: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.gateway-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 2rem;
+}
+
+.gateway-brand img {
+    width: 40px;
+    height: 40px;
+    background: white;
+    padding: 4px;
+    border-radius: 8px;
+}
+
+.gateway-brand div {
+    display: flex;
+    flex-direction: column;
+}
+
+.brand-name {
+    font-size: 1.1rem;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.trusted-badge {
+    font-size: 0.75rem;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 2px 6px;
+    border-radius: 4px;
+    margin-top: 4px;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    width: fit-content;
+}
+
+.price-summary-box {
+    margin-bottom: 2rem;
+}
+
+.summary-label {
+    font-size: 0.9rem;
+    opacity: 0.9;
+    margin-bottom: 0.5rem;
+}
+
+.summary-amount {
+    font-size: 2rem;
+    font-weight: 800;
+}
+
+.user-details {
+    margin-top: auto;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 1rem;
+    border-radius: 8px;
+}
+
+.user-row {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.user-row:last-child {
+    margin-bottom: 0;
+}
+
+.offers-strip {
+    background: rgba(255, 255, 255, 0.95);
+    color: #333;
+    padding: 0.75rem;
+    border-radius: 8px;
+    margin-top: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+/* Right Content - Payment Options */
+.gateway-content {
+    flex: 1;
+    background: #FAFAFA;
+    display: flex;
+    flex-direction: column;
+}
+
+.gateway-header {
+    background: white;
+    padding: 1rem 2rem;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.gateway-header h3 {
+    margin: 0;
+    font-size: 1.1rem;
+    color: #444;
+}
+
+.gateway-close {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: #999;
+    cursor: pointer;
+}
+
+.gateway-body {
+    padding: 2rem;
+    overflow-y: auto;
+}
+
+.payment-section-title {
+    font-size: 0.9rem;
+    color: #888;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 600;
+}
+
+.payment-options-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.gateway-option {
+    background: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.gateway-option:hover {
+    border-color: #EE5253;
+    background: #FFF5F5;
+}
+
+.gateway-option:active {
+    transform: scale(0.99);
+}
+
+.option-icon {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f5f5f5;
+    border-radius: 50%;
+    color: #555;
+    font-size: 1.2rem;
+}
+
+.option-details {
+    flex: 1;
+}
+
+.option-name {
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 0.2rem;
+}
+
+.option-sub {
+    font-size: 0.8rem;
+    color: #888;
+}
+
+.option-arrow {
+    color: #ccc;
+}
+
+/* QR Code Section */
+.qr-payment-view {
+    text-align: center;
+    padding: 2rem;
+}
+
+.qr-container {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    display: inline-block;
+    margin-bottom: 2rem;
+    border: 1px solid #eee;
+}
+
+.qr-container img {
+    width: 200px;
+    height: 200px;
+}
+
+.payment-timer {
+    margin-top: 1rem;
+    font-variant-numeric: tabular-nums;
+    color: #EE5253;
+    font-weight: 600;
+}
+
+.scan-instruction {
+    margin-bottom: 2rem;
+    color: #666;
+}
+
+.gateway-security-footer {
+    text-align: center;
+    color: #aaa;
+    font-size: 0.8rem;
+    margin-top: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+/* Responsive for Gateway */
+@media (max-width: 768px) {
+    .gateway-modal {
+        flex-direction: column;
+        width: 100%;
+        height: 100%;
+        max-height: none;
+        border-radius: 0;
+    }
+
+    .gateway-sidebar {
+        width: 100%;
+        padding: 1.5rem;
+        flex-direction: row;
+        /* Horizontal on mobile top */
+        align-items: center;
+        justify-content: space-between;
+        height: auto;
+    }
+
+    .user-details,
+    .offers-strip,
+    .trusted-badge,
+    .gateway-brand img {
+        display: none;
+        /* Simplify for mobile */
+    }
+
+    .gateway-brand {
+        margin-bottom: 0;
+    }
+
+    .price-summary-box {
+        margin-bottom: 0;
+        text-align: right;
+    }
+
+    .summary-amount {
+        font-size: 1.5rem;
+    }
+
+    .gateway-content {
+        border-radius: 20px 20px 0 0;
+        margin-top: -20px;
+        /* Overlap effect */
+        box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.1);
+    }
+}

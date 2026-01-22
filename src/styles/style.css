@@ -349,6 +349,86 @@ ul {
     gap: 0.75rem;
 }
 
+/* Login Dropdown Styles */
+.login-dropdown {
+    position: relative;
+}
+
+.login-dropdown .btn {
+    cursor: pointer;
+    position: relative;
+}
+
+.login-dropdown-menu {
+    position: absolute;
+    top: calc(100% + 10px);
+    right: 0;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+    min-width: 280px;
+    padding: 0.5rem;
+    z-index: 1100;
+    animation: fadeInDown 0.2s ease;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.login-dropdown-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    text-decoration: none;
+    color: var(--text-dark);
+}
+
+.login-dropdown-item:hover {
+    background: #f0f9ff;
+    transform: translateX(4px);
+}
+
+.login-dropdown-item i {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    flex-shrink: 0;
+}
+
+.login-dropdown-item div {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.login-dropdown-item strong {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+.login-dropdown-item span {
+    font-size: 0.8rem;
+    color: var(--text-light);
+}
+
+.login-dropdown-item:hover strong {
+    color: var(--primary-color);
+}
+
 /* Mega Menu Container */
 .nav-item.dropdown {
     position: relative;

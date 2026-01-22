@@ -1,0 +1,149 @@
+/**
+ * BOOKMARK BUTTON STYLES
+ */
+
+.bookmark-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    background: white;
+    border: 2px solid #E5E7EB;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    font-weight: 500;
+    color: #6B7280;
+    position: relative;
+    overflow: hidden;
+}
+
+.bookmark-btn:hover {
+    border-color: #4F46E5;
+    color: #4F46E5;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(79, 70, 229, 0.15);
+}
+
+.bookmark-btn.bookmarked {
+    background: linear-gradient(135deg, #4F46E5 0%, #6366F1 100%);
+    border-color: #4F46E5;
+    color: white;
+}
+
+.bookmark-btn.bookmarked:hover {
+    background: linear-gradient(135deg, #4338CA 0%, #4F46E5 100%);
+    transform: translateY(-2px) scale(1.05);
+}
+
+/* Size variants */
+.bookmark-btn-small {
+    padding: 0.4rem 0.75rem;
+    font-size: 0.85rem;
+}
+
+.bookmark-btn-small i {
+    font-size: 1rem;
+}
+
+.bookmark-btn-medium {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+}
+
+.bookmark-btn-medium i {
+    font-size: 1.1rem;
+}
+
+.bookmark-btn-large {
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+}
+
+.bookmark-btn-large i {
+    font-size: 1.25rem;
+}
+
+/* Animation */
+.bookmark-btn.animating {
+    animation: bookmarkPulse 0.6s ease-out;
+}
+
+@keyframes bookmarkPulse {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.2);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.bookmark-btn.animating i {
+    animation: bookmarkIcon 0.6s ease-out;
+}
+
+@keyframes bookmarkIcon {
+
+    0%,
+    100% {
+        transform: rotate(0deg);
+    }
+
+    25% {
+        transform: rotate(-15deg);
+    }
+
+    75% {
+        transform: rotate(15deg);
+    }
+}
+
+/* Ripple effect */
+.bookmark-btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(79, 70, 229, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.bookmark-btn.animating::before {
+    width: 300px;
+    height: 300px;
+}
+
+/* Disabled state */
+.bookmark-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none !important;
+}
+
+/* Icon only variant */
+.bookmark-btn:not(:has(span)) {
+    padding: 0.5rem;
+    aspect-ratio: 1;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+    .bookmark-btn-medium {
+        padding: 0.4rem 0.75rem;
+        font-size: 0.85rem;
+    }
+
+    .bookmark-btn-large {
+        padding: 0.6rem 1.25rem;
+        font-size: 0.95rem;
+    }
+}

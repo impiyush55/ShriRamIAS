@@ -1,5 +1,6 @@
 
-import { useState, useEffect } from 'react';
+
+import { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
 export default function Navbar() {
@@ -10,6 +11,8 @@ export default function Navbar() {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const [activeMegaCategory, setActiveMegaCategory] = useState('foundation');
     const [activeTestSeriesCategory, setActiveTestSeriesCategory] = useState('ts-prelims');
+    const [isLoginDropdownOpen, setIsLoginDropdownOpen] = useState(false);
+    const loginDropdownRef = useRef(null);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -25,6 +28,23 @@ export default function Navbar() {
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
+
+    // Handle click outside for login dropdown
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (loginDropdownRef.current && !loginDropdownRef.current.contains(event.target)) {
+                setIsLoginDropdownOpen(false);
+            }
+        };
+
+        if (isLoginDropdownOpen) {
+            document.addEventListener('mousedown', handleClickOutside);
+        }
+
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, [isLoginDropdownOpen]);
 
     const toggleMobileMenu = () => {
         setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -348,7 +368,39 @@ export default function Navbar() {
                             <a href="#" className="util-link" title="Help"><i className="ri-question-line"></i> <span>Help</span></a>
                         </div>
                         <div className="auth-buttons">
-                            <Link to="/login.html" className="btn btn-outline">Login</Link>
+                            <div className="nav-item dropdown login-dropdown" ref={loginDropdownRef}>
+                                <button
+                                    className="btn btn-outline"
+                                    onClick={() => setIsLoginDropdownOpen(!isLoginDropdownOpen)}
+                                >
+                                    Login <i className="ri-arrow-down-s-line"></i>
+                                </button>
+                                {isLoginDropdownOpen && (
+                                    <div className="login-dropdown-menu">
+                                        <Link to="/common-login?role=student" className="login-dropdown-item">
+                                            <i className="ri-user-line"></i>
+                                            <div>
+                                                <strong>Student Login</strong>
+                                                <span>Access courses & tests</span>
+                                            </div>
+                                        </Link>
+                                        <Link to="/common-login?role=faculty" className="login-dropdown-item">
+                                            <i className="ri-user-star-line"></i>
+                                            <div>
+                                                <strong>Faculty Login</strong>
+                                                <span>Manage courses & students</span>
+                                            </div>
+                                        </Link>
+                                        <Link to="/common-login?role=admin" className="login-dropdown-item">
+                                            <i className="ri-admin-line"></i>
+                                            <div>
+                                                <strong>Admin Login</strong>
+                                                <span>Platform management</span>
+                                            </div>
+                                        </Link>
+                                    </div>
+                                )}
+                            </div>
                             <Link to="/register.html" className="btn btn-primary">Register</Link>
                         </div>
                     </div>
@@ -396,9 +448,20 @@ export default function Navbar() {
                     <a href={getHashLink('#blog-collection')}>Blogs</a>
                     <a href={getHashLink('#mentorship')}>Mentorship</a>
 
-                    <div className="mobile-auth-buttons">
-                        <Link to="/login.html" className="btn btn-outline" style={{ justifyContent: 'center' }}>Login</Link>
-                        <Link to="/register.html" className="btn btn-primary" style={{ justifyContent: 'center' }}>Register</Link>
+                    <div className="mobile-dropdown">
+                        <div className="mobile-dropdown-header" onClick={toggleMobileDropdown}>
+                            <span>Login</span>
+                            <i className="ri-arrow-down-s-line"></i>
+                        </div>
+                        <div className="mobile-dropdown-content">
+                            <Link to="/common-login?role=student"><i className="ri-user-line"></i> Student Login</Link>
+                            <Link to="/common-login?role=faculty"><i className="ri-user-star-line"></i> Faculty Login</Link>
+                            <Link to="/common-login?role=admin"><i className="ri-admin-line"></i> Admin Login</Link>
+                        </div>
+                    </div>
+
+                    <div className="mobile-auth-buttons" style={{ marginTop: '1rem' }}>
+                        <Link to="/register.html" className="btn btn-primary" style={{ justifyContent: 'center', width: '100%' }}>Register</Link>
                     </div>
                 </div>
             </div>
