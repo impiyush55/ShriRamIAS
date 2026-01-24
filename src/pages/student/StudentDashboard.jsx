@@ -8,6 +8,7 @@ import { useNavigate } from 'react-router-dom';
 import { getCurrentUser, logoutApi } from '../../api/authApi';
 import { getEnrolledCoursesApi } from '../../api/courseApi';
 import { getStudentAttemptsApi } from '../../api/testApi';
+import { getWalletBalance } from '../../api/paymentApi';
 import { dummyUsers } from '../../data/users';
 import '../../styles/dashboard.css';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
@@ -28,6 +29,15 @@ export default function StudentDashboard() {
 
     useEffect(() => {
         loadDashboardData();
+
+        // Listen for changes in other tabs (e.g. Admin Approval)
+        const handleStorageChange = (e) => {
+            if (e.key === 'mockEnrollments') {
+                loadDashboardData();
+            }
+        };
+        window.addEventListener('storage', handleStorageChange);
+        return () => window.removeEventListener('storage', handleStorageChange);
     }, []);
 
     const toggleSidebar = () => {
@@ -37,19 +47,34 @@ export default function StudentDashboard() {
     const loadDashboardData = async () => {
         setLoading(true);
         const currentUser = getCurrentUser();
-        setUser(currentUser);
+
+        // Update user object with latest wallet balance for the UI
+        const balance = getWalletBalance();
+        const userWithBalance = { ...currentUser, walletBalance: balance };
+        setUser(userWithBalance);
+
+        // Filter for ONLY approved enrollments for the student dashboard
+        const mockEnrollments = JSON.parse(localStorage.getItem('mockEnrollments') || '[]');
+        const approvedEnrollmentIds = mockEnrollments
+            .filter(e => e.studentId === currentUser.id && e.status === 'approved')
+            .map(e => e.courseId);
 
         const studentData = dummyUsers.find(u => u.id === currentUser.id);
+        const allEnrolledIds = [...new Set([...approvedEnrollmentIds])]; // ONLY show what was bought in the demo
 
-        if (studentData && studentData.enrolledCourses) {
+        if (allEnrolledIds.length > 0) {
             // Fetch enrolled courses
-            const coursesRes = await getEnrolledCoursesApi(currentUser.id, studentData.enrolledCourses);
+            const coursesRes = await getEnrolledCoursesApi(currentUser.id, allEnrolledIds);
             if (coursesRes.success) {
                 // Add some dummy progress data for demo
-                const coursesWithProgress = coursesRes.data.map(c => ({
-                    ...c,
-                    progress: Math.floor(Math.random() * 80) + 10 // Random progress 10-90%
-                }));
+                const coursesWithProgress = coursesRes.data.map(c => {
+                    return {
+                        ...c,
+                        isNew: true,
+                        progress: 0,
+                        buttonText: 'Start'
+                    };
+                });
                 setEnrolledCourses(coursesWithProgress);
             }
 
@@ -184,7 +209,7 @@ export default function StudentDashboard() {
                             </div>
                             <div className="wallet-info">
                                 <span className="wallet-label">Wallet Balance</span>
-                                <span className="wallet-amount">₹{user?.walletBalance ?? 50}</span>
+                                <span className="wallet-amount">₹{(user?.walletBalance || 0).toLocaleString()}</span>
                             </div>
                         </div>
                         <img src={user?.avatar} alt={user?.name} className="user-avatar" />
@@ -236,10 +261,10 @@ export default function StudentDashboard() {
                                         </div>
 
                                         <button
-                                            onClick={() => navigate(`/student/courses/${course.id}`)}
+                                            onClick={() => navigate(`/course-details/${course.id}`)}
                                             style={{
-                                                background: '#e0e7ff',
-                                                color: '#4338ca',
+                                                background: course.isNew ? '#2ecc71' : '#e0e7ff',
+                                                color: course.isNew ? 'white' : '#4338ca',
                                                 border: 'none',
                                                 padding: '0.4rem 1rem',
                                                 borderRadius: '6px',
@@ -251,16 +276,35 @@ export default function StudentDashboard() {
                                                 gap: '0.25rem'
                                             }}
                                         >
-                                            <i className="ri-play-fill"></i> Continue
+                                            <i className={course.isNew ? "ri-play-circle-line" : "ri-play-fill"}></i> {course.isNew ? 'Start Now' : 'Continue'}
                                         </button>
                                     </div>
                                 </div>
                             ))
                         ) : (
-                            <div style={{ gridColumn: '1/-1', textAlign: 'center', padding: '3rem', background: 'white', borderRadius: '12px', border: '1px dashed #d1d5db' }}>
-                                <i className="ri-book-open-line" style={{ fontSize: '2rem', color: '#9ca3af', marginBottom: '1rem', display: 'block' }}></i>
-                                <p style={{ color: '#6b7280', marginBottom: '1rem' }}>You haven't enrolled in any courses yet.</p>
-                                <button className="btn btn-primary" onClick={() => navigate('/student/browse-courses')}>Browse Courses</button>
+                            <div style={{
+                                gridColumn: '1/-1',
+                                textAlign: 'center',
+                                padding: '4rem 2rem',
+                                background: 'white',
+                                borderRadius: '16px',
+                                border: '1px dashed #cbd5e1',
+                                display: 'flex',
+                                flexDirection: 'column',
+                                alignItems: 'center'
+                            }}>
+                                <div style={{
+                                    width: '64px', height: '64px', background: '#f1f5f9', borderRadius: '50%',
+                                    display: 'flex', alignItems: 'center', justifyContent: 'center',
+                                    fontSize: '1.5rem', color: '#64748b', marginBottom: '1rem'
+                                }}>
+                                    <i className="ri-book-3-line"></i>
+                                </div>
+                                <h3 style={{ fontSize: '1.25rem', fontWeight: 700, color: '#1f2937', marginBottom: '0.5rem' }}>No active courses yet</h3>
+                                <p style={{ color: '#64748b', marginBottom: '2rem', maxWidth: '400px' }}>Your enrolled courses will appear here once you purchase and get approval.</p>
+                                <button className="btn btn-primary" onClick={() => navigate('/student/browse-courses')} style={{ padding: '0.75rem 2rem' }}>
+                                    Find Your Course
+                                </button>
                             </div>
                         )}
                     </div>

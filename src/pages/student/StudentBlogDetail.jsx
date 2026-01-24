@@ -36,14 +36,13 @@ export default function StudentBlogDetail() {
     const contentRef = useRef(null);
 
     useEffect(() => {
-        // Simulate API fetch
         const fetchBlog = async () => {
             setLoading(true);
-            // In a real app, we would fetch by ID. Here we just get all and find one, or use mock.
-            const response = await getAllBlogsApi();
+            const { getBlogByIdApi } = await import('../../api/blogApi');
+            const response = await getBlogByIdApi(blogId);
             if (response.success) {
-                const foundBlog = response.data.find(b => b.id.toString() === blogId) || response.data[0];
-                setBlog({ ...foundBlog, content: blogContentMock }); // Inject mock content
+                setBlog(response.data);
+                if (response.data.comments) setComments([...response.data.comments, ...comments]);
             }
             setLoading(false);
         };
@@ -57,13 +56,12 @@ export default function StudentBlogDetail() {
         const range = selection.getRangeAt(0);
         const span = document.createElement('span');
         span.className = 'highlight-text';
-        span.style.backgroundColor = '#fef08a'; // Yellow highlight
+        span.style.backgroundColor = '#fef08a';
         span.style.cursor = 'pointer';
         span.title = 'Click to remove highlight';
 
         try {
             range.surroundContents(span);
-            // Add click listener to remove highlight
             span.onclick = () => {
                 const parent = span.parentNode;
                 while (span.firstChild) parent.insertBefore(span.firstChild, span);
@@ -75,13 +73,16 @@ export default function StudentBlogDetail() {
         selection.removeAllRanges();
     };
 
-    const handleAddComment = (e) => {
+    const handleAddComment = async (e) => {
         e.preventDefault();
         if (!newComment.trim()) return;
 
+        const { updateBlogEngagementApi } = await import('../../api/blogApi');
+        await updateBlogEngagementApi(blogId, 'comment', { text: newComment });
+
         const comment = {
-            id: comments.length + 1,
-            user: 'You', // In real app, get current user
+            id: Date.now(),
+            user: 'You',
             avatar: 'https://ui-avatars.com/api/?name=You&background=random',
             text: newComment,
             date: 'Just now'
@@ -196,8 +197,10 @@ export default function StudentBlogDetail() {
                     <article
                         ref={contentRef}
                         className="prose"
-                        style={{ fontSize: '1.125rem', lineHeight: 1.8, color: '#374151' }}
-                        dangerouslySetInnerHTML={{ __html: blog.content }}
+                        style={{ fontSize: '1.125rem', lineHeight: 1.8, color: '#374151', whiteSpace: 'pre-line' }}
+                        dangerouslySetInnerHTML={{
+                            __html: blog.content?.includes('<') ? blog.content : blog.content
+                        }}
                     />
 
                     {/* Comments Section */}

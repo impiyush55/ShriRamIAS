@@ -104,10 +104,35 @@ export default function PublicBlogDetail() {
     const contentRef = useRef(null);
 
     useEffect(() => {
-        // Load blog from mock data
-        const blogData = publicBlogs[blogId] || publicBlogs['1'];
-        setBlog(blogData);
+        const fetchBlog = async () => {
+            const { getBlogByIdApi } = await import('../api/blogApi');
+            const res = await getBlogByIdApi(blogId);
+            if (res.success) {
+                setBlog(res.data);
+                if (res.data.comments) setComments([...res.data.comments, ...comments]);
+            }
+        };
+        fetchBlog();
     }, [blogId]);
+
+    const handleAddComment = async (e) => {
+        e.preventDefault();
+        if (!newComment.trim()) return;
+
+        const { updateBlogEngagementApi } = await import('../api/blogApi');
+        await updateBlogEngagementApi(blogId, 'comment', { text: newComment });
+
+        const comment = {
+            id: Date.now(),
+            user: 'You',
+            avatar: 'https://ui-avatars.com/api/?name=You&background=random',
+            text: newComment,
+            date: 'Just now'
+        };
+
+        setComments([comment, ...comments]);
+        setNewComment('');
+    };
 
     const handleHighlight = () => {
         const selection = window.getSelection();
@@ -131,22 +156,6 @@ export default function PublicBlogDetail() {
             console.log("Could not highlight across elements");
         }
         selection.removeAllRanges();
-    };
-
-    const handleAddComment = (e) => {
-        e.preventDefault();
-        if (!newComment.trim()) return;
-
-        const comment = {
-            id: comments.length + 1,
-            user: 'You',
-            avatar: 'https://ui-avatars.com/api/?name=You&background=random',
-            text: newComment,
-            date: 'Just now'
-        };
-
-        setComments([comment, ...comments]);
-        setNewComment('');
     };
 
     if (!blog) return <div className="page-loading"><i className="ri-loader-4-line rotating"></i></div>;
@@ -228,7 +237,7 @@ export default function PublicBlogDetail() {
                     <h1 style={{ fontSize: '2.5rem', color: '#111827', margin: '1rem 0', lineHeight: 1.2 }}>{blog.title}</h1>
 
                     <div className="author-meta" style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '2rem', paddingBottom: '1rem', borderBottom: '1px solid #f3f4f6' }}>
-                        <img src={blog.authorAvatar} alt="Author" style={{ width: '40px', height: '40px', borderRadius: '50%' }} />
+                        <img src={blog.authorAvatar || `https://ui-avatars.com/api/?name=${blog.author || 'Admin'}&background=4F46E5&color=fff`} alt="Author" style={{ width: '40px', height: '40px', borderRadius: '50%' }} />
                         <div>
                             <p style={{ fontWeight: 600, color: '#374151', margin: 0 }}>{blog.author}</p>
                             <span style={{ fontSize: '0.85rem', color: '#6b7280' }}>{blog.publishedDate} · {blog.readTime}</span>
@@ -247,8 +256,10 @@ export default function PublicBlogDetail() {
                     <article
                         ref={contentRef}
                         className="prose"
-                        style={{ fontSize: '1.125rem', lineHeight: 1.8, color: '#374151' }}
-                        dangerouslySetInnerHTML={{ __html: blog.content }}
+                        style={{ fontSize: '1.125rem', lineHeight: 1.8, color: '#374151', whiteSpace: 'pre-line' }}
+                        dangerouslySetInnerHTML={{
+                            __html: blog.content?.includes('<') ? blog.content : blog.content
+                        }}
                     />
 
                     {/* Comments Section */}

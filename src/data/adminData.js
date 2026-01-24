@@ -306,6 +306,16 @@ export const quickStatsConfig = [
         change: '+5 today',
         changeType: 'positive',
         subtitle: 'Avg 234 attempts'
+    },
+    {
+        id: 'pending-approvals',
+        title: 'Pending Approvals',
+        value: 0,
+        icon: 'ri-checkbox-circle-line',
+        color: 'warning',
+        change: 'New',
+        changeType: 'neutral',
+        subtitle: 'Wallet course purchases'
     }
 ];
 

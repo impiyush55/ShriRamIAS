@@ -292,6 +292,35 @@ function DailyQuiz() {
 }
 
 export default function BlogSection() {
+    const [blogs, setBlogs] = useState([]);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        const fetchBlogs = async () => {
+            try {
+                const { getAllBlogsApi } = await import('../../api/blogApi');
+                const res = await getAllBlogsApi();
+                if (res.success && Array.isArray(res.data)) {
+                    // Get latest 6 blogs (Newest first)
+                    setBlogs(res.data.slice(0, 6));
+                }
+            } catch (err) {
+                console.error("Failed to load blogs:", err);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchBlogs();
+
+        // Listen for blog changes (from Admin panel)
+        const handleStorage = (e) => {
+            if (e.key === 'mockBlogs') fetchBlogs();
+        };
+        window.addEventListener('storage', handleStorage);
+        return () => window.removeEventListener('storage', handleStorage);
+    }, []);
+
     return (
         <section id="blogs" className="section bg-light blog-section">
             <div className="container">
@@ -332,95 +361,42 @@ export default function BlogSection() {
 
                 <div className="blog-layout">
                     <div className="blog-grid">
-                        <article className="blog-card">
-                            <div className="blog-thumb">
-                                <img src="/assets/blog-pollution.png" alt="Air Pollution in India" />
-                                <span className="blog-tag">Environment</span>
+                        {loading ? (
+                            <div style={{ gridColumn: '1/-1', textAlign: 'center', padding: '3rem' }}>
+                                <i className="ri-loader-4-line rotating" style={{ fontSize: '2rem', color: '#4f46e5' }}></i>
                             </div>
-                            <div className="blog-content">
-                                <div className="blog-meta">
-                                    <span><i className="ri-calendar-line"></i> Jan 03, 2026</span>
+                        ) : (
+                            blogs.length > 0 ? (
+                                blogs.map(blog => (
+                                    <article key={blog.id} className="blog-card" style={{ opacity: 1, visibility: 'visible' }}>
+                                        <div className="blog-thumb">
+                                            <img
+                                                src={blog.thumbnail || 'https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=600'}
+                                                alt={blog.title}
+                                                onError={(e) => { e.target.src = 'https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=600' }}
+                                            />
+                                            <span className="blog-tag">{blog.category}</span>
+                                        </div>
+                                        <div className="blog-content">
+                                            <div className="blog-meta">
+                                                <span><i className="ri-calendar-line"></i> {blog.publishedDate}</span>
+                                            </div>
+                                            <h3 className="blog-title">
+                                                <a href={`/blogs/${blog.id}`}>{blog.title}</a>
+                                            </h3>
+                                            <p className="blog-summary">
+                                                {blog.excerpt || (blog.content ? blog.content.substring(0, 100).replace(/<[^>]*>/g, '') + '...' : 'Interesting read about UPSC preparation...')}
+                                            </p>
+                                            <a href={`/blogs/${blog.id}`} className="read-more">Read More <i className="ri-arrow-right-line"></i></a>
+                                        </div>
+                                    </article>
+                                ))
+                            ) : (
+                                <div style={{ gridColumn: '1/-1', textAlign: 'center', color: '#6b7280' }}>
+                                    No blogs published yet.
                                 </div>
-                                <h3 className="blog-title"><a href="/blogs/1">Air Pollution in India: A Silent Public Emergency</a></h3>
-                                <p className="blog-summary">India’s air quality crisis has become a silent emergency. This blog explores causes, health impacts, and policy gaps...</p>
-                                <a href="/blogs/1" className="read-more">Read More <i className="ri-arrow-right-line"></i></a>
-                            </div>
-                        </article>
-
-                        <article className="blog-card">
-                            <div className="blog-thumb">
-                                <img src="/assets/blog-governance.png" alt="New Policy" />
-                                <span className="blog-tag">Governance</span>
-                            </div>
-                            <div className="blog-content">
-                                <div className="blog-meta">
-                                    <span><i className="ri-calendar-line"></i> Jan 02, 2026</span>
-                                </div>
-                                <h3 className="blog-title"><a href="/blogs/2">Analyzing the New Digital Data Protection Act</a></h3>
-                                <p className="blog-summary">Understanding the implications of the new data privacy laws on governance and individual rights in the digital age...</p>
-                                <a href="/blogs/2" className="read-more">Read More <i className="ri-arrow-right-line"></i></a>
-                            </div>
-                        </article>
-
-                        <article className="blog-card">
-                            <div className="blog-thumb">
-                                <img src="/assets/blog-study.png" alt="Strategy" />
-                                <span className="blog-tag">Strategy</span>
-                            </div>
-                            <div className="blog-content">
-                                <div className="blog-meta">
-                                    <span><i className="ri-calendar-line"></i> Dec 28, 2025</span>
-                                </div>
-                                <h3 className="blog-title"><a href="/blogs/3">From Mocks to Marks: Art of Note Making</a></h3>
-                                <p className="blog-summary">Effective note-making is crucial for revision. Learn how to condense huge volumes of information into crisp notes.</p>
-                                <a href="/blogs/3" className="read-more">Read More <i className="ri-arrow-right-line"></i></a>
-                            </div>
-                        </article>
-
-                        <article className="blog-card">
-                            <div className="blog-thumb">
-                                <img src="/assets/blog-study.png" alt="Ethics" style={{ filter: 'hue-rotate(45deg)' }} />
-                                <span className="blog-tag">Ethics</span>
-                            </div>
-                            <div className="blog-content">
-                                <div className="blog-meta">
-                                    <span><i className="ri-calendar-line"></i> Dec 25, 2025</span>
-                                </div>
-                                <h3 className="blog-title"><a href="/blogs/1">Case Studies in GS Paper 4: An Approach</a></h3>
-                                <p className="blog-summary">How to tackle ethical dilemmas in the exam with balanced reasoning and constitutional morality.</p>
-                                <a href="/blogs/1" className="read-more">Read More <i className="ri-arrow-right-line"></i></a>
-                            </div>
-                        </article>
-
-                        <article className="blog-card">
-                            <div className="blog-thumb">
-                                <img src="/assets/blog-pollution.png" alt="Current Affairs" style={{ filter: 'sepia(0.5)' }} />
-                                <span className="blog-tag">Current Affairs</span>
-                            </div>
-                            <div className="blog-content">
-                                <div className="blog-meta">
-                                    <span><i className="ri-calendar-line"></i> Dec 24, 2025</span>
-                                </div>
-                                <h3 className="blog-title"><a href="/blogs/2">International Relations: India's G20 Presidency</a></h3>
-                                <p className="blog-summary">A retrospective on key outcomes and the path forward for India's global diplomatic standing.</p>
-                                <a href="/blogs/2" className="read-more">Read More <i className="ri-arrow-right-line"></i></a>
-                            </div>
-                        </article>
-
-                        <article className="blog-card">
-                            <div className="blog-thumb">
-                                <img src="/assets/blog-governance.png" alt="Motivation" style={{ filter: 'contrast(1.2)' }} />
-                                <span className="blog-tag">Motivation</span>
-                            </div>
-                            <div className="blog-content">
-                                <div className="blog-meta">
-                                    <span><i className="ri-calendar-line"></i> Dec 20, 2025</span>
-                                </div>
-                                <h3 className="blog-title"><a href="#">Overcoming the Plateau in Preparation</a></h3>
-                                <p className="blog-summary">Dealing with burnout and staying motivated during the long marathon of Civil Services preparation.</p>
-                                <a href="#" className="read-more">Read More <i className="ri-arrow-right-line"></i></a>
-                            </div>
-                        </article>
+                            )
+                        )}
                     </div>
 
                     <aside className="blog-sidebar">
@@ -467,3 +443,4 @@ export default function BlogSection() {
         </section>
     );
 }
+

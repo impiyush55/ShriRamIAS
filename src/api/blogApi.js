@@ -1,16 +1,20 @@
 /**
  * BLOG API (FAKE/SIMULATED)
- * This simulates backend blog operations
- * In production, this would make real API calls to a backend server
+ * This simulates backend blog operations using localStorage for persistence
  */
 
-import { dummyBlogs, getBlogById, getBlogBySlug, getBlogsByCategory, getFeaturedBlogs, getBlogsByAuthor } from '../data/blogs';
+import { dummyBlogs } from '../data/blogs';
 
-/**
- * Simulated delay to mimic API call
- */
 const simulateDelay = (ms = 500) => {
     return new Promise(resolve => setTimeout(resolve, ms));
+};
+
+// Helper to get all blogs (Dummy + LocalStorage)
+const getUnifiedBlogs = () => {
+    const localBlogsStr = localStorage.getItem('mockBlogs');
+    const localBlogs = localBlogsStr ? JSON.parse(localBlogsStr) : [];
+    // Put NEW blogs at the start so they show up on the home page first
+    return [...localBlogs, ...dummyBlogs];
 };
 
 /**
@@ -18,20 +22,11 @@ const simulateDelay = (ms = 500) => {
  */
 export const getAllBlogsApi = async () => {
     await simulateDelay(600);
-
-    try {
-        return {
-            success: true,
-            message: 'Blogs fetched successfully',
-            data: dummyBlogs
-        };
-    } catch (error) {
-        return {
-            success: false,
-            message: 'Failed to fetch blogs',
-            data: []
-        };
-    }
+    return {
+        success: true,
+        message: 'Blogs fetched successfully',
+        data: getUnifiedBlogs()
+    };
 };
 
 /**
@@ -39,61 +34,18 @@ export const getAllBlogsApi = async () => {
  */
 export const getBlogByIdApi = async (blogId) => {
     await simulateDelay(400);
+    const blogs = getUnifiedBlogs();
+    const blog = blogs.find(b => b.id === parseInt(blogId));
 
-    try {
-        const blog = getBlogById(blogId);
-
-        if (!blog) {
-            return {
-                success: false,
-                message: 'Blog not found',
-                data: null
-            };
-        }
-
-        return {
-            success: true,
-            message: 'Blog fetched successfully',
-            data: blog
-        };
-    } catch (error) {
-        return {
-            success: false,
-            message: 'Failed to fetch blog',
-            data: null
-        };
+    if (!blog) {
+        return { success: false, message: 'Blog not found', data: null };
     }
-};
 
-/**
- * Get blog by slug
- */
-export const getBlogBySlugApi = async (slug) => {
-    await simulateDelay(400);
-
-    try {
-        const blog = getBlogBySlug(slug);
-
-        if (!blog) {
-            return {
-                success: false,
-                message: 'Blog not found',
-                data: null
-            };
-        }
-
-        return {
-            success: true,
-            message: 'Blog fetched successfully',
-            data: blog
-        };
-    } catch (error) {
-        return {
-            success: false,
-            message: 'Failed to fetch blog',
-            data: null
-        };
-    }
+    return {
+        success: true,
+        message: 'Blog fetched successfully',
+        data: blog
+    };
 };
 
 /**
@@ -101,62 +53,42 @@ export const getBlogBySlugApi = async (slug) => {
  */
 export const getFeaturedBlogsApi = async () => {
     await simulateDelay(500);
-
-    try {
-        const blogs = getFeaturedBlogs();
-
-        return {
-            success: true,
-            message: 'Featured blogs fetched successfully',
-            data: blogs
-        };
-    } catch (error) {
-        return {
-            success: false,
-            message: 'Failed to fetch featured blogs',
-            data: []
-        };
-    }
+    const blogs = getUnifiedBlogs().filter(blog => blog.featured);
+    return {
+        success: true,
+        message: 'Featured blogs fetched successfully',
+        data: blogs
+    };
 };
 
 /**
- * Get blogs by category
- */
-export const getBlogsByCategoryApi = async (category) => {
-    await simulateDelay(500);
-
-    try {
-        const blogs = getBlogsByCategory(category);
-
-        return {
-            success: true,
-            message: 'Blogs fetched successfully',
-            data: blogs
-        };
-    } catch (error) {
-        return {
-            success: false,
-            message: 'Failed to fetch blogs',
-            data: []
-        };
-    }
-};
-
-/**
- * Add new blog (Admin/Faculty - dummy)
+ * Add new blog (Admin/Faculty)
  */
 export const addBlogApi = async (blogData) => {
     await simulateDelay(700);
 
     try {
-        // In real app, this would save to database
+        const localBlogsStr = localStorage.getItem('mockBlogs');
+        const localBlogs = localBlogsStr ? JSON.parse(localBlogsStr) : [];
+
+        const nextId = [...dummyBlogs, ...localBlogs].reduce((max, b) => Math.max(max, b.id), 0) + 1;
+
         const newBlog = {
-            id: dummyBlogs.length + 1,
+            id: nextId,
             ...blogData,
+            slug: blogData.title.toLowerCase().replace(/ /g, '-').replace(/[^\w-]+/g, ''),
             views: 0,
             likes: 0,
-            publishedDate: new Date().toISOString().split('T')[0]
+            comments: [],
+            publishedDate: new Date().toISOString().split('T')[0],
+            readTime: '5 min read',
+            thumbnail: blogData.thumbnail || 'https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=600',
+            author: 'Admin User',
+            authorId: 1
         };
+
+        const updatedLocalBlogs = [newBlog, ...localBlogs];
+        localStorage.setItem('mockBlogs', JSON.stringify(updatedLocalBlogs));
 
         return {
             success: true,
@@ -164,111 +96,35 @@ export const addBlogApi = async (blogData) => {
             data: newBlog
         };
     } catch (error) {
-        return {
-            success: false,
-            message: 'Failed to publish blog',
-            data: null
-        };
+        return { success: false, message: 'Failed to publish blog', data: null };
     }
 };
 
 /**
- * Update blog (Admin/Faculty - dummy)
+ * Like/Comment functionality (Simulated)
  */
-export const updateBlogApi = async (blogId, updates) => {
-    await simulateDelay(700);
-
-    try {
-        const blog = getBlogById(blogId);
-
-        if (!blog) {
-            return {
-                success: false,
-                message: 'Blog not found',
-                data: null
-            };
-        }
-
-        // In real app, this would update in database
-        const updatedBlog = { ...blog, ...updates };
-
-        return {
-            success: true,
-            message: 'Blog updated successfully',
-            data: updatedBlog
-        };
-    } catch (error) {
-        return {
-            success: false,
-            message: 'Failed to update blog',
-            data: null
-        };
-    }
-};
-
-/**
- * Delete blog (Admin only - dummy)
- */
-export const deleteBlogApi = async (blogId) => {
-    await simulateDelay(600);
-
-    try {
-        const blog = getBlogById(blogId);
-
-        if (!blog) {
-            return {
-                success: false,
-                message: 'Blog not found',
-                data: null
-            };
-        }
-
-        // In real app, this would delete from database
-        return {
-            success: true,
-            message: 'Blog deleted successfully',
-            data: { blogId }
-        };
-    } catch (error) {
-        return {
-            success: false,
-            message: 'Failed to delete blog',
-            data: null
-        };
-    }
-};
-
-/**
- * Like blog (dummy)
- */
-export const likeBlogApi = async (blogId, userId) => {
+export const updateBlogEngagementApi = async (blogId, type, data) => {
     await simulateDelay(300);
+    const localBlogsStr = localStorage.getItem('mockBlogs');
+    const localBlogs = localBlogsStr ? JSON.parse(localBlogsStr) : [];
 
-    try {
-        const blog = getBlogById(blogId);
+    const blogIndex = localBlogs.findIndex(b => b.id === parseInt(blogId));
 
-        if (!blog) {
-            return {
-                success: false,
-                message: 'Blog not found',
-                data: null
-            };
+    if (blogIndex !== -1) {
+        if (type === 'like') {
+            localBlogs[blogIndex].likes += 1;
+        } else if (type === 'comment') {
+            if (!localBlogs[blogIndex].comments) localBlogs[blogIndex].comments = [];
+            localBlogs[blogIndex].comments.push({
+                id: Date.now(),
+                user: data.user || 'Guest User',
+                text: data.text,
+                date: new Date().toISOString()
+            });
         }
-
-        // In real app, this would update likes in database
-        return {
-            success: true,
-            message: 'Blog liked',
-            data: {
-                blogId,
-                likes: blog.likes + 1
-            }
-        };
-    } catch (error) {
-        return {
-            success: false,
-            message: 'Failed to like blog',
-            data: null
-        };
+        localStorage.setItem('mockBlogs', JSON.stringify(localBlogs));
     }
+
+    return { success: true, message: 'Engagement updated' };
 };
+

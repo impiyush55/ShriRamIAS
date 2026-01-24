@@ -6,6 +6,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { getAllCoursesApi } from '../../api/courseApi';
+import { payWithWallet, getWalletBalance } from '../../api/paymentApi';
 import '../../styles/browse-courses.css';
 import '../../styles/gateway-modal.css';
 
@@ -92,11 +93,30 @@ export default function BrowseCourses() {
         setPaymentStep(3);
     };
 
+    const handleWalletPayment = async () => {
+        try {
+            setLoading(true);
+            const result = await payWithWallet(selectedCourse.id, selectedCentre);
+            if (result.success) {
+                setPaymentStep(3);
+            }
+        } catch (error) {
+            alert(error.message || "Payment failed");
+            if (error.redirectTo) {
+                navigate(error.redirectTo);
+            }
+        } finally {
+            setLoading(false);
+        }
+    };
+
     const closePaymentModal = () => {
+        const isSuccess = paymentStep === 3;
         setShowPaymentModal(false);
         setSelectedCourse(null);
         setPaymentStep(1);
-        if (paymentStep === 3) {
+
+        if (isSuccess) {
             navigate('/student/dashboard');
         }
     };
@@ -339,8 +359,19 @@ export default function BrowseCourses() {
                                                         <i className="ri-wallet-3-line"></i>
                                                     </div>
                                                     <div className="option-details">
-                                                        <div className="option-name">Wallet</div>
+                                                        <div className="option-name">Other Wallets</div>
                                                         <div className="option-sub">PhonePe, Paytm, Amazon Pay</div>
+                                                    </div>
+                                                    <i className="ri-arrow-right-s-line option-arrow"></i>
+                                                </div>
+
+                                                <div className="gateway-option" onClick={handleWalletPayment} style={{ border: '2px solid #EE5253', background: '#fffef0' }}>
+                                                    <div className="option-icon" style={{ color: '#EE5253', background: '#fff5f5' }}>
+                                                        <i className="ri-wallet-fill"></i>
+                                                    </div>
+                                                    <div className="option-details">
+                                                        <div className="option-name">SRIRAM Wallet (₹{getWalletBalance()})</div>
+                                                        <div className="option-sub" style={{ color: '#EE5253', fontWeight: 'bold' }}>Pay securely using your wallet balance</div>
                                                     </div>
                                                     <i className="ri-arrow-right-s-line option-arrow"></i>
                                                 </div>
@@ -493,17 +524,47 @@ export default function BrowseCourses() {
                         </div>
                     )}
 
-                    {/* Step 3: Success View (Modified to standard modal for consistency, or keep as is? Let's keep it simple modal) */}
+                    {/* Step 3: Success View */}
                     {paymentStep === 3 && (
-                        <div className="payment-modal">
+                        <div className="payment-modal" style={{ background: '#1a202c', color: 'white', maxWidth: '400px' }}>
                             <div className="modal-body" style={{ textAlign: 'center', padding: '3rem' }}>
-                                <div className="success-icon">
+                                <div className="success-icon" style={{
+                                    background: '#2ecc71',
+                                    width: '80px',
+                                    height: '80px',
+                                    borderRadius: '50%',
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    justifySelf: 'center',
+                                    justifyContent: 'center',
+                                    margin: '0 auto 1.5rem',
+                                    fontSize: '3rem',
+                                    color: 'white'
+                                }}>
                                     <i className="ri-checkbox-circle-fill"></i>
                                 </div>
-                                <h3>Payment Successful!</h3>
-                                <p>You have successfully enrolled in <strong>{selectedCourse.title}</strong>.</p>
-                                <p style={{ fontSize: '0.9rem', color: '#64748b', marginTop: '0.5rem' }}>Transaction ID: #SR{Math.floor(Math.random() * 1000000)}</p>
-                                <button className="modal-cta-btn" onClick={closePaymentModal} style={{ marginTop: '2rem' }}>
+                                <h3 style={{ color: 'white', fontSize: '1.5rem', marginBottom: '0.5rem' }}>Payment Successful!</h3>
+                                <p style={{ color: '#a0aec0', marginBottom: '1.5rem' }}>You have successfully enrolled in <strong>{selectedCourse.title}</strong>.</p>
+                                <p style={{ fontSize: '0.85rem', color: '#718096', marginBottom: '2rem' }}>Transaction ID: #SR{Math.floor(Math.random() * 1000000)}</p>
+                                <button
+                                    className="modal-cta-btn"
+                                    onClick={closePaymentModal}
+                                    style={{
+                                        marginTop: '0',
+                                        background: '#EE5253',
+                                        color: 'white',
+                                        height: '50px',
+                                        fontSize: '1rem',
+                                        fontWeight: '700',
+                                        border: 'none',
+                                        borderRadius: '8px',
+                                        cursor: 'pointer',
+                                        boxShadow: '0 4px 14px rgba(238, 82, 83, 0.4)',
+                                        transition: 'all 0.2s ease'
+                                    }}
+                                    onMouseOver={(e) => e.currentTarget.style.transform = 'scale(1.02)'}
+                                    onMouseOut={(e) => e.currentTarget.style.transform = 'scale(1)'}
+                                >
                                     Go to My Dashboard
                                 </button>
                             </div>

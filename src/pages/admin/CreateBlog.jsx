@@ -40,12 +40,24 @@ export default function CreateBlog() {
         }));
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        // In a real app, this would send data to the backend
-        console.log('Blog Data Submitted:', formData);
-        alert('Blog saved successfully! (This is a demo)');
-        navigate('/admin/blogs');
+        try {
+            const { addBlogApi } = await import('../../api/blogApi');
+            const result = await addBlogApi(formData);
+            if (result.success) {
+                if (window.confirm('Blog published successfully! Do you want to view it on the Home Page now?')) {
+                    navigate('/#blogs');
+                } else {
+                    navigate('/admin/blogs');
+                }
+            } else {
+                alert(result.message || 'Failed to publish blog');
+            }
+        } catch (error) {
+            console.error('Error publishing blog:', error);
+            alert('An error occurred while publishing');
+        }
     };
 
     return (

@@ -42,9 +42,9 @@ export const loginApi = async (email, password) => {
         // Create session token (fake JWT)
         const token = `fake_jwt_token_${user.id}_${Date.now()}`;
 
-        // Store in localStorage
-        localStorage.setItem('authToken', token);
-        localStorage.setItem('currentUser', JSON.stringify({
+        // Store in sessionStorage to allow multiple users in different tabs for demo
+        sessionStorage.setItem('authToken', token);
+        sessionStorage.setItem('currentUser', JSON.stringify({
             id: user.id,
             email: user.email,
             name: user.name,
@@ -85,8 +85,8 @@ export const logoutApi = async () => {
     await simulateDelay(300);
 
     try {
-        localStorage.removeItem('authToken');
-        localStorage.removeItem('currentUser');
+        sessionStorage.removeItem('authToken');
+        sessionStorage.removeItem('currentUser');
 
         return {
             success: true,
@@ -145,8 +145,8 @@ export const registerApi = async (userData) => {
  */
 export const getCurrentUser = () => {
     try {
-        const userStr = localStorage.getItem('currentUser');
-        const token = localStorage.getItem('authToken');
+        const userStr = sessionStorage.getItem('currentUser');
+        const token = sessionStorage.getItem('authToken');
 
         if (!userStr || !token) {
             return null;
@@ -162,8 +162,8 @@ export const getCurrentUser = () => {
  * Check if user is authenticated
  */
 export const isAuthenticated = () => {
-    const token = localStorage.getItem('authToken');
-    const user = localStorage.getItem('currentUser');
+    const token = sessionStorage.getItem('authToken');
+    const user = sessionStorage.getItem('currentUser');
     return !!(token && user);
 };
 
@@ -198,9 +198,9 @@ export const updateProfileApi = async (updates) => {
             };
         }
 
-        // Update localStorage
+        // Update sessionStorage
         const updatedUser = { ...currentUser, ...updates };
-        localStorage.setItem('currentUser', JSON.stringify(updatedUser));
+        sessionStorage.setItem('currentUser', JSON.stringify(updatedUser));
 
         return {
             success: true,

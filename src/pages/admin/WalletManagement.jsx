@@ -135,6 +135,15 @@ export default function WalletManagement() {
 
     useEffect(() => {
         loadWallets();
+
+        // Sync with purchases in real-time
+        const handleStorageChange = (e) => {
+            if (e.key === 'mockEnrollments' || e.key.startsWith('walletBalance_')) {
+                loadWallets();
+            }
+        };
+        window.addEventListener('storage', handleStorageChange);
+        return () => window.removeEventListener('storage', handleStorageChange);
     }, []);
 
     useEffect(() => {
@@ -146,9 +155,46 @@ export default function WalletManagement() {
         const currentUser = getCurrentUser();
         setUser(currentUser);
 
-        setWallets(dummyWallets);
+        // Fetch students and their individual balances
+        const { dummyUsers } = await import('../../data/users');
+        const students = dummyUsers.filter(u => u.role === 'student');
+        const enrollments = JSON.parse(localStorage.getItem('mockEnrollments') || '[]');
+
+        const realWallets = students.map(student => {
+            const balanceKey = `walletBalance_${student.id}`;
+            const balance = parseFloat(localStorage.getItem(balanceKey) || '100000');
+
+            const userEnrollments = enrollments.filter(e => e.studentId === student.id);
+            const totalUsed = userEnrollments.reduce((sum, e) => sum + e.amount, 0);
+
+            return {
+                id: student.id,
+                studentName: student.name,
+                studentEmail: student.email,
+                studentAvatar: student.avatar,
+                balance: balance,
+                totalCredits: 100000,
+                totalUsed: totalUsed,
+                totalRefunds: 0,
+                status: 'active',
+                lastTransaction: userEnrollments.length > 0 ? new Date(userEnrollments[0].enrolledAt).toLocaleDateString() : '2026-01-01',
+                transactions: [
+                    { id: 'initial', type: 'credit', amount: 100000, description: 'Initial demo credit', date: '2026-01-01' },
+                    ...userEnrollments.map(e => ({
+                        id: e.id,
+                        type: 'debit',
+                        amount: e.amount,
+                        branch: e.centre || 'Main Branch',
+                        description: e.courseTitle,
+                        date: new Date(e.enrolledAt).toLocaleDateString()
+                    }))
+                ]
+            };
+        }).filter(wallet => wallet.totalUsed > 0); // FILTER TO ONLY SHOW PURCHASERS
+
+        setWallets(realWallets);
         setRefunds(pendingRefunds);
-        setFilteredWallets(dummyWallets);
+        setFilteredWallets(realWallets);
 
         setLoading(false);
     };
@@ -421,11 +467,10 @@ export default function WalletManagement() {
                                     <tr>
                                         <th>Student</th>
                                         <th>Balance</th>
-                                        <th>Total Credits</th>
+                                        <th>Purchases (Last)</th>
+                                        <th>Branch</th>
                                         <th>Total Used</th>
-                                        <th>Refunds</th>
                                         <th>Status</th>
-                                        <th>Last Transaction</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
@@ -444,17 +489,34 @@ export default function WalletManagement() {
                                                 </div>
                                             </td>
                                             <td>
-                                                <span className="amount-highlight">₹{wallet.balance}</span>
+                                                <span className="amount-highlight">₹{wallet.balance.toLocaleString()}</span>
                                             </td>
-                                            <td>₹{wallet.totalCredits}</td>
-                                            <td>₹{wallet.totalUsed}</td>
-                                            <td>₹{wallet.totalRefunds}</td>
+                                            <td style={{ maxWidth: '200px' }}>
+                                                <div style={{ fontSize: '0.85rem', fontWeight: 600 }}>{wallet.transactions[wallet.transactions.length - 1]?.description || 'None'}</div>
+                                                <div style={{ fontSize: '0.75rem', color: '#6b7280' }}>{wallet.lastTransaction}</div>
+                                            </td>
                                             <td>
-                                                <span className={getStatusBadgeClass(wallet.status)}>
-                                                    {wallet.status.replace('_', ' ')}
+                                                <span style={{
+                                                    padding: '4px 8px',
+                                                    background: '#f3f4f6',
+                                                    borderRadius: '6px',
+                                                    fontSize: '0.8rem',
+                                                    fontWeight: 600,
+                                                    display: 'flex',
+                                                    alignItems: 'center',
+                                                    gap: '4px',
+                                                    width: 'fit-content'
+                                                }}>
+                                                    <i className="ri-map-pin-line" style={{ color: '#4f46e5' }}></i>
+                                                    {wallet.transactions.find(t => t.type === 'debit')?.branch || 'Main Branch'}
                                                 </span>
                                             </td>
-                                            <td>{wallet.lastTransaction}</td>
+                                            <td>₹{wallet.totalUsed.toLocaleString()}</td>
+                                            <td>
+                                                <span className={getStatusBadgeClass(wallet.status)}>
+                                                    Active
+                                                </span>
+                                            </td>
                                             <td>
                                                 <div className="action-buttons">
                                                     <button

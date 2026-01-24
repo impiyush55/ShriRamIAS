@@ -6,6 +6,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { getCurrentUser, logoutApi } from '../../api/authApi';
+import { getWalletBalance } from '../../api/paymentApi';
 import '../../styles/dashboard.css';
 
 export default function WalletPage() {
@@ -25,13 +26,27 @@ export default function WalletPage() {
 
     const loadWalletData = async () => {
         const currentUser = getCurrentUser();
-        setUser(currentUser);
 
-        // Dummy transactions
+        // Get dynamic balance for demo
+        const balance = getWalletBalance();
+        setUser({ ...currentUser, walletBalance: balance });
+
+        // Merge dummy transactions with mock enrollments
+        const mockEnrollments = JSON.parse(localStorage.getItem('mockEnrollments') || '[]');
+        const userEnrollments = mockEnrollments
+            .filter(e => e.studentId === currentUser.id)
+            .map(e => ({
+                id: e.id,
+                type: 'debit',
+                description: `Course Purchase: ${e.courseTitle}`,
+                amount: e.amount,
+                date: e.enrolledAt,
+                status: 'Success'
+            }));
+
         setTransactions([
-            { id: 1, type: 'credit', description: 'Wallet Recharge', amount: 500, date: '2025-01-20', status: 'Success' },
-            { id: 2, type: 'debit', description: 'Course Purchase: UPSC Foundation', amount: 450, date: '2025-01-22', status: 'Success' },
-            { id: 3, type: 'credit', description: 'Welcome Bonus', amount: 50, date: '2024-12-01', status: 'Success' },
+            ...userEnrollments,
+            { id: 'initial', type: 'credit', description: 'Initial Wallet Credit', amount: 100000, date: '2026-01-01', status: 'Success' },
         ]);
 
         setLoading(false);
@@ -141,7 +156,7 @@ export default function WalletPage() {
                             </div>
                             <div className="wallet-info">
                                 <span className="wallet-label">Current Balance</span>
-                                <span className="wallet-amount" style={{ fontSize: '1.1rem' }}>₹{user?.walletBalance ?? 50}</span>
+                                <span className="wallet-amount" style={{ fontSize: '1.1rem' }}>₹{(user?.walletBalance || 0).toLocaleString()}</span>
                             </div>
                         </div>
                         <img src={user?.avatar} alt={user?.name} className="user-avatar" />
@@ -154,7 +169,7 @@ export default function WalletPage() {
                         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '2rem' }}>
                             <div>
                                 <p style={{ fontSize: '0.9rem', opacity: 0.9, marginBottom: '0.5rem' }}>Total Wallet Balance</p>
-                                <h2 style={{ fontSize: '2.5rem', fontWeight: 700, margin: 0 }}>₹{user?.walletBalance ?? 50}.00</h2>
+                                <h2 style={{ fontSize: '2.5rem', fontWeight: 700, margin: 0 }}>₹{(user?.walletBalance || 0).toLocaleString()}.00</h2>
                             </div>
                             <button
                                 style={{

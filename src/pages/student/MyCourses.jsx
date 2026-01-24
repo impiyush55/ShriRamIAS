@@ -19,23 +19,43 @@ export default function MyCourses() {
 
     useEffect(() => {
         loadCourses();
+
+        // Listen for changes in other tabs (e.g. Admin Approval)
+        const handleStorageChange = (e) => {
+            if (e.key === 'mockEnrollments') {
+                loadCourses();
+            }
+        };
+        window.addEventListener('storage', handleStorageChange);
+        return () => window.removeEventListener('storage', handleStorageChange);
     }, []);
 
     const loadCourses = async () => {
         const currentUser = getCurrentUser();
         setUser(currentUser);
 
-        // Simulating fetching enrolled courses
+        // Filter for ONLY approved enrollments for the student dashboard
+        const mockEnrollments = JSON.parse(localStorage.getItem('mockEnrollments') || '[]');
+        const approvedEnrollmentIds = mockEnrollments
+            .filter(e => e.studentId === currentUser.id && e.status === 'approved')
+            .map(e => e.courseId);
+
         const studentData = dummyUsers.find(u => u.id === currentUser.id);
-        if (studentData && studentData.enrolledCourses) {
-            const res = await getEnrolledCoursesApi(currentUser.id, studentData.enrolledCourses);
+        const allEnrolledIds = [...new Set([...approvedEnrollmentIds])]; // Start empty for demo
+
+        if (allEnrolledIds.length > 0) {
+            const res = await getEnrolledCoursesApi(currentUser.id, allEnrolledIds);
             if (res.success) {
-                // Add dummy progress data
-                const coursesWithProgress = res.data.map(c => ({
-                    ...c,
-                    progress: Math.floor(Math.random() * 80) + 10, // Random progress 10-90%
-                    nextLesson: 'Chapter 4: Constitutional Framework'
-                }));
+                // Determine if a course is new (purchased during demo) or default
+                const coursesWithProgress = res.data.map(c => {
+                    return {
+                        ...c,
+                        isNew: true,
+                        progress: 0,
+                        nextLesson: 'Chapter 1: Introduction',
+                        buttonText: 'Start Now'
+                    };
+                });
                 setCourses(coursesWithProgress);
             }
         }
@@ -144,16 +164,75 @@ export default function MyCourses() {
                                     <button
                                         onClick={() => navigate(`/course-details/${course.id}`)}
                                         className="btn btn-primary"
-                                        style={{ width: '100%' }}
+                                        style={{ width: '100%', background: course.isNew ? '#2ecc71' : '' }}
                                     >
-                                        Resume Learning
+                                        {course.buttonText}
                                     </button>
                                 </div>
                             </div>
                         )) : (
-                            <div className="empty-state">
-                                <p>No enrolled courses found.</p>
-                                <button onClick={() => navigate('/student/browse-courses')} className="btn btn-primary">Browse Courses</button>
+                            <div className="empty-state-premium" style={{
+                                textAlign: 'center',
+                                padding: '5rem 2rem',
+                                background: 'rgba(255, 255, 255, 0.4)',
+                                backdropFilter: 'blur(10px)',
+                                borderRadius: '24px',
+                                border: '1px solid rgba(255, 255, 255, 0.5)',
+                                gridColumn: '1 / -1',
+                                display: 'flex',
+                                flexDirection: 'column',
+                                alignItems: 'center',
+                                boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.07)'
+                            }}>
+                                <div style={{
+                                    width: '120px',
+                                    height: '120px',
+                                    background: 'linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)',
+                                    borderRadius: '50%',
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    justifyContent: 'center',
+                                    fontSize: '3.5rem',
+                                    color: '#4f46e5',
+                                    marginBottom: '2rem',
+                                    boxShadow: 'inset 0 4px 8px rgba(0,0,0,0.05)'
+                                }}>
+                                    <i className="ri-book-read-line"></i>
+                                </div>
+                                <h2 style={{ fontSize: '2rem', fontWeight: 800, color: '#1f2937', marginBottom: '1rem' }}>No Courses Found</h2>
+                                <p style={{ color: '#6b7280', fontSize: '1.1rem', maxWidth: '500px', margin: '0 auto 2.5rem', lineHeight: '1.6' }}>
+                                    You haven student enrolled in any courses yet. Explore our world-class curriculum and take the first step towards your UPSC goals.
+                                </p>
+                                <button
+                                    onClick={() => navigate('/student/browse-courses')}
+                                    className="btn-primary-premium"
+                                    style={{
+                                        padding: '1rem 2.5rem',
+                                        background: 'linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%)',
+                                        color: 'white',
+                                        border: 'none',
+                                        borderRadius: '12px',
+                                        fontSize: '1.1rem',
+                                        fontWeight: 700,
+                                        cursor: 'pointer',
+                                        boxShadow: '0 10px 15px -3px rgba(79, 70, 229, 0.3)',
+                                        transition: 'all 0.3s ease',
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        gap: '0.75rem'
+                                    }}
+                                    onMouseOver={(e) => {
+                                        e.currentTarget.style.transform = 'translateY(-3px)';
+                                        e.currentTarget.style.boxShadow = '0 15px 20px -5px rgba(79, 70, 229, 0.4)';
+                                    }}
+                                    onMouseOut={(e) => {
+                                        e.currentTarget.style.transform = 'translateY(0)';
+                                        e.currentTarget.style.boxShadow = '0 10px 15px -3px rgba(79, 70, 229, 0.3)';
+                                    }}
+                                >
+                                    Browse Courses
+                                    <i className="ri-arrow-right-line"></i>
+                                </button>
                             </div>
                         )}
                     </div>
