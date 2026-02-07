@@ -1,0 +1,23 @@
+{
+    "nav": {
+        "home": "Home",
+        "courses": "Courses",
+        "liveClasses": "Live Classes",
+        "testSeries": "Test Series",
+        "blogs": "Blogs",
+        "mentorship": "Mentorship"
+    },
+    "common": {
+        "login": "Login",
+        "register": "Register",
+        "app": "App",
+        "help": "Help",
+        "search": "Search",
+        "latestUpdates": "Latest Updates"
+    },
+    "hero": {
+        "title": "Your Path to UPSC Success",
+        "subtitle": "Expert guidance, comprehensive courses, and personalized mentorship",
+        "cta": "Get Started"
+    }
+}

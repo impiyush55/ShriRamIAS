@@ -66,18 +66,14 @@ export default function AdminSettings() {
             {/* Mobile Sidebar Overlay */}
             {isSidebarOpen && (
                 <div
-                    className="sidebar-overlay"
+                    className="sidebar-overlay fixed top-0 left-0 w-full h-full bg-black/50 z-[999]"
                     onClick={() => setIsSidebarOpen(false)}
-                    style={{
-                        position: 'fixed', top: 0, left: 0, width: '100%', height: '100%',
-                        backgroundColor: 'rgba(0,0,0,0.5)', zIndex: 999
-                    }}
                 ></div>
             )}
 
             {/* Sidebar */}
             <aside className={`dashboard-sidebar ${isSidebarOpen ? 'open' : ''}`}>
-                <div className="sidebar-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                <div className="sidebar-header flex justify-between items-center">
                     <div>
                         <h2>SRIRAM's IAS</h2>
                         <span className="role-badge admin">Admin Panel</span>
@@ -131,11 +127,10 @@ export default function AdminSettings() {
             {/* Main Content */}
             <main className="dashboard-main">
                 <header className="dashboard-header">
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+                    <div className="flex items-center gap-4">
                         <button
-                            className="menu-toggle-btn"
+                            className="menu-toggle-btn md:hidden bg-transparent border-none text-2xl cursor-pointer"
                             onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-                            style={{ display: 'none', background: 'transparent', border: 'none', fontSize: '1.5rem', cursor: 'pointer' }}
                         >
                             <i className="ri-menu-2-line"></i>
                         </button>
@@ -153,24 +148,17 @@ export default function AdminSettings() {
                     </div>
                 </header>
 
-                <div className="settings-container" style={{ maxWidth: '1000px', margin: '0 auto' }}>
+                <div className="settings-container max-w-[1000px] mx-auto">
                     {/* Settings Tabs */}
-                    <div className="settings-tabs" style={{ display: 'flex', gap: '1rem', marginBottom: '2rem', borderBottom: '1px solid #e5e7eb' }}>
+                    <div className="settings-tabs flex gap-4 mb-8 border-b border-gray-200">
                         {['general', 'security', 'notifications', 'payment'].map(tab => (
                             <button
                                 key={tab}
                                 onClick={() => setActiveTab(tab)}
-                                style={{
-                                    padding: '1rem 1.5rem',
-                                    background: 'none',
-                                    border: 'none',
-                                    borderBottom: activeTab === tab ? '2px solid #4f46e5' : '2px solid transparent',
-                                    color: activeTab === tab ? '#4f46e5' : '#6b7280',
-                                    fontWeight: 600,
-                                    cursor: 'pointer',
-                                    textTransform: 'capitalize',
-                                    fontSize: '0.95rem'
-                                }}
+                                className={`px-6 py-4 bg-transparent border-none font-semibold capitalize text-[0.95rem] cursor-pointer ${activeTab === tab
+                                    ? 'border-b-2 border-indigo-600 text-indigo-600'
+                                    : 'border-b-2 border-transparent text-gray-500'
+                                    }`}
                             >
                                 {tab} Settings
                             </button>
@@ -180,70 +168,67 @@ export default function AdminSettings() {
                     <form onSubmit={handleSave}>
                         {activeTab === 'general' && (
                             <div className="settings-section">
-                                <h3 style={{ marginBottom: '1.5rem', color: '#1f2937' }}>General Configuration</h3>
+                                <h3 className="mb-6 text-gray-800">General Configuration</h3>
 
-                                <div className="user-details-grid" style={{ gridTemplateColumns: '1fr 1fr', gap: '2rem' }}>
+                                <div className="user-details-grid grid-cols-2 gap-8">
                                     <div className="form-group">
-                                        <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 500 }}>Site Name</label>
+                                        <label className="block mb-2 font-medium">Site Name</label>
                                         <input
                                             type="text"
                                             name="siteName"
                                             value={settings.siteName}
                                             onChange={handleInputChange}
-                                            className="form-control"
-                                            style={{ width: '100%', padding: '0.75rem', borderRadius: '8px', border: '1px solid #d1d5db' }}
+                                            className="form-control w-full px-3 py-3 rounded-lg border border-gray-300"
                                         />
                                     </div>
                                     <div className="form-group">
-                                        <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 500 }}>Support Email</label>
+                                        <label className="block mb-2 font-medium">Support Email</label>
                                         <input
                                             type="email"
                                             name="supportEmail"
                                             value={settings.supportEmail}
                                             onChange={handleInputChange}
-                                            className="form-control"
-                                            style={{ width: '100%', padding: '0.75rem', borderRadius: '8px', border: '1px solid #d1d5db' }}
+                                            className="form-control w-full px-3 py-3 rounded-lg border border-gray-300"
                                         />
                                     </div>
                                     <div className="form-group">
-                                        <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 500 }}>Support Phone</label>
+                                        <label className="block mb-2 font-medium">Support Phone</label>
                                         <input
                                             type="text"
                                             name="supportPhone"
                                             value={settings.supportPhone}
                                             onChange={handleInputChange}
-                                            className="form-control"
-                                            style={{ width: '100%', padding: '0.75rem', borderRadius: '8px', border: '1px solid #d1d5db' }}
+                                            className="form-control w-full px-3 py-3 rounded-lg border border-gray-300"
                                         />
                                     </div>
                                 </div>
 
-                                <div style={{ marginTop: '2rem', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-                                    <label style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', cursor: 'pointer' }}>
+                                <div className="mt-8 flex flex-col gap-4">
+                                    <label className="flex items-center gap-3 cursor-pointer">
                                         <input
                                             type="checkbox"
                                             name="maintenanceMode"
                                             checked={settings.maintenanceMode}
                                             onChange={handleInputChange}
-                                            style={{ width: '1.2rem', height: '1.2rem' }}
+                                            className="w-5 h-5"
                                         />
                                         <div>
-                                            <span style={{ display: 'block', fontWeight: 600 }}>Maintenance Mode</span>
-                                            <span style={{ fontSize: '0.85rem', color: '#6b7280' }}>Temporarily disable public access to the site</span>
+                                            <span className="block font-semibold">Maintenance Mode</span>
+                                            <span className="text-[0.85rem] text-gray-500">Temporarily disable public access to the site</span>
                                         </div>
                                     </label>
 
-                                    <label style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', cursor: 'pointer' }}>
+                                    <label className="flex items-center gap-3 cursor-pointer">
                                         <input
                                             type="checkbox"
                                             name="allowRegistration"
                                             checked={settings.allowRegistration}
                                             onChange={handleInputChange}
-                                            style={{ width: '1.2rem', height: '1.2rem' }}
+                                            className="w-5 h-5"
                                         />
                                         <div>
-                                            <span style={{ display: 'block', fontWeight: 600 }}>Allow New Registrations</span>
-                                            <span style={{ fontSize: '0.85rem', color: '#6b7280' }}>Enable or disable student sign-ups</span>
+                                            <span className="block font-semibold">Allow New Registrations</span>
+                                            <span className="text-[0.85rem] text-gray-500">Enable or disable student sign-ups</span>
                                         </div>
                                     </label>
                                 </div>
@@ -252,16 +237,15 @@ export default function AdminSettings() {
 
                         {activeTab === 'security' && (
                             <div className="settings-section">
-                                <h3 style={{ marginBottom: '1.5rem', color: '#1f2937' }}>Security Preferences</h3>
+                                <h3 className="mb-6 text-gray-800">Security Preferences</h3>
 
-                                <div className="form-group" style={{ marginBottom: '1.5rem', maxWidth: '400px' }}>
-                                    <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 500 }}>Session Timeout (Minutes)</label>
+                                <div className="form-group mb-6 max-w-[400px]">
+                                    <label className="block mb-2 font-medium">Session Timeout (Minutes)</label>
                                     <select
                                         name="sessionTimeout"
                                         value={settings.sessionTimeout}
                                         onChange={handleInputChange}
-                                        className="form-control"
-                                        style={{ width: '100%', padding: '0.75rem', borderRadius: '8px', border: '1px solid #d1d5db' }}
+                                        className="form-control w-full px-3 py-3 rounded-lg border border-gray-300"
                                     >
                                         <option value="15">15 Minutes</option>
                                         <option value="30">30 Minutes</option>
@@ -270,18 +254,18 @@ export default function AdminSettings() {
                                     </select>
                                 </div>
 
-                                <div style={{ marginTop: '1rem' }}>
-                                    <label style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', cursor: 'pointer' }}>
+                                <div className="mt-4">
+                                    <label className="flex items-center gap-3 cursor-pointer">
                                         <input
                                             type="checkbox"
                                             name="twoFactorAuth"
                                             checked={settings.twoFactorAuth}
                                             onChange={handleInputChange}
-                                            style={{ width: '1.2rem', height: '1.2rem' }}
+                                            className="w-5 h-5"
                                         />
                                         <div>
-                                            <span style={{ display: 'block', fontWeight: 600 }}>Enforce Two-Factor Authentication (2FA)</span>
-                                            <span style={{ fontSize: '0.85rem', color: '#6b7280' }}>Require 2FA for all admin and faculty accounts</span>
+                                            <span className="block font-semibold">Enforce Two-Factor Authentication (2FA)</span>
+                                            <span className="text-[0.85rem] text-gray-500">Require 2FA for all admin and faculty accounts</span>
                                         </div>
                                     </label>
                                 </div>
@@ -290,14 +274,14 @@ export default function AdminSettings() {
 
                         {activeTab === 'notifications' && (
                             <div className="settings-section">
-                                <h3 style={{ marginBottom: '1.5rem', color: '#1f2937' }}>Notification Channels</h3>
-                                <p style={{ color: '#6b7280', marginBottom: '1.5rem' }}>Control how the system sends alerts to users.</p>
+                                <h3 className="mb-6 text-gray-800">Notification Channels</h3>
+                                <p className="text-gray-500 mb-6">Control how the system sends alerts to users.</p>
 
-                                <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
-                                    <div style={{ padding: '1rem', border: '1px solid #e5e7eb', borderRadius: '8px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                                <div className="flex flex-col gap-6">
+                                    <div className="p-4 border border-gray-200 rounded-lg flex justify-between items-center">
                                         <div>
-                                            <strong style={{ display: 'block', marginBottom: '0.25rem' }}>Email Notifications</strong>
-                                            <span style={{ color: '#6b7280', fontSize: '0.9rem' }}>Send course updates and alerts via email</span>
+                                            <strong className="block mb-1">Email Notifications</strong>
+                                            <span className="text-gray-500 text-sm">Send course updates and alerts via email</span>
                                         </div>
                                         <label className="switch">
                                             <input
@@ -310,10 +294,10 @@ export default function AdminSettings() {
                                         </label>
                                     </div>
 
-                                    <div style={{ padding: '1rem', border: '1px solid #e5e7eb', borderRadius: '8px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                                    <div className="p-4 border border-gray-200 rounded-lg flex justify-between items-center">
                                         <div>
-                                            <strong style={{ display: 'block', marginBottom: '0.25rem' }}>SMS Alerts</strong>
-                                            <span style={{ color: '#6b7280', fontSize: '0.9rem' }}>Send urgent otp and reminders via SMS</span>
+                                            <strong className="block mb-1">SMS Alerts</strong>
+                                            <span className="text-gray-500 text-sm">Send urgent otp and reminders via SMS</span>
                                         </div>
                                         <label className="switch">
                                             <input
@@ -331,56 +315,49 @@ export default function AdminSettings() {
 
                         {activeTab === 'payment' && (
                             <div className="settings-section">
-                                <h3 style={{ marginBottom: '1.5rem', color: '#1f2937' }}>Payment Gateway (Razorpay)</h3>
+                                <h3 className="mb-6 text-gray-800">Payment Gateway (Razorpay)</h3>
 
-                                <div className="form-group" style={{ marginBottom: '1.5rem' }}>
-                                    <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 500 }}>Key ID</label>
+                                <div className="form-group mb-6">
+                                    <label className="block mb-2 font-medium">Key ID</label>
                                     <input
                                         type="text"
                                         name="razorpayKey"
                                         value={settings.razorpayKey}
                                         onChange={handleInputChange}
-                                        className="form-control"
-                                        style={{ width: '100%', padding: '0.75rem', borderRadius: '8px', border: '1px solid #d1d5db', fontFamily: 'monospace' }}
+                                        className="form-control w-full px-3 py-3 rounded-lg border border-gray-300 font-mono"
                                     />
                                 </div>
 
                                 <div className="form-group">
-                                    <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 500 }}>Key Secret</label>
+                                    <label className="block mb-2 font-medium">Key Secret</label>
                                     <input
                                         type="password"
                                         name="razorpaySecret"
                                         value={settings.razorpaySecret}
                                         onChange={handleInputChange}
-                                        className="form-control"
-                                        style={{ width: '100%', padding: '0.75rem', borderRadius: '8px', border: '1px solid #d1d5db', fontFamily: 'monospace' }}
+                                        className="form-control w-full px-3 py-3 rounded-lg border border-gray-300 font-mono"
                                     />
                                 </div>
 
-                                <div style={{ marginTop: '1.5rem', padding: '1rem', background: '#fef3c7', borderRadius: '8px', fontSize: '0.9rem', color: '#92400e' }}>
-                                    <i className="ri-alert-line" style={{ marginRight: '0.5rem' }}></i>
+                                <div className="mt-6 p-4 bg-amber-100 rounded-lg text-sm text-amber-900">
+                                    <i className="ri-alert-line mr-2"></i>
                                     Changing these keys will immediately affect live transactions. Proceed with caution.
                                 </div>
                             </div>
                         )}
 
                         {/* Save Actions */}
-                        <div style={{ marginTop: '2.5rem', paddingTop: '1.5rem', borderTop: '1px solid #e5e7eb', display: 'flex', alignItems: 'center', gap: '1rem' }}>
+                        <div className="mt-10 pt-6 border-t border-gray-200 flex items-center gap-4">
                             <button
                                 type="submit"
-                                className="btn-primary"
+                                className="btn-primary bg-indigo-600 text-white border-none px-8 py-3 rounded-lg font-semibold cursor-pointer disabled:opacity-70"
                                 disabled={saveStatus === 'saving'}
-                                style={{
-                                    background: '#4f46e5', color: 'white', border: 'none',
-                                    padding: '0.75rem 2rem', borderRadius: '8px', fontWeight: 600,
-                                    cursor: 'pointer', opacity: saveStatus === 'saving' ? 0.7 : 1
-                                }}
                             >
                                 {saveStatus === 'saving' ? 'Saving...' : 'Save Settings'}
                             </button>
 
                             {saveStatus === 'success' && (
-                                <span style={{ color: '#10b981', fontWeight: 500, display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                                <span className="text-success font-medium flex items-center gap-2">
                                     <i className="ri-checkbox-circle-line"></i>
                                     Settings saved successfully!
                                 </span>

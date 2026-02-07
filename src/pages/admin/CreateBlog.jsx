@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { getCurrentUser, logoutApi } from '../../api/authApi';
+import { addBlogApi } from '../../api/blogApi';
 import '../../styles/dashboard.css';
 import '../../styles/admin-dashboard.css';
 import '../../styles/blog-management.css'; // Reusing blog management styles
@@ -43,7 +44,6 @@ export default function CreateBlog() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const { addBlogApi } = await import('../../api/blogApi');
             const result = await addBlogApi(formData);
             if (result.success) {
                 if (window.confirm('Blog published successfully! Do you want to view it on the Home Page now?')) {
@@ -65,22 +65,18 @@ export default function CreateBlog() {
             {/* Mobile Sidebar Overlay */}
             {isSidebarOpen && (
                 <div
-                    className="sidebar-overlay"
+                    className="sidebar-overlay fixed top-0 left-0 w-full h-full bg-black/50 z-[999]"
                     onClick={() => setIsSidebarOpen(false)}
-                    style={{
-                        position: 'fixed', top: 0, left: 0, width: '100%', height: '100%',
-                        backgroundColor: 'rgba(0,0,0,0.5)', zIndex: 999
-                    }}
                 ></div>
             )}
 
             <aside className={`dashboard-sidebar ${isSidebarOpen ? 'open' : ''}`}>
-                <div className="sidebar-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                <div className="sidebar-header flex justify-between items-center">
                     <div><h2>SRIRAM's IAS</h2><span className="role-badge admin">Admin Panel</span></div>
                     <button
-                        className="mobile-close-btn"
+                        className="mobile-close-btn bg-transparent border-none text-white text-2xl cursor-pointer"
                         onClick={() => setIsSidebarOpen(false)}
-                        style={{ background: 'transparent', border: 'none', color: 'white', fontSize: '1.5rem', cursor: 'pointer', display: 'none' }}
+                        style={{ display: 'none' }}
                     >
                         <i className="ri-close-line"></i>
                     </button>
@@ -103,19 +99,17 @@ export default function CreateBlog() {
 
             <main className="dashboard-main">
                 <header className="dashboard-header sticky-header">
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+                    <div className="flex items-center gap-4">
                         <button
-                            className="menu-toggle-btn"
+                            className="menu-toggle-btn md:hidden bg-transparent border-none text-2xl cursor-pointer"
                             onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-                            style={{ display: 'none', background: 'transparent', border: 'none', fontSize: '1.5rem', cursor: 'pointer' }}
                         >
                             <i className="ri-menu-2-line"></i>
                         </button>
                         <button
                             onClick={() => navigate('/admin/blogs')}
-                            className="btn-icon"
+                            className="btn-icon mr-2 cursor-pointer"
                             title="Back to Blogs"
-                            style={{ marginRight: '0.5rem', cursor: 'pointer' }}
                         >
                             <i className="ri-arrow-left-line"></i>
                         </button>
@@ -130,30 +124,29 @@ export default function CreateBlog() {
                     </div>
                 </header>
 
-                <div className="section" style={{ maxWidth: '1000px', margin: '0 auto' }}>
-                    <form onSubmit={handleSubmit} className="blog-form-container" style={{ background: 'white', padding: '2rem', borderRadius: '1rem', boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)' }}>
+                <div className="section max-w-[1000px] mx-auto">
+                    <form onSubmit={handleSubmit} className="blog-form-container bg-white p-8 rounded-2xl shadow-md">
                         <div className="form-group mb-4">
-                            <label className="form-label" style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 600 }}>Blog Title</label>
+                            <label className="form-label block mb-2 font-semibold">Blog Title</label>
                             <input
                                 type="text"
                                 name="title"
                                 value={formData.title}
                                 onChange={handleChange}
-                                className="form-input"
+                                className="form-input w-full p-3 rounded-lg border border-gray-200"
                                 placeholder="Enter an engaging title"
                                 required
-                                style={{ width: '100%', padding: '0.75rem', borderRadius: '0.5rem', border: '1px solid #e2e8f0' }}
                             />
                         </div>
 
-                        <div className="grid-2-cols" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1.5rem', marginBottom: '1.5rem' }}>
+                        <div className="grid-2-cols grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))] gap-6 mb-6">
                             <div className="form-group">
-                                <label className="form-label" style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 500 }}>Category</label>
+                                <label className="form-label block mb-2 font-medium">Category</label>
                                 <select
                                     name="category"
                                     value={formData.category}
                                     onChange={handleChange}
-                                    style={{ width: '100%', padding: '0.75rem', borderRadius: '0.5rem', border: '1px solid #e2e8f0' }}
+                                    className="w-full p-3 rounded-lg border border-gray-200"
                                 >
                                     <option value="Strategy">Strategy</option>
                                     <option value="Polity">Polity</option>
@@ -165,12 +158,12 @@ export default function CreateBlog() {
                                 </select>
                             </div>
                             <div className="form-group">
-                                <label className="form-label" style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 500 }}>Exam Stage</label>
+                                <label className="form-label block mb-2 font-medium">Exam Stage</label>
                                 <select
                                     name="examStage"
                                     value={formData.examStage}
                                     onChange={handleChange}
-                                    style={{ width: '100%', padding: '0.75rem', borderRadius: '0.5rem', border: '1px solid #e2e8f0' }}
+                                    className="w-full p-3 rounded-lg border border-gray-200"
                                 >
                                     <option value="Prelims">Prelims</option>
                                     <option value="Mains">Mains</option>
@@ -178,12 +171,12 @@ export default function CreateBlog() {
                                 </select>
                             </div>
                             <div className="form-group">
-                                <label className="form-label" style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 500 }}>GS Paper</label>
+                                <label className="form-label block mb-2 font-medium">GS Paper</label>
                                 <select
                                     name="gsPaper"
                                     value={formData.gsPaper}
                                     onChange={handleChange}
-                                    style={{ width: '100%', padding: '0.75rem', borderRadius: '0.5rem', border: '1px solid #e2e8f0' }}
+                                    className="w-full p-3 rounded-lg border border-gray-200"
                                 >
                                     <option value="GS-1">GS-1</option>
                                     <option value="GS-2">GS-2</option>
@@ -193,12 +186,12 @@ export default function CreateBlog() {
                                 </select>
                             </div>
                             <div className="form-group">
-                                <label className="form-label" style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 500 }}>Type</label>
+                                <label className="form-label block mb-2 font-medium">Type</label>
                                 <select
                                     name="type"
                                     value={formData.type}
                                     onChange={handleChange}
-                                    style={{ width: '100%', padding: '0.75rem', borderRadius: '0.5rem', border: '1px solid #e2e8f0' }}
+                                    className="w-full p-3 rounded-lg border border-gray-200"
                                 >
                                     <option value="Static">Static</option>
                                     <option value="Current Affairs">Current Affairs</option>
@@ -207,50 +200,49 @@ export default function CreateBlog() {
                         </div>
 
                         <div className="form-group mb-4">
-                            <label className="form-label" style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 600 }}>Blog Content</label>
+                            <label className="form-label block mb-2 font-semibold">Blog Content</label>
                             <textarea
                                 name="content"
                                 value={formData.content}
                                 onChange={handleChange}
-                                className="form-textarea"
+                                className="form-textarea w-full p-3 rounded-lg border border-gray-200 resize-y font-[inherit]"
                                 placeholder="Write your blog content here..."
                                 rows="15"
                                 required
-                                style={{ width: '100%', padding: '0.75rem', borderRadius: '0.5rem', border: '1px solid #e2e8f0', resize: 'vertical', fontFamily: 'inherit' }}
                             ></textarea>
-                            <p className="helper-text" style={{ fontSize: '0.875rem', color: '#64748b', marginTop: '0.5rem' }}>Use Markdown for formatting.</p>
+                            <p className="helper-text text-sm text-slate-500 mt-2">Use Markdown for formatting.</p>
                         </div>
 
-                        <div className="settings-panel mb-4" style={{ background: '#f8fafc', padding: '1.5rem', borderRadius: '0.5rem', border: '1px solid #e2e8f0' }}>
-                            <h4 style={{ marginBottom: '1rem', color: '#334155' }}>Settings & Meta</h4>
-                            <div className="grid-2-cols" style={{ display: 'flex', gap: '2rem', flexWrap: 'wrap' }}>
-                                <label className="checkbox-label" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', cursor: 'pointer' }}>
+                        <div className="settings-panel mb-4 bg-slate-50 p-6 rounded-lg border border-gray-200">
+                            <h4 className="mb-4 text-slate-700">Settings & Meta</h4>
+                            <div className="grid-2-cols flex gap-8 flex-wrap">
+                                <label className="checkbox-label flex items-center gap-2 cursor-pointer">
                                     <input
                                         type="checkbox"
                                         name="featured"
                                         checked={formData.featured}
                                         onChange={handleChange}
-                                        style={{ width: '1.25rem', height: '1.25rem' }}
+                                        className="w-5 h-5"
                                     />
                                     <span>Mark as Featured</span>
                                 </label>
-                                <label className="checkbox-label" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', cursor: 'pointer' }}>
+                                <label className="checkbox-label flex items-center gap-2 cursor-pointer">
                                     <input
                                         type="checkbox"
                                         name="pyqLinked"
                                         checked={formData.pyqLinked}
                                         onChange={handleChange}
-                                        style={{ width: '1.25rem', height: '1.25rem' }}
+                                        className="w-5 h-5"
                                     />
                                     <span>Links to PYQs</span>
                                 </label>
-                                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginLeft: 'auto' }}>
-                                    <span style={{ fontWeight: 500 }}>Importance:</span>
+                                <div className="flex items-center gap-2 ml-auto">
+                                    <span className="font-medium">Importance:</span>
                                     <select
                                         name="importance"
                                         value={formData.importance}
                                         onChange={handleChange}
-                                        style={{ padding: '0.25rem 0.5rem', borderRadius: '0.25rem', border: '1px solid #cbd5e1' }}
+                                        className="py-1 px-2 rounded border border-slate-300"
                                     >
                                         <option value="Low">Low</option>
                                         <option value="Medium">Medium</option>
@@ -260,27 +252,24 @@ export default function CreateBlog() {
                             </div>
                         </div>
 
-                        <div className="form-actions" style={{ display: 'flex', gap: '1rem', justifyContent: 'flex-end', marginTop: '2rem' }}>
+                        <div className="form-actions flex gap-4 justify-end mt-8">
                             <button
                                 type="button"
                                 onClick={() => navigate('/admin/blogs')}
-                                className="btn btn-outline"
-                                style={{ padding: '0.75rem 1.5rem', borderRadius: '0.5rem', border: '1px solid #cbd5e1', background: 'white', cursor: 'pointer' }}
+                                className="btn btn-outline py-3 px-6 rounded-lg border border-slate-300 bg-white cursor-pointer"
                             >
                                 Cancel
                             </button>
                             <button
                                 type="button"
-                                className="btn btn-secondary"
-                                style={{ padding: '0.75rem 1.5rem', borderRadius: '0.5rem', border: 'none', background: '#f1f5f9', color: '#334155', cursor: 'pointer' }}
+                                className="btn btn-secondary py-3 px-6 rounded-lg border-none bg-gray-100 text-slate-700 cursor-pointer"
                                 onClick={() => alert('Saved as draft')}
                             >
                                 Save Draft
                             </button>
                             <button
                                 type="submit"
-                                className="btn btn-primary"
-                                style={{ padding: '0.75rem 1.5rem', borderRadius: '0.5rem', border: 'none', background: '#4f46e5', color: 'white', cursor: 'pointer', fontWeight: 600 }}
+                                className="btn btn-primary py-3 px-6 rounded-lg border-none bg-indigo-600 text-white cursor-pointer font-semibold"
                             >
                                 Publish Blog
                             </button>

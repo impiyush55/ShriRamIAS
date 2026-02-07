@@ -92,26 +92,22 @@ export default function CourseManagement() {
             {/* Mobile Sidebar Overlay */}
             {isSidebarOpen && (
                 <div
-                    className="sidebar-overlay"
+                    className="sidebar-overlay fixed top-0 left-0 w-full h-full bg-black/50 z-[999]"
                     onClick={() => setIsSidebarOpen(false)}
-                    style={{
-                        position: 'fixed', top: 0, left: 0, width: '100%', height: '100%',
-                        backgroundColor: 'rgba(0,0,0,0.5)', zIndex: 999
-                    }}
                 ></div>
             )}
 
             {/* Sidebar */}
             <aside className={`dashboard-sidebar ${isSidebarOpen ? 'open' : ''}`}>
-                <div className="sidebar-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                <div className="sidebar-header flex justify-between items-center">
                     <div>
                         <h2>SRIRAM's IAS</h2>
                         <span className="role-badge admin">Admin Panel</span>
                     </div>
                     <button
-                        className="mobile-close-btn"
+                        className="mobile-close-btn bg-transparent border-none text-white text-2xl cursor-pointer"
                         onClick={() => setIsSidebarOpen(false)}
-                        style={{ background: 'transparent', border: 'none', color: 'white', fontSize: '1.5rem', cursor: 'pointer', display: 'none' }}
+                        style={{ display: 'none' }}
                     >
                         <i className="ri-close-line"></i>
                     </button>
@@ -123,19 +119,6 @@ export default function CourseManagement() {
                         Dashboard Overview
                     </a>
 
-                    <div className="nav-section-title">User Management</div>
-                    <a href="/admin/users" className="nav-item">
-                        <i className="ri-user-settings-line"></i>
-                        User & Roles
-                    </a>
-                    <a href="/admin/enquiries" className="nav-item">
-                        <i className="ri-customer-service-2-line"></i>
-                        Enquiries
-                    </a>
-                    <a href="/admin/wallets" className="nav-item">
-                        <i className="ri-wallet-3-line"></i>
-                        Wallet Management
-                    </a>
 
                     <div className="nav-section-title">Academic Content</div>
                     <a href="/admin/courses" className="nav-item active">
@@ -151,10 +134,6 @@ export default function CourseManagement() {
                         Content Library
                     </a>
 
-                    <a href="/" className="nav-item">
-                        <i className="ri-home-line"></i>
-                        Back to Home
-                    </a>
                 </nav>
 
                 <button onClick={handleLogout} className="logout-btn">
@@ -166,11 +145,10 @@ export default function CourseManagement() {
             {/* Main Content */}
             <main className="dashboard-main">
                 <header className="dashboard-header">
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+                    <div className="flex items-center gap-4">
                         <button
-                            className="menu-toggle-btn"
+                            className="menu-toggle-btn md:hidden bg-transparent border-none text-2xl cursor-pointer"
                             onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-                            style={{ display: 'none', background: 'transparent', border: 'none', fontSize: '1.5rem', cursor: 'pointer' }}
                         >
                             <i className="ri-menu-2-line"></i>
                         </button>

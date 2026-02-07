@@ -106,56 +106,43 @@ export default function CategoryManagement() {
             {/* Mobile Sidebar Overlay */}
             {isSidebarOpen && (
                 <div
-                    className="sidebar-overlay"
+                    className="sidebar-overlay fixed top-0 left-0 w-full h-full bg-black/50 z-[999]"
                     onClick={() => setIsSidebarOpen(false)}
-                    style={{
-                        position: 'fixed', top: 0, left: 0, width: '100%', height: '100%',
-                        backgroundColor: 'rgba(0,0,0,0.5)', zIndex: 999
-                    }}
                 ></div>
             )}
 
             <aside className={`dashboard-sidebar ${isSidebarOpen ? 'open' : ''}`}>
-                <div className="sidebar-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                <div className="sidebar-header flex justify-between items-center">
                     <div>
                         <h2>SRIRAM's IAS</h2>
                         <span className="role-badge admin">Admin Panel</span>
                     </div>
                     <button
-                        className="mobile-close-btn"
+                        className="mobile-close-btn bg-transparent border-none text-white text-2xl cursor-pointer"
                         onClick={() => setIsSidebarOpen(false)}
-                        style={{ background: 'transparent', border: 'none', color: 'white', fontSize: '1.5rem', cursor: 'pointer', display: 'none' }}
+                        style={{ display: 'none' }}
                     >
                         <i className="ri-close-line"></i>
                     </button>
                 </div>
                 <nav className="sidebar-nav">
                     <a href="/admin/dashboard" className="nav-item"><i className="ri-dashboard-line"></i>Dashboard Overview</a>
-                    <div className="nav-section-title">User Management</div>
-                    <a href="/admin/users" className="nav-item"><i className="ri-user-settings-line"></i>User & Roles</a>
-                    <a href="/admin/enquiries" className="nav-item"><i className="ri-customer-service-2-line"></i>Enquiries</a>
-                    <a href="/admin/wallets" className="nav-item"><i className="ri-wallet-3-line"></i>Wallet Management</a>
+
                     <div className="nav-section-title">Academic Content</div>
                     <a href="/admin/courses" className="nav-item"><i className="ri-book-2-line"></i>Courses</a>
                     <a href="/admin/categories" className="nav-item active"><i className="ri-folder-settings-line"></i>Categories</a>
                     <a href="/admin/content" className="nav-item"><i className="ri-folder-video-line"></i>Content Library</a>
-                    <a href="/admin/live-classes" className="nav-item"><i className="ri-live-line"></i>Live Classes</a>
-                    <a href="/admin/tests" className="nav-item"><i className="ri-file-list-3-line"></i>Test Management</a>
-                    <a href="/admin/quizzes" className="nav-item"><i className="ri-questionnaire-line"></i>Topic Quizzes</a>
-                    <div className="nav-section-title">System</div>
-                    <a href="/admin/analytics" className="nav-item"><i className="ri-bar-chart-box-line"></i>Analytics & Reports</a>
-                    <a href="/" className="nav-item"><i className="ri-home-line"></i>Back to Home</a>
+
                 </nav>
                 <button onClick={handleLogout} className="logout-btn"><i className="ri-logout-box-line"></i>Logout</button>
             </aside>
 
             <main className="dashboard-main">
                 <header className="dashboard-header">
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+                    <div className="flex items-center gap-4">
                         <button
-                            className="menu-toggle-btn"
+                            className="menu-toggle-btn md:hidden bg-transparent border-none text-2xl cursor-pointer"
                             onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-                            style={{ display: 'none', background: 'transparent', border: 'none', fontSize: '1.5rem', cursor: 'pointer' }}
                         >
                             <i className="ri-menu-2-line"></i>
                         </button>
@@ -184,21 +171,21 @@ export default function CategoryManagement() {
                         </button>
                     </div>
 
-                    <div className="categories-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: '1.5rem' }}>
+                    <div className="categories-grid grid grid-cols-[repeat(auto-fill,minmax(300px,1fr))] gap-6">
                         {categories.map(cat => (
-                            <div key={cat.id} className="course-card" style={{ padding: '1.5rem' }}>
-                                <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1rem' }}>
-                                    <div className={`module-icon ${cat.color}`} style={{ width: '50px', height: '50px', fontSize: '1.5rem' }}>
+                            <div key={cat.id} className="course-card p-6">
+                                <div className="flex items-center gap-4 mb-4">
+                                    <div className={`module-icon ${cat.color} w-[50px] h-[50px] text-2xl`}>
                                         <i className={cat.icon}></i>
                                     </div>
                                     <div>
-                                        <h3 style={{ margin: 0, fontSize: '1.25rem' }}>{cat.name}</h3>
+                                        <h3 className="m-0 text-xl">{cat.name}</h3>
                                         <span className={`status-badge ${cat.status === 'active' ? 'active' : 'inactive'}`}>{cat.status}</span>
                                     </div>
                                 </div>
-                                <p style={{ color: '#6b7280', fontSize: '0.95rem', marginBottom: '1rem' }}>{cat.description}</p>
-                                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderTop: '1px solid #f3f4f6', paddingTop: '1rem' }}>
-                                    <span style={{ fontWeight: 600, color: '#374151' }}>{cat.coursesCount} Courses</span>
+                                <p className="text-gray-500 text-[0.95rem] mb-4">{cat.description}</p>
+                                <div className="flex justify-between items-center border-t border-gray-100 pt-4">
+                                    <span className="font-semibold text-gray-700">{cat.coursesCount} Courses</span>
                                     <div className="action-buttons">
                                         <button className="btn-icon"><i className="ri-edit-line"></i></button>
                                         <button className="btn-icon"><i className="ri-delete-bin-line"></i></button>
@@ -211,19 +198,19 @@ export default function CategoryManagement() {
 
                 {isModalOpen && (
                     <div className="modal-overlay" onClick={() => setIsModalOpen(false)}>
-                        <div className="modal-content" onClick={e => e.stopPropagation()} style={{ maxWidth: '400px' }}>
+                        <div className="modal-content max-w-[400px]" onClick={e => e.stopPropagation()}>
                             <div className="modal-header">
                                 <h2>Add Category</h2>
                                 <button className="modal-close" onClick={() => setIsModalOpen(false)}><i className="ri-close-line"></i></button>
                             </div>
                             <div className="modal-body">
-                                <form style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+                                <form className="flex flex-col gap-4">
                                     <div className="form-group">
-                                        <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 600 }}>Name</label>
+                                        <label className="block mb-2 font-semibold">Name</label>
                                         <input type="text" className="search-input" placeholder="Category Name" />
                                     </div>
                                     <div className="form-group">
-                                        <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 600 }}>Description</label>
+                                        <label className="block mb-2 font-semibold">Description</label>
                                         <textarea className="search-input" rows="3" placeholder="Description"></textarea>
                                     </div>
                                     <button type="button" className="btn btn-primary" onClick={() => setIsModalOpen(false)}>Create Category</button>

@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { getAllBlogsApi } from '../../api/blogApi';
+import { getAllBlogsApi, getBlogByIdApi, updateBlogEngagementApi } from '../../api/blogApi';
 import BookmarkButton from '../../components/common/BookmarkButton';
 import RelatedArticles from '../../components/blog/RelatedArticles';
 import TrendingArticles from '../../components/blog/TrendingArticles';
@@ -38,7 +38,6 @@ export default function StudentBlogDetail() {
     useEffect(() => {
         const fetchBlog = async () => {
             setLoading(true);
-            const { getBlogByIdApi } = await import('../../api/blogApi');
             const response = await getBlogByIdApi(blogId);
             if (response.success) {
                 setBlog(response.data);
@@ -77,7 +76,6 @@ export default function StudentBlogDetail() {
         e.preventDefault();
         if (!newComment.trim()) return;
 
-        const { updateBlogEngagementApi } = await import('../../api/blogApi');
         await updateBlogEngagementApi(blogId, 'comment', { text: newComment });
 
         const comment = {

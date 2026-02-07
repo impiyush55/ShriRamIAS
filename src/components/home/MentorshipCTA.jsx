@@ -1,5 +1,10 @@
 
+import { useState } from 'react';
+import MentorshipModal from '../common/MentorshipModal';
+
 export default function MentorshipCTA() {
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
     return (
         <section id="mentorship" className="mentorship-section">
             <div className="mentorship-container">
@@ -15,7 +20,13 @@ export default function MentorshipCTA() {
                         <li><i className="ri-check-line"></i> Mock Interviews</li>
                     </ul>
 
-                    <button className="btn btn-primary btn-lg" style={{ background: '#38bdf8', border: 'none', color: '#0f172a', fontWeight: 700 }}>Book Free Session <i className="ri-arrow-right-line"></i></button>
+                    <button
+                        className="btn btn-primary btn-lg"
+                        style={{ background: '#38bdf8', border: 'none', color: '#0f172a', fontWeight: 700 }}
+                        onClick={() => setIsModalOpen(true)}
+                    >
+                        Book Free Session <i className="ri-arrow-right-line"></i>
+                    </button>
                 </div>
 
                 <div className="mentorship-visual">
@@ -39,6 +50,8 @@ export default function MentorshipCTA() {
                     </div>
                 </div>
             </div>
+
+            <MentorshipModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
         </section>
     );
 }

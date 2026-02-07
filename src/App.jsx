@@ -8,6 +8,7 @@ import ProtectedRoute from './components/auth/ProtectedRoute';
 // Context Providers
 import { BookmarkProvider } from './context/BookmarkContext';
 import { NotificationProvider } from './context/NotificationContext';
+import { LanguageProvider } from './context/LanguageContext';
 
 // Public Pages
 import Home from './pages/Home';
@@ -23,16 +24,24 @@ import CommonLogin from './pages/CommonLogin';
 
 // Public Blog
 import PublicBlogDetail from './pages/PublicBlogDetail';
+import BlogListing from './pages/BlogListing';
 
 // Admin Pages
 import AdminDashboard from './pages/admin/AdminDashboard';
 import UserManagement from './pages/admin/UserManagement';
+import RoleManagement from './pages/admin/RoleManagement';
 import CourseManagement from './pages/admin/CourseManagement';
 import EnquiryManagement from './pages/admin/EnquiryManagement';
 import WalletManagement from './pages/admin/WalletManagement';
 import CategoryManagement from './pages/admin/CategoryManagement';
 import ContentLibrary from './pages/admin/ContentLibrary';
 import LiveClassManagement from './pages/admin/LiveClassManagement';
+import LiveClassSchedule from './pages/admin/LiveClassSchedule';
+import LiveAttendance from './pages/admin/LiveAttendance';
+import LiveRecordings from './pages/admin/LiveRecordings';
+import VideoLibrary from './pages/admin/VideoLibrary';
+import StreamingHealth from './pages/admin/StreamingHealth';
+import LiveReports from './pages/admin/LiveReports';
 import TestManagement from './pages/admin/TestManagement';
 import QuizManagement from './pages/admin/QuizManagement';
 import DailyMCQManagement from './pages/admin/DailyMCQManagement';
@@ -43,6 +52,11 @@ import CreateBlog from './pages/admin/CreateBlog';
 import NotificationManagement from './pages/admin/NotificationManagement';
 import AdminSettings from './pages/admin/AdminSettings';
 import SupportHelpdesk from './pages/admin/SupportHelpdesk';
+import BannerManagement from './pages/admin/BannerManagement';
+import MentorManagement from './pages/admin/MentorManagement';
+import CurrentAffairsManagement from './pages/admin/CurrentAffairsManagement';
+import EvaluationSystem from './pages/admin/EvaluationSystem';
+import CouponManagement from './pages/admin/CouponManagement';
 
 // Faculty Pages
 import FacultyDashboard from './pages/faculty/FacultyDashboard';
@@ -73,11 +87,13 @@ function MainLayout({ children }) {
 // Wrap app with context providers
 function AppWithProviders({ children }) {
   return (
-    <BookmarkProvider>
-      <NotificationProvider>
-        {children}
-      </NotificationProvider>
-    </BookmarkProvider>
+    <LanguageProvider>
+      <BookmarkProvider>
+        <NotificationProvider>
+          {children}
+        </NotificationProvider>
+      </BookmarkProvider>
+    </LanguageProvider>
   );
 }
 
@@ -94,6 +110,7 @@ export default function App() {
         <Route path="/course-details/:courseId" element={<MainLayout><CourseDetails /></MainLayout>} />
 
         {/* Public Blog Detail - No Login Required */}
+        <Route path="/blogs" element={<MainLayout><BlogListing /></MainLayout>} />
         <Route path="/blogs/:blogId" element={<MainLayout><PublicBlogDetail /></MainLayout>} />
 
         {/* Authentication Routes */}
@@ -123,6 +140,22 @@ export default function App() {
           element={
             <ProtectedRoute allowedRoles="admin">
               <UserManagement />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/admin/user-management"
+          element={
+            <ProtectedRoute allowedRoles="admin">
+              <UserManagement />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/admin/roles-permissions"
+          element={
+            <ProtectedRoute allowedRoles="admin">
+              <RoleManagement />
             </ProtectedRoute>
           }
         />
@@ -207,6 +240,54 @@ export default function App() {
           }
         />
         <Route
+          path="/admin/live-schedule"
+          element={
+            <ProtectedRoute allowedRoles="admin">
+              <LiveClassSchedule />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/admin/live-attendance"
+          element={
+            <ProtectedRoute allowedRoles="admin">
+              <LiveAttendance />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/admin/live-recordings"
+          element={
+            <ProtectedRoute allowedRoles="admin">
+              <LiveRecordings />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/admin/video-library"
+          element={
+            <ProtectedRoute allowedRoles="admin">
+              <VideoLibrary />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/admin/streaming-health"
+          element={
+            <ProtectedRoute allowedRoles="admin">
+              <StreamingHealth />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/admin/live-reports"
+          element={
+            <ProtectedRoute allowedRoles="admin">
+              <LiveReports />
+            </ProtectedRoute>
+          }
+        />
+        <Route
           path="/admin/tests"
           element={
             <ProtectedRoute allowedRoles="admin">
@@ -251,6 +332,46 @@ export default function App() {
           element={
             <ProtectedRoute allowedRoles="admin">
               <AdminSettings />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/admin/mentors"
+          element={
+            <ProtectedRoute allowedRoles="admin">
+              <MentorManagement />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/admin/banners"
+          element={
+            <ProtectedRoute allowedRoles="admin">
+              <BannerManagement />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/admin/current-affairs"
+          element={
+            <ProtectedRoute allowedRoles="admin">
+              <CurrentAffairsManagement />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/admin/evaluation"
+          element={
+            <ProtectedRoute allowedRoles="admin">
+              <EvaluationSystem />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/admin/coupons"
+          element={
+            <ProtectedRoute allowedRoles="admin">
+              <CouponManagement />
             </ProtectedRoute>
           }
         />

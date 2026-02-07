@@ -210,22 +210,18 @@ export default function BlogManagement() {
             {/* Mobile Sidebar Overlay */}
             {isSidebarOpen && (
                 <div
-                    className="sidebar-overlay"
+                    className="sidebar-overlay fixed top-0 left-0 w-full h-full bg-black/50 z-[999]"
                     onClick={() => setIsSidebarOpen(false)}
-                    style={{
-                        position: 'fixed', top: 0, left: 0, width: '100%', height: '100%',
-                        backgroundColor: 'rgba(0,0,0,0.5)', zIndex: 999
-                    }}
                 ></div>
             )}
 
             <aside className={`dashboard-sidebar ${isSidebarOpen ? 'open' : ''}`}>
-                <div className="sidebar-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                <div className="sidebar-header flex justify-between items-center">
                     <div><h2>SRIRAM's IAS</h2><span className="role-badge admin">Admin Panel</span></div>
                     <button
-                        className="mobile-close-btn"
+                        className="mobile-close-btn bg-transparent border-none text-white text-2xl cursor-pointer"
                         onClick={() => setIsSidebarOpen(false)}
-                        style={{ background: 'transparent', border: 'none', color: 'white', fontSize: '1.5rem', cursor: 'pointer', display: 'none' }}
+                        style={{ display: 'none' }}
                     >
                         <i className="ri-close-line"></i>
                     </button>
@@ -234,12 +230,6 @@ export default function BlogManagement() {
                     <a href="/admin/dashboard" className="nav-item"><i className="ri-dashboard-line"></i>Overview</a>
                     <div className="nav-section-title">Content & Media</div>
                     <a href="/admin/blogs" className="nav-item active"><i className="ri-article-line"></i>Blog Management</a>
-                    <a href="/admin/content" className="nav-item"><i className="ri-folder-video-line"></i>Content Library</a>
-
-                    <div className="nav-section-title">Academic Content</div>
-                    <a href="/admin/courses" className="nav-item"><i className="ri-book-2-line"></i>Courses</a>
-                    <a href="/admin/tests" className="nav-item"><i className="ri-file-list-3-line"></i>Test Management</a>
-                    <a href="/admin/quizzes" className="nav-item"><i className="ri-questionnaire-line"></i>Topic Quizzes</a>
 
                     <a href="/" className="nav-item"><i className="ri-home-line"></i>Back to Home</a>
                 </nav>
@@ -248,11 +238,10 @@ export default function BlogManagement() {
 
             <main className="dashboard-main">
                 <header className="dashboard-header sticky-header">
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+                    <div className="flex items-center gap-4">
                         <button
-                            className="menu-toggle-btn"
+                            className="menu-toggle-btn md:hidden bg-transparent border-none text-2xl cursor-pointer"
                             onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-                            style={{ display: 'none', background: 'transparent', border: 'none', fontSize: '1.5rem', cursor: 'pointer' }}
                         >
                             <i className="ri-menu-2-line"></i>
                         </button>
@@ -262,8 +251,8 @@ export default function BlogManagement() {
                         </div>
                     </div>
 
-                    <div className="header-actions" style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
-                        <button className="btn btn-primary" onClick={() => navigate('/admin/blogs/create')}>
+                    <div className="header-actions flex flex-wrap gap-3 items-center">
+                        <button className="btn btn-primary whitespace-nowrap" onClick={() => navigate('/admin/blogs/create')}>
                             <i className="ri-edit-box-line"></i> Write New Blog
                         </button>
                         <div className="user-info">
@@ -272,12 +261,12 @@ export default function BlogManagement() {
                     </div>
                 </header>
 
-                <div className="section" style={{ maxWidth: '1400px', margin: '0 auto' }}>
+                <div className="section max-w-[1400px] mx-auto">
 
                     {/* Dashboard Summary Cards */}
                     <div className="blog-stats-grid">
                         <div className="blog-stat-card">
-                            <div className="stat-icon-wrapper" style={{ background: '#e0e7ff', color: '#4338ca' }}>
+                            <div className="stat-icon-wrapper bg-indigo-100 text-indigo-700">
                                 <i className="ri-article-line"></i>
                             </div>
                             <div className="stat-info">
@@ -286,7 +275,7 @@ export default function BlogManagement() {
                             </div>
                         </div>
                         <div className="blog-stat-card">
-                            <div className="stat-icon-wrapper" style={{ background: '#dcfce7', color: '#166534' }}>
+                            <div className="stat-icon-wrapper bg-emerald-100 text-emerald-700">
                                 <i className="ri-check-double-line"></i>
                             </div>
                             <div className="stat-info">
@@ -295,7 +284,7 @@ export default function BlogManagement() {
                             </div>
                         </div>
                         <div className="blog-stat-card">
-                            <div className="stat-icon-wrapper" style={{ background: '#f1f5f9', color: '#475569' }}>
+                            <div className="stat-icon-wrapper bg-slate-100 text-slate-700">
                                 <i className="ri-draft-line"></i>
                             </div>
                             <div className="stat-info">
@@ -304,7 +293,7 @@ export default function BlogManagement() {
                             </div>
                         </div>
                         <div className="blog-stat-card">
-                            <div className="stat-icon-wrapper" style={{ background: '#ffedd5', color: '#9a3412' }}>
+                            <div className="stat-icon-wrapper bg-amber-100 text-amber-800">
                                 <i className="ri-time-line"></i>
                             </div>
                             <div className="stat-info">
@@ -313,7 +302,7 @@ export default function BlogManagement() {
                             </div>
                         </div>
                         <div className="blog-stat-card">
-                            <div className="stat-icon-wrapper" style={{ background: '#fae8ff', color: '#86198f' }}>
+                            <div className="stat-icon-wrapper bg-fuchsia-100 text-fuchsia-700">
                                 <i className="ri-calendar-line"></i>
                             </div>
                             <div className="stat-info">
@@ -401,7 +390,7 @@ export default function BlogManagement() {
                                         <td>{blog.date}</td>
                                         <td>{blog.views}</td>
                                         <td>
-                                            <div className="action-buttons" style={{ justifyContent: 'flex-end' }}>
+                                            <div className="action-buttons justify-end">
                                                 <button className="btn-icon" title="View Details" onClick={() => setSelectedBlog(blog)}>
                                                     <i className="ri-eye-line"></i>
                                                 </button>
@@ -418,8 +407,8 @@ export default function BlogManagement() {
                             </tbody>
                         </table>
                         {filteredBlogs.length === 0 && (
-                            <div className="empty-state" style={{ padding: '3rem', textAlign: 'center', color: '#64748b' }}>
-                                <i className="ri-article-line" style={{ fontSize: '3rem', marginBottom: '1rem', display: 'block', opacity: 0.5 }}></i>
+                            <div className="empty-state p-12 text-center text-slate-500">
+                                <i className="ri-article-line text-5xl mb-4 block opacity-50"></i>
                                 <p>No blogs found matching your filters.</p>
                             </div>
                         )}
@@ -440,13 +429,13 @@ export default function BlogManagement() {
                         <div className="drawer-content">
                             <h2 className="drawer-title-large">{selectedBlog.title}</h2>
                             <div className="cover-image-preview">
-                                <i className="ri-image-line" style={{ fontSize: '3rem' }}></i>
-                                <span style={{ display: 'block', marginTop: '1rem' }}>Featured Image</span>
+                                <i className="ri-image-line text-5xl"></i>
+                                <span className="block mt-4">Featured Image</span>
                             </div>
 
                             <div className="drawer-section">
                                 <h4>Summary</h4>
-                                <p style={{ lineHeight: 1.6, color: '#475569' }}>
+                                <p className="leading-relaxed text-slate-600">
                                     This blog covers key aspects of {selectedBlog.category} specifically tailored for {selectedBlog.examStage}.
                                     It includes detailed analysis relevant to {selectedBlog.gsPaper}.
                                 </p>
@@ -454,34 +443,34 @@ export default function BlogManagement() {
 
                             <div className="drawer-section">
                                 <h4>Details</h4>
-                                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
-                                    <div><label style={{ display: 'block', fontSize: '0.75rem', color: '#94a3b8' }}>Author</label> <span className="font-medium">{selectedBlog.author}</span></div>
-                                    <div><label style={{ display: 'block', fontSize: '0.75rem', color: '#94a3b8' }}>Date</label> <span className="font-medium">{selectedBlog.date}</span></div>
-                                    <div><label style={{ display: 'block', fontSize: '0.75rem', color: '#94a3b8' }}>GS Paper</label> <span className="font-medium">{selectedBlog.gsPaper}</span></div>
-                                    <div><label style={{ display: 'block', fontSize: '0.75rem', color: '#94a3b8' }}>Importance</label> <span className="badge-pill badge-outline" style={{ padding: '0.1rem 0.5rem' }}>{selectedBlog.importance}</span></div>
+                                <div className="grid grid-cols-2 gap-4">
+                                    <div><label className="block text-xs text-slate-400">Author</label> <span className="font-medium">{selectedBlog.author}</span></div>
+                                    <div><label className="block text-xs text-slate-400">Date</label> <span className="font-medium">{selectedBlog.date}</span></div>
+                                    <div><label className="block text-xs text-slate-400">GS Paper</label> <span className="font-medium">{selectedBlog.gsPaper}</span></div>
+                                    <div><label className="block text-xs text-slate-400">Importance</label> <span className="badge-pill badge-outline py-0.5 px-2">{selectedBlog.importance}</span></div>
                                 </div>
                             </div>
 
                             <div className="drawer-section">
                                 <h4>Attributes</h4>
-                                <div style={{ display: 'flex', gap: '1.5rem' }}>
-                                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', opacity: selectedBlog.pyqLinked ? 1 : 0.4 }}>
+                                <div className="flex gap-6">
+                                    <div className={`flex items-center gap-2 ${selectedBlog.pyqLinked ? 'opacity-100' : 'opacity-40'}`}>
                                         <i className="ri-links-line indicator-icon visible"></i>
-                                        <span style={{ fontSize: '0.85rem' }}>PYQ Linked</span>
+                                        <span className="text-[0.85rem]">PYQ Linked</span>
                                     </div>
-                                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', opacity: selectedBlog.featured ? 1 : 0.4 }}>
+                                    <div className={`flex items-center gap-2 ${selectedBlog.featured ? 'opacity-100' : 'opacity-40'}`}>
                                         <i className="ri-star-fill indicator-icon active"></i>
-                                        <span style={{ fontSize: '0.85rem' }}>Featured</span>
+                                        <span className="text-[0.85rem]">Featured</span>
                                     </div>
-                                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                                        <i className={`ri-eye-${selectedBlog.seoScore > 50 ? 'fill' : 'off-line'}`} style={{ color: selectedBlog.seoScore > 80 ? '#10b981' : '#f59e0b' }}></i>
-                                        <span style={{ fontSize: '0.85rem' }}>SEO Score: {selectedBlog.seoScore}</span>
+                                    <div className="flex items-center gap-2">
+                                        <i className={`ri-eye-${selectedBlog.seoScore > 50 ? 'fill' : 'off-line'} ${selectedBlog.seoScore > 80 ? 'text-emerald-500' : 'text-amber-500'}`}></i>
+                                        <span className="text-[0.85rem]">SEO Score: {selectedBlog.seoScore}</span>
                                     </div>
                                 </div>
                             </div>
 
-                            <div className="drawer-section" style={{ marginTop: 'auto' }}>
-                                <button className="btn btn-primary" style={{ width: '100%' }}>Edit Blog Content</button>
+                            <div className="drawer-section mt-auto">
+                                <button className="btn btn-primary w-full">Edit Blog Content</button>
                             </div>
                         </div>
                     </>

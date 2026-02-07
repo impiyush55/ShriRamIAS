@@ -9,6 +9,7 @@ import { getCurrentUser, logoutApi } from '../../api/authApi';
 import { dummyUsers } from '../../data/users';
 import '../../styles/dashboard.css';
 import '../../styles/admin-dashboard.css';
+import '../../styles/drawer.css';
 
 export default function UserManagement() {
     const navigate = useNavigate();
@@ -17,8 +18,8 @@ export default function UserManagement() {
     const [filteredUsers, setFilteredUsers] = useState([]);
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
-    // View State: 'all', 'student', 'faculty', 'roles'
-    const [currentView, setCurrentView] = useState('all');
+    // View State: only 'student' now
+    const [currentView, setCurrentView] = useState('student');
 
     // Filter States
     const [filterRole, setFilterRole] = useState('all'); // kept for 'all' view
@@ -212,18 +213,14 @@ export default function UserManagement() {
             {/* Mobile Sidebar Overlay */}
             {isSidebarOpen && (
                 <div
-                    className="sidebar-overlay"
+                    className="sidebar-overlay fixed top-0 left-0 w-full h-full bg-black/50 z-[999]"
                     onClick={() => setIsSidebarOpen(false)}
-                    style={{
-                        position: 'fixed', top: 0, left: 0, width: '100%', height: '100%',
-                        backgroundColor: 'rgba(0,0,0,0.5)', zIndex: 999
-                    }}
                 ></div>
             )}
 
             {/* Sidebar */}
             <aside className={`dashboard-sidebar ${isSidebarOpen ? 'open' : ''}`}>
-                <div className="sidebar-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                <div className="sidebar-header flex justify-between items-center">
                     <div>
                         <h2>SRIRAM's IAS</h2>
                         <span className="role-badge admin">Admin Panel</span>
@@ -231,56 +228,32 @@ export default function UserManagement() {
                 </div>
 
                 <nav className="sidebar-nav">
-                    <a href="/admin/dashboard" className="nav-item">
-                        <i className="ri-dashboard-line"></i>
-                        Dashboard Overview
-                    </a>
+                    <a href="/admin/dashboard" className="nav-item"><i className="ri-dashboard-line"></i>Dashboard</a>
 
-                    <div className="nav-section-title">User Management</div>
-                    <div
-                        className={`nav-item ${currentView === 'all' ? 'active' : ''}`}
-                        onClick={() => setCurrentView('all')}
-                        style={{ cursor: 'pointer' }}
-                    >
-                        <i className="ri-group-line"></i>
-                        All Users
-                    </div>
-                    <div
-                        className={`nav-item ${currentView === 'student' ? 'active' : ''}`}
-                        onClick={() => setCurrentView('student')}
-                        style={{ cursor: 'pointer' }}
-                    >
-                        <i className="ri-graduation-cap-line"></i>
-                        Students
-                    </div>
-                    <div
-                        className={`nav-item ${currentView === 'faculty' ? 'active' : ''}`}
-                        onClick={() => setCurrentView('faculty')}
-                        style={{ cursor: 'pointer' }}
-                    >
-                        <i className="ri-user-star-line"></i>
-                        Faculty
-                    </div>
-                    <div
-                        className={`nav-item ${currentView === 'roles' ? 'active' : ''}`}
-                        onClick={() => setCurrentView('roles')}
-                        style={{ cursor: 'pointer' }}
-                    >
-                        <i className="ri-shield-user-line"></i>
-                        Roles & Permissions
-                    </div>
+                    <div className="nav-section-title">User & Content Admin</div>
+                    <a href="/admin/user-management" className="nav-item active"><i className="ri-graduation-cap-line"></i>Students Management</a>
+                    <a href="/admin/roles-permissions" className="nav-item"><i className="ri-shield-user-line"></i>Roles & Permissions</a>
+                    <a href="/admin/categories" className="nav-item"><i className="ri-folder-settings-line"></i>Categories</a>
+                    <a href="/admin/banners" className="nav-item"><i className="ri-image-edit-line"></i>Banner Management</a>
+                    <a href="/admin/cms-pages" className="nav-item"><i className="ri-pages-line"></i>CMS Pages</a>
+                    <a href="/admin/homepage-content" className="nav-item"><i className="ri-home-4-line"></i>Homepage Content</a>
+                    <a href="/admin/content" className="nav-item"><i className="ri-folder-video-line"></i>Content Library</a>
+                    <a href="/admin/blogs" className="nav-item"><i className="ri-article-line"></i>Blog Management</a>
 
-                    <div className="nav-section-title">Communication</div>
-                    <a href="/admin/notifications" className="nav-item">
-                        <i className="ri-notification-3-line"></i>
-                        Notifications
-                    </a>
+                    <div className="nav-section-title">Live Class & Video</div>
+                    <a href="/admin/live-classes" className="nav-item"><i className="ri-live-line"></i>Live Classes (AWS)</a>
+                    <a href="/admin/live-schedule" className="nav-item"><i className="ri-calendar-event-line"></i>Live Class Schedule</a>
+                    <a href="/admin/live-attendance" className="nav-item"><i className="ri-user-follow-line"></i>Live Attendance</a>
+                    <a href="/admin/live-recordings" className="nav-item"><i className="ri-video-line"></i>Live Recordings</a>
+                    <a href="/admin/video-library" className="nav-item"><i className="ri-film-line"></i>Video Library</a>
+                    <a href="/admin/streaming-health" className="nav-item"><i className="ri-pulse-line"></i>Streaming Health (AWS)</a>
+                    <a href="/admin/live-reports" className="nav-item"><i className="ri-file-chart-line"></i>Live Class Reports</a>
 
-                    {/* ... other standard links ... */}
-                    <a href="/admin/daily-mcqs" className="nav-item">
-                        <i className="ri-question-mark"></i>
-                        Daily MCQs
-                    </a>
+                    <div className="nav-section-title">Academic Tools</div>
+                    <a href="/admin/current-affairs" className="nav-item"><i className="ri-newspaper-line"></i>Current Affairs</a>
+                    <a href="/admin/daily-mcqs" className="nav-item"><i className="ri-question-mark"></i>Daily MCQs</a>
+                    <a href="/admin/quizzes" className="nav-item"><i className="ri-questionnaire-line"></i>Topic Quizzes</a>
+                    <a href="/admin/tests" className="nav-item"><i className="ri-file-list-3-line"></i>Test Management</a>
                 </nav>
 
                 <button onClick={handleLogout} className="logout-btn">
@@ -293,21 +266,17 @@ export default function UserManagement() {
             <main className="dashboard-main">
                 {/* Header */}
                 <header className="dashboard-header">
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+                    <div className="flex items-center gap-4">
                         <button
-                            className="menu-toggle-btn"
+                            className="menu-toggle-btn md:hidden bg-transparent border-none text-2xl cursor-pointer"
                             onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-                            style={{ display: 'none', background: 'transparent', border: 'none', fontSize: '1.5rem', cursor: 'pointer' }}
                         >
+
                             <i className="ri-menu-2-line"></i>
                         </button>
                         <div>
-                            <h1>{currentView === 'student' ? 'Students Management' : currentView === 'faculty' ? 'Faculty Management' : 'User Management'}</h1>
-                            <p>
-                                {currentView === 'student' ? 'Manage student enrollments & status' :
-                                    currentView === 'faculty' ? 'Manage teaching staff & permissions' :
-                                        'Overview of all system users'}
-                            </p>
+                            <h1>Students Management</h1>
+                            <p>Manage student enrollments & status</p>
                         </div>
                     </div>
                     <div className="user-info">
@@ -320,48 +289,46 @@ export default function UserManagement() {
                 </header>
 
                 {/* Summary Cards */}
-                {currentView === 'all' && (
-                    <div className="stats-grid">
-                        <div className="stat-card stat-primary">
-                            <div className="stat-icon">
-                                <i className="ri-group-line"></i>
-                            </div>
-                            <div className="stat-content">
-                                <h3>{stats.all}</h3>
-                                <p>Total Users</p>
-                                <div className="stat-meta">
-                                    <span className="stat-subtitle">All active accounts</span>
-                                </div>
-                            </div>
+                <div className="stats-grid">
+                    <div className="stat-card stat-primary">
+                        <div className="stat-icon">
+                            <i className="ri-graduation-cap-line"></i>
                         </div>
-
-                        <div className="stat-card stat-warning">
-                            <div className="stat-icon">
-                                <i className="ri-graduation-cap-line"></i>
-                            </div>
-                            <div className="stat-content">
-                                <h3>{stats.student}</h3>
-                                <p>Students</p>
-                                <div className="stat-meta">
-                                    <span className="stat-subtitle">Learners enrolled</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div className="stat-card stat-success">
-                            <div className="stat-icon">
-                                <i className="ri-user-star-line"></i>
-                            </div>
-                            <div className="stat-content">
-                                <h3>{stats.faculty}</h3>
-                                <p>Faculty</p>
-                                <div className="stat-meta">
-                                    <span className="stat-subtitle">Academic staff</span>
-                                </div>
+                        <div className="stat-content">
+                            <h3>{stats.student}</h3>
+                            <p>Total Students</p>
+                            <div className="stat-meta">
+                                <span className="stat-subtitle">Learners enrolled</span>
                             </div>
                         </div>
                     </div>
-                )}
+
+                    <div className="stat-card stat-success">
+                        <div className="stat-icon">
+                            <i className="ri-user-check-line"></i>
+                        </div>
+                        <div className="stat-content">
+                            <h3>{users.filter(u => u.role === 'student' && u.status === 'active').length}</h3>
+                            <p>Active Students</p>
+                            <div className="stat-meta">
+                                <span className="stat-subtitle">Currently enrolled</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="stat-card stat-warning">
+                        <div className="stat-icon">
+                            <i className="ri-wallet-3-line"></i>
+                        </div>
+                        <div className="stat-content">
+                            <h3>₹{users.filter(u => u.role === 'student').reduce((sum, u) => sum + parseFloat(u.walletBalance || 0), 0).toFixed(0)}</h3>
+                            <p>Total Wallet Balance</p>
+                            <div className="stat-meta">
+                                <span className="stat-subtitle">Across all students</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
                 {/* Unified Search & Filter Control Bar */}
                 <div className="unified-controls">
@@ -377,56 +344,39 @@ export default function UserManagement() {
                     </div>
 
                     <div className="filters-actions">
-                        {currentView === 'all' && (
-                            <select
-                                value={filterRole}
-                                onChange={(e) => setFilterRole(e.target.value)}
-                                className="pill-select"
-                            >
-                                <option value="all">All Roles</option>
-                                <option value="admin">Admin</option>
-                                <option value="faculty">Faculty</option>
-                                <option value="student">Student</option>
-                            </select>
-                        )}
-
-                        {currentView === 'student' && (
-                            <>
-                                <select
-                                    className="pill-select"
-                                    value={filterCourse}
-                                    onChange={(e) => setFilterCourse(e.target.value)}
-                                >
-                                    <option value="all">All Courses</option>
-                                    <option value="GS Foundation 2025">GS Foundation</option>
-                                    <option value="History Optional">History Optional</option>
-                                </select>
-                                <select
-                                    className="pill-select"
-                                    value={filterStatus}
-                                    onChange={(e) => setFilterStatus(e.target.value)}
-                                >
-                                    <option value="all">All Status</option>
-                                    <option value="active">Active</option>
-                                    <option value="inactive">Inactive</option>
-                                </select>
-                                <input
-                                    type="date"
-                                    className="pill-select"
-                                    style={{ minWidth: 'auto', paddingRight: '1rem' }}
-                                    value={filterDate}
-                                    onChange={(e) => setFilterDate(e.target.value)}
-                                    placeholder="Enrollment Date"
-                                />
-                            </>
-                        )}
+                        <select
+                            className="pill-select"
+                            value={filterCourse}
+                            onChange={(e) => setFilterCourse(e.target.value)}
+                        >
+                            <option value="all">All Courses</option>
+                            <option value="GS Foundation 2025">GS Foundation</option>
+                            <option value="History Optional">History Optional</option>
+                        </select>
+                        <select
+                            className="pill-select"
+                            value={filterStatus}
+                            onChange={(e) => setFilterStatus(e.target.value)}
+                        >
+                            <option value="all">All Status</option>
+                            <option value="active">Active</option>
+                            <option value="inactive">Inactive</option>
+                        </select>
+                        <input
+                            type="date"
+                            className="pill-select"
+                            style={{ minWidth: 'auto', paddingRight: '1rem' }}
+                            value={filterDate}
+                            onChange={(e) => setFilterDate(e.target.value)}
+                            placeholder="Enrollment Date"
+                        />
 
                         <button
                             className="btn-pill-primary"
                             onClick={() => setIsAddUserOpen(true)}
                         >
                             <i className="ri-user-add-line"></i>
-                            {currentView === 'student' ? 'Add New Student' : currentView === 'faculty' ? 'Add New Faculty' : 'Add New User'}
+                            Add New Student
                         </button>
                     </div>
                 </div>
@@ -437,18 +387,10 @@ export default function UserManagement() {
                         <table className="data-table">
                             <thead>
                                 <tr>
-                                    <th style={{ paddingLeft: '1.5rem' }}>
-                                        {currentView === 'faculty' ? 'Faculty Name' : 'Student Name'}
-                                    </th>
+                                    <th style={{ paddingLeft: '1.5rem' }}>Student Name</th>
                                     <th>Email</th>
-                                    {currentView === 'student' && <th>Enrolled Courses</th>}
-                                    {currentView === 'student' && <th>Wallet Balance</th>}
-
-                                    {currentView === 'faculty' && <th>Assigned Subjects</th>}
-                                    {currentView === 'faculty' && <th>Courses Managed</th>}
-                                    {currentView === 'faculty' && <th>Live Classes</th>}
-
-                                    {currentView === 'all' && <th>Role</th>}
+                                    <th>Enrolled Courses</th>
+                                    <th>Wallet Balance</th>
                                     <th>Status</th>
                                     <th style={{ textAlign: 'right', paddingRight: '1.5rem' }}>Actions</th>
                                 </tr>
@@ -466,31 +408,8 @@ export default function UserManagement() {
                                             </div>
                                         </td>
                                         <td>{u.email}</td>
-
-                                        {currentView === 'student' && (
-                                            <>
-                                                <td>{u.enrolledCourses}</td>
-                                                <td>₹{u.walletBalance}</td>
-                                            </>
-                                        )}
-
-                                        {currentView === 'faculty' && (
-                                            <>
-                                                <td>{u.subjects}</td>
-                                                <td>{u.role === 'faculty' ? 'GS Foundation, Opt. History' : '-'}</td>
-                                                <td>
-                                                    <span className="badge badge-info">{u.liveClassesCount} Classes</span>
-                                                </td>
-                                            </>
-                                        )}
-
-                                        {currentView === 'all' && (
-                                            <td>
-                                                <span className={getRoleBadgeClass(u.role)}>
-                                                    {u.role}
-                                                </span>
-                                            </td>
-                                        )}
+                                        <td>{u.enrolledCourses}</td>
+                                        <td>₹{u.walletBalance}</td>
 
                                         <td>
                                             <span className={`status-badge ${u.status === 'active' ? 'active' : 'inactive'}`}>
@@ -532,9 +451,7 @@ export default function UserManagement() {
 
             <div className={`user-drawer ${isAddUserOpen ? 'open' : ''}`}>
                 <div className="drawer-header">
-                    <h2>
-                        {currentView === 'student' ? 'Add New Student' : currentView === 'faculty' ? 'Add New Faculty' : 'Add New User'}
-                    </h2>
+                    <h2>Add New Student</h2>
                     <button className="close-drawer-btn" onClick={() => setIsAddUserOpen(false)}>
                         <i className="ri-close-line"></i>
                     </button>
@@ -580,100 +497,41 @@ export default function UserManagement() {
                         </div>
                     </div>
 
-                    {currentView === 'all' && (
-                        <div className="form-section">
-                            <h4 className="form-section-title">Access & Role</h4>
-                            <div className="drawer-form-group">
-                                <label>Role</label>
-                                <select
-                                    name="role"
-                                    value={newUser.role}
-                                    onChange={handleInputChange}
-                                    className="drawer-select"
-                                >
-                                    <option value="student">Student</option>
-                                    <option value="faculty">Faculty</option>
-                                    <option value="admin">Admin</option>
-                                </select>
-                            </div>
-                        </div>
-                    )}
 
-                    {/* Student Specific Fields */}
-                    {(currentView === 'student' || newUser.role === 'student') && (
-                        <div className="form-section">
-                            <h4 className="form-section-title">Enrollment</h4>
-                            <div className="drawer-form-group">
-                                <label>Assign Course(s)</label>
-                                <select
-                                    name="course"
-                                    value={newUser.course}
-                                    onChange={handleInputChange}
-                                    className="drawer-select"
-                                >
-                                    <option value="">Select Course</option>
-                                    <option value="GS Foundation 2025">GS Foundation 2025</option>
-                                    <option value="History Optional">History Optional</option>
-                                    <option value="CSAT Mastery">CSAT Mastery</option>
-                                </select>
-                            </div>
-                            <div className="drawer-form-group">
-                                <label>Account Status</label>
-                                <select
-                                    name="status"
-                                    value={newUser.status}
-                                    onChange={handleInputChange}
-                                    className="drawer-select"
-                                >
-                                    <option value="active">Active</option>
-                                    <option value="inactive">Inactive</option>
-                                    <option value="blocked">Blocked</option>
-                                </select>
-                            </div>
-                        </div>
-                    )}
 
-                    {/* Faculty Specific Fields */}
-                    {(currentView === 'faculty' || newUser.role === 'faculty') && (
-                        <div className="form-section">
-                            <h4 className="form-section-title">Assignments</h4>
-                            <div className="drawer-form-group">
-                                <label>Subjects</label>
-                                <input
-                                    type="text"
-                                    name="subjects"
-                                    value={newUser.subjects}
-                                    onChange={handleInputChange}
-                                    className="drawer-input"
-                                    placeholder="e.g. Modern History, Ethics"
-                                />
-                            </div>
-                            <div className="drawer-form-group">
-                                <label>Course Assignment</label>
-                                <input
-                                    type="text"
-                                    name="course"
-                                    value={newUser.course}
-                                    onChange={handleInputChange}
-                                    className="drawer-input"
-                                    placeholder="Courses this faculty manages"
-                                />
-                            </div>
-                            <div className="drawer-form-group">
-                                <label>Permissions</label>
-                                <select
-                                    name="permissions"
-                                    value={newUser.permissions}
-                                    onChange={handleInputChange}
-                                    className="drawer-select"
-                                >
-                                    <option value="standard">Standard (Content & Live)</option>
-                                    <option value="restricted">Restricted (Live Only)</option>
-                                    <option value="full">Full Access</option>
-                                </select>
-                            </div>
+                    {/* Student Enrollment Fields */}
+                    <div className="form-section">
+                        <h4 className="form-section-title">Enrollment</h4>
+                        <div className="drawer-form-group">
+                            <label>Assign Course(s)</label>
+                            <select
+                                name="course"
+                                value={newUser.course}
+                                onChange={handleInputChange}
+                                className="drawer-select"
+                            >
+                                <option value="">Select Course</option>
+                                <option value="GS Foundation 2025">GS Foundation 2025</option>
+                                <option value="History Optional">History Optional</option>
+                                <option value="CSAT Mastery">CSAT Mastery</option>
+                            </select>
                         </div>
-                    )}
+                        <div className="drawer-form-group">
+                            <label>Account Status</label>
+                            <select
+                                name="status"
+                                value={newUser.status}
+                                onChange={handleInputChange}
+                                className="drawer-select"
+                            >
+                                <option value="active">Active</option>
+                                <option value="inactive">Inactive</option>
+                                <option value="blocked">Blocked</option>
+                            </select>
+                        </div>
+                    </div>
+
+
                 </form>
 
                 <div className="drawer-footer">
@@ -681,7 +539,7 @@ export default function UserManagement() {
                         Cancel
                     </button>
                     <button className="btn-primary-form" onClick={handleAddUser}>
-                        {currentView === 'student' ? 'Create Student' : 'Create User'}
+                        Create Student
                     </button>
                 </div>
             </div>

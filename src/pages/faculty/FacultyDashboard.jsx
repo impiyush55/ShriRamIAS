@@ -191,26 +191,21 @@ export default function FacultyDashboard() {
             {/* Mobile Sidebar Overlay */}
             {isSidebarOpen && (
                 <div
-                    className="sidebar-overlay"
+                    className="sidebar-overlay fixed top-0 left-0 w-full h-full bg-black/50 z-[999]"
                     onClick={() => setIsSidebarOpen(false)}
-                    style={{
-                        position: 'fixed', top: 0, left: 0, width: '100%', height: '100%',
-                        backgroundColor: 'rgba(0,0,0,0.5)', zIndex: 999
-                    }}
                 ></div>
             )}
 
             {/* Sidebar */}
             <aside className={`dashboard-sidebar ${isSidebarOpen ? 'open' : ''}`}>
-                <div className="sidebar-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                <div className="sidebar-header flex justify-between items-center">
                     <div>
                         <h2>SRIRAM's IAS</h2>
                         <span className="role-badge faculty">Faculty</span>
                     </div>
                     <button
-                        className="mobile-close-btn"
+                        className="mobile-close-btn md:hidden bg-transparent border-none text-white text-2xl cursor-pointer"
                         onClick={() => setIsSidebarOpen(false)}
-                        style={{ background: 'transparent', border: 'none', color: 'white', fontSize: '1.5rem', cursor: 'pointer', display: 'none' }}
                     >
                         <i className="ri-close-line"></i>
                     </button>
@@ -252,11 +247,10 @@ export default function FacultyDashboard() {
             {/* Main Content */}
             <main className="dashboard-main">
                 <header className="dashboard-header">
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+                    <div className="flex items-center gap-4">
                         <button
-                            className="menu-toggle-btn"
+                            className="menu-toggle-btn md:hidden bg-transparent border-none text-2xl cursor-pointer"
                             onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-                            style={{ display: 'none', background: 'transparent', border: 'none', fontSize: '1.5rem', cursor: 'pointer' }}
                         >
                             <i className="ri-menu-2-line"></i>
                         </button>
@@ -413,9 +407,8 @@ export default function FacultyDashboard() {
                         {courses.map(course => (
                             <div
                                 key={course.id}
-                                className={`course-card ${selectedCourseId === course.id ? 'selected' : ''}`}
+                                className={`course-card cursor-pointer ${selectedCourseId === course.id ? 'selected' : ''}`}
                                 onClick={() => handleCourseSelect(course.id)}
-                                style={{ cursor: 'pointer' }}
                             >
                                 {/* Selection indicator */}
                                 {selectedCourseId === course.id && (
@@ -455,12 +448,11 @@ export default function FacultyDashboard() {
 
                 {/* Live Sessions Section */}
                 <div className="section">
-                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem' }}>
-                        <h2 style={{ margin: 0 }}>Live Sessions</h2>
+                    <div className="flex justify-between items-center mb-6">
+                        <h2 className="m-0">Live Sessions</h2>
                         <button
                             onClick={() => setShowLiveSessionModal(true)}
-                            className="btn btn-primary"
-                            style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}
+                            className="btn btn-primary flex items-center gap-2"
                         >
                             <i className="ri-add-line"></i>
                             Schedule New Session
@@ -535,18 +527,25 @@ export default function FacultyDashboard() {
 
                 {/* Schedule Session Modal */}
                 {showLiveSessionModal && (
-                    <div className="modal-backdrop" onClick={() => setShowLiveSessionModal(false)}>
-                        <div className="payment-modal" onClick={(e) => e.stopPropagation()} style={{ maxWidth: '500px' }}>
-                            <div className="modal-header" style={{ background: 'white', color: '#1a202c', borderBottom: '1px solid #e2e8f0' }}>
-                                <h2 style={{ margin: 0 }}>Schedule Live Session</h2>
-                                <button className="close-modal-btn" onClick={() => setShowLiveSessionModal(false)}>
+                    <div className="modal-backdrop fixed inset-0 bg-black/50 z-[2000] flex items-center justify-center p-4" onClick={() => setShowLiveSessionModal(false)}>
+                        <div
+                            className="bg-white rounded-xl shadow-2xl w-full max-w-[500px] overflow-hidden"
+                            onClick={(e) => e.stopPropagation()}
+                            style={{ backgroundColor: '#ffffff', color: '#1f2937' }}
+                        >
+                            <div className="px-6 py-4 border-b border-gray-100 flex justify-between items-center bg-white" style={{ backgroundColor: '#ffffff' }}>
+                                <h2 className="text-xl font-bold text-gray-800 m-0" style={{ color: '#1f2937' }}>Schedule Live Session</h2>
+                                <button
+                                    className="text-gray-400 hover:text-gray-600 transition-colors bg-transparent border-none cursor-pointer text-2xl flex items-center justify-center p-0"
+                                    onClick={() => setShowLiveSessionModal(false)}
+                                >
                                     <i className="ri-close-line"></i>
                                 </button>
                             </div>
-                            <div className="modal-body">
-                                <form onSubmit={handleScheduleSession} style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
+                            <div className="p-6 overflow-y-auto bg-white" style={{ backgroundColor: '#ffffff' }}>
+                                <form onSubmit={handleScheduleSession} className="flex flex-col gap-5">
                                     <div>
-                                        <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 600, color: '#374151' }}>
+                                        <label className="block text-sm font-semibold text-gray-700 mb-1.5" style={{ color: '#374151' }}>
                                             Session Title
                                         </label>
                                         <input
@@ -555,18 +554,20 @@ export default function FacultyDashboard() {
                                             onChange={(e) => setNewSession({ ...newSession, title: e.target.value })}
                                             placeholder="e.g., Modern Indian History - Revision"
                                             required
-                                            style={{ width: '100%', padding: '0.75rem', border: '1px solid #d1d5db', borderRadius: '8px', fontSize: '1rem' }}
+                                            className="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 outline-none transition-all text-gray-700 bg-white"
+                                            style={{ backgroundColor: '#ffffff', color: '#374151' }}
                                         />
                                     </div>
                                     <div>
-                                        <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 600, color: '#374151' }}>
+                                        <label className="block text-sm font-semibold text-gray-700 mb-1.5" style={{ color: '#374151' }}>
                                             Course
                                         </label>
                                         <select
                                             value={newSession.course}
                                             onChange={(e) => setNewSession({ ...newSession, course: e.target.value })}
                                             required
-                                            style={{ width: '100%', padding: '0.75rem', border: '1px solid #d1d5db', borderRadius: '8px', fontSize: '1rem' }}
+                                            className="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 outline-none transition-all text-gray-700 bg-white"
+                                            style={{ backgroundColor: '#ffffff', color: '#374151' }}
                                         >
                                             <option value="">Select a course</option>
                                             {courses.map(course => (
@@ -574,9 +575,9 @@ export default function FacultyDashboard() {
                                             ))}
                                         </select>
                                     </div>
-                                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+                                    <div className="grid grid-cols-2 gap-4">
                                         <div>
-                                            <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 600, color: '#374151' }}>
+                                            <label className="block text-sm font-semibold text-gray-700 mb-1.5" style={{ color: '#374151' }}>
                                                 Date
                                             </label>
                                             <input
@@ -584,11 +585,12 @@ export default function FacultyDashboard() {
                                                 value={newSession.date}
                                                 onChange={(e) => setNewSession({ ...newSession, date: e.target.value })}
                                                 required
-                                                style={{ width: '100%', padding: '0.75rem', border: '1px solid #d1d5db', borderRadius: '8px', fontSize: '1rem' }}
+                                                className="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 outline-none transition-all text-gray-700 bg-white"
+                                                style={{ backgroundColor: '#ffffff', color: '#374151' }}
                                             />
                                         </div>
                                         <div>
-                                            <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 600, color: '#374151' }}>
+                                            <label className="block text-sm font-semibold text-gray-700 mb-1.5" style={{ color: '#374151' }}>
                                                 Time
                                             </label>
                                             <input
@@ -596,18 +598,20 @@ export default function FacultyDashboard() {
                                                 value={newSession.time}
                                                 onChange={(e) => setNewSession({ ...newSession, time: e.target.value })}
                                                 required
-                                                style={{ width: '100%', padding: '0.75rem', border: '1px solid #d1d5db', borderRadius: '8px', fontSize: '1rem' }}
+                                                className="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 outline-none transition-all text-gray-700 bg-white"
+                                                style={{ backgroundColor: '#ffffff', color: '#374151' }}
                                             />
                                         </div>
                                     </div>
                                     <div>
-                                        <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 600, color: '#374151' }}>
+                                        <label className="block text-sm font-semibold text-gray-700 mb-1.5" style={{ color: '#374151' }}>
                                             Duration (hours)
                                         </label>
                                         <select
                                             value={newSession.duration}
                                             onChange={(e) => setNewSession({ ...newSession, duration: e.target.value })}
-                                            style={{ width: '100%', padding: '0.75rem', border: '1px solid #d1d5db', borderRadius: '8px', fontSize: '1rem' }}
+                                            className="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 outline-none transition-all text-gray-700 bg-white"
+                                            style={{ backgroundColor: '#ffffff', color: '#374151' }}
                                         >
                                             <option value="0.5">30 minutes</option>
                                             <option value="1">1 hour</option>
@@ -618,8 +622,7 @@ export default function FacultyDashboard() {
                                     </div>
                                     <button
                                         type="submit"
-                                        className="modal-cta-btn"
-                                        style={{ marginTop: '0.5rem' }}
+                                        className="w-full py-3 px-4 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg font-semibold shadow-md transition-all flex items-center justify-center gap-2 mt-2 border-none cursor-pointer"
                                     >
                                         <i className="ri-calendar-check-line"></i>
                                         Schedule Session

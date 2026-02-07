@@ -15,7 +15,7 @@ body {
 /* Left Side: Branding */
 .register-branding {
     flex: 1;
-    background-image: url('assets/hero-bg.png');
+    background-image: url('/assets/hero-bg.png');
     /* Reuse hero image or similar */
     background-size: cover;
     background-position: center;

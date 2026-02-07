@@ -59,22 +59,18 @@ export default function ContentLibrary() {
             {/* Mobile Sidebar Overlay */}
             {isSidebarOpen && (
                 <div
-                    className="sidebar-overlay"
+                    className="sidebar-overlay fixed top-0 left-0 w-full h-full bg-black/50 z-[999]"
                     onClick={() => setIsSidebarOpen(false)}
-                    style={{
-                        position: 'fixed', top: 0, left: 0, width: '100%', height: '100%',
-                        backgroundColor: 'rgba(0,0,0,0.5)', zIndex: 999
-                    }}
                 ></div>
             )}
 
             <aside className={`dashboard-sidebar ${isSidebarOpen ? 'open' : ''}`}>
-                <div className="sidebar-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                <div className="sidebar-header flex justify-between items-center">
                     <div><h2>SRIRAM's IAS</h2><span className="role-badge admin">Admin Panel</span></div>
                     <button
-                        className="mobile-close-btn"
+                        className="mobile-close-btn bg-transparent border-none text-white text-2xl cursor-pointer"
                         onClick={() => setIsSidebarOpen(false)}
-                        style={{ background: 'transparent', border: 'none', color: 'white', fontSize: '1.5rem', cursor: 'pointer', display: 'none' }}
+                        style={{ display: 'none' }}
                     >
                         <i className="ri-close-line"></i>
                     </button>
@@ -93,11 +89,10 @@ export default function ContentLibrary() {
 
             <main className="dashboard-main">
                 <header className="dashboard-header">
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+                    <div className="flex items-center gap-4">
                         <button
-                            className="menu-toggle-btn"
+                            className="menu-toggle-btn md:hidden bg-transparent border-none text-2xl cursor-pointer"
                             onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-                            style={{ display: 'none', background: 'transparent', border: 'none', fontSize: '1.5rem', cursor: 'pointer' }}
                         >
                             <i className="ri-menu-2-line"></i>
                         </button>
@@ -118,13 +113,13 @@ export default function ContentLibrary() {
                             <tbody>
                                 {contents.map(item => (
                                     <tr key={item.id}>
-                                        <td><div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-                                            <div style={{ width: '40px', height: '40px', borderRadius: '8px', background: '#f3f4f6', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.25rem', color: '#667eea' }}><i className={getTypeIcon(item.type)}></i></div>
-                                            <span style={{ fontWeight: 600, color: '#374151' }}>{item.title}</span>
+                                        <td><div className="flex items-center gap-3">
+                                            <div className="w-10 h-10 rounded-lg bg-gray-100 flex items-center justify-center text-xl text-indigo-500"><i className={getTypeIcon(item.type)}></i></div>
+                                            <span className="font-semibold text-gray-700">{item.title}</span>
                                         </div></td>
-                                        <td style={{ textTransform: 'capitalize' }}>{item.type}</td>
+                                        <td className="capitalize">{item.type}</td>
                                         <td>{item.size}</td>
-                                        <td><span className="badge badge-warning" style={{ backgroundColor: '#eff6ff', color: '#1e40af' }}>{item.category}</span></td>
+                                        <td><span className="badge badge-warning bg-blue-50 text-blue-800">{item.category}</span></td>
                                         <td><span className={`status-badge ${item.status === 'Published' ? 'active' : item.status === 'Draft' ? 'pending' : 'inactive'}`}>{item.status}</span></td>
                                         <td>{item.date}</td>
                                         <td>

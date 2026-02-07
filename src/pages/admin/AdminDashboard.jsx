@@ -132,26 +132,22 @@ export default function AdminDashboard() {
             {/* Mobile Sidebar Overlay */}
             {isSidebarOpen && (
                 <div
-                    className="sidebar-overlay"
+                    className="sidebar-overlay fixed top-0 left-0 w-full h-full bg-black/50 z-[999]"
                     onClick={() => setIsSidebarOpen(false)}
-                    style={{
-                        position: 'fixed', top: 0, left: 0, width: '100%', height: '100%',
-                        backgroundColor: 'rgba(0,0,0,0.5)', zIndex: 999
-                    }}
                 ></div>
             )}
 
             {/* Enhanced Sidebar */}
             <aside className={`dashboard-sidebar ${isSidebarOpen ? 'open' : ''}`}>
-                <div className="sidebar-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                <div className="sidebar-header flex justify-between items-center">
                     <div>
                         <h2>SRIRAM's IAS</h2>
                         <span className="role-badge admin">Admin Panel</span>
                     </div>
                     <button
-                        className="mobile-close-btn"
+                        className="mobile-close-btn bg-transparent border-none text-white text-2xl cursor-pointer"
                         onClick={() => setIsSidebarOpen(false)}
-                        style={{ background: 'transparent', border: 'none', color: 'white', fontSize: '1.5rem', cursor: 'pointer', display: 'none' }}
+                        style={{ display: 'none' }}
                     >
                         <i className="ri-close-line"></i>
                     </button>
@@ -167,85 +163,198 @@ export default function AdminDashboard() {
                         Dashboard Overview
                     </a>
 
-                    <div className="nav-section-title">User Management</div>
-                    <a href="/admin/users" className="nav-item">
+                    {/* 🔴 Live Class & Video */}
+                    <div className="nav-section-title">🔴 Live Class & Video</div>
+                    <a href="/admin/live-classes" className="nav-item">
+                        <i className="ri-live-line"></i>
+                        Live Classes (AWS)
+                        <span className="badge badge-danger">3 Live</span>
+                    </a>
+                    <a href="/admin/live-schedule" className="nav-item">
+                        <i className="ri-calendar-event-line"></i>
+                        Live Class Schedule
+                    </a>
+                    <a href="/admin/live-attendance" className="nav-item">
+                        <i className="ri-user-follow-line"></i>
+                        Live Attendance
+                    </a>
+                    <a href="/admin/live-recordings" className="nav-item">
+                        <i className="ri-video-line"></i>
+                        Live Recordings
+                    </a>
+                    <a href="/admin/video-library" className="nav-item">
+                        <i className="ri-film-line"></i>
+                        Video Library
+                    </a>
+                    <a href="/admin/streaming-health" className="nav-item">
+                        <i className="ri-pulse-line"></i>
+                        Streaming Health (AWS)
+                    </a>
+                    <a href="/admin/live-reports" className="nav-item">
+                        <i className="ri-file-chart-line"></i>
+                        Live Class Reports
+                    </a>
+
+                    {/* 🟦 User & Content Admin */}
+                    <div className="nav-section-title">🟦 User & Content Admin</div>
+                    <a href="/admin/user-management" className="nav-item">
                         <i className="ri-user-settings-line"></i>
-                        User & Roles
+                        User Management
                     </a>
-                    <a href="/admin/enquiries" className="nav-item">
-                        <i className="ri-customer-service-2-line"></i>
-                        Enquiries
-                        <span className="badge badge-warning">45</span>
-                    </a>
-                    <a href="/admin/wallets" className="nav-item">
-                        <i className="ri-wallet-3-line"></i>
-                        Wallet Management
-                    </a>
-
-                    <div className="nav-section-title">Communication</div>
-                    <a href="/admin/notifications" className="nav-item">
-                        <i className="ri-notification-3-line"></i>
-                        Notifications
-                    </a>
-                    <a href="/admin/support" className="nav-item">
-                        <i className="ri-customer-service-line"></i>
-                        Support Desk
-                    </a>
-
-                    <div className="nav-section-title">Content & Media</div>
-                    <a href="/admin/blogs" className="nav-item">
-                        <i className="ri-article-line"></i>
-                        Blog Management
-                    </a>
-
-                    <div className="nav-section-title">Academic Content</div>
-                    <a href="/admin/courses" className="nav-item">
-                        <i className="ri-book-2-line"></i>
-                        Courses
+                    <a href="/admin/roles-permissions" className="nav-item">
+                        <i className="ri-shield-user-line"></i>
+                        Roles & Permissions
                     </a>
                     <a href="/admin/categories" className="nav-item">
                         <i className="ri-folder-settings-line"></i>
                         Categories
                     </a>
+                    <a href="/admin/banners" className="nav-item">
+                        <i className="ri-image-edit-line"></i>
+                        Banner Management
+                    </a>
+                    <a href="/admin/cms-pages" className="nav-item">
+                        <i className="ri-pages-line"></i>
+                        CMS Pages
+                    </a>
+                    <a href="/admin/homepage-content" className="nav-item">
+                        <i className="ri-home-4-line"></i>
+                        Homepage Content
+                    </a>
                     <a href="/admin/content" className="nav-item">
                         <i className="ri-folder-video-line"></i>
                         Content Library
                     </a>
+                    <a href="/admin/blogs" className="nav-item">
+                        <i className="ri-article-line"></i>
+                        Blog Management
+                    </a>
 
-                    <div className="nav-section-title">Live & Interactive</div>
-                    <a href="/admin/live-classes" className="nav-item">
-                        <i className="ri-live-line"></i>
-                        Live Classes
-                        <span className="badge badge-danger">3 Live</span>
-                    </a>
-                    <a href="/admin/tests" className="nav-item">
-                        <i className="ri-file-list-3-line"></i>
-                        Test Management
-                    </a>
-                    <a href="/admin/quizzes" className="nav-item">
-                        <i className="ri-questionnaire-line"></i>
-                        Topic Quizzes
+                    {/* 🟩 Academic Tools */}
+                    <div className="nav-section-title">🟩 Academic Tools</div>
+                    <a href="/admin/current-affairs" className="nav-item">
+                        <i className="ri-newspaper-line"></i>
+                        Current Affairs
                     </a>
                     <a href="/admin/daily-mcqs" className="nav-item">
                         <i className="ri-question-mark"></i>
                         Daily MCQs
                     </a>
-
-                    <div className="nav-section-title">Finance</div>
-                    <a href="/admin/finance-compliance" className="nav-item">
-                        <i className="ri-money-rupee-circle-line"></i>
-                        Finance & Compliance
+                    <a href="/admin/quizzes" className="nav-item">
+                        <i className="ri-questionnaire-line"></i>
+                        Topic Quizzes
+                    </a>
+                    <a href="/admin/tests" className="nav-item">
+                        <i className="ri-file-list-3-line"></i>
+                        Test Management
+                    </a>
+                    <a href="/admin/test-series" className="nav-item">
+                        <i className="ri-file-list-2-line"></i>
+                        Test Series
+                    </a>
+                    <a href="/admin/evaluation" className="nav-item">
+                        <i className="ri-file-search-line"></i>
+                        Evaluation System
+                    </a>
+                    <a href="/admin/answer-sheets" className="nav-item">
+                        <i className="ri-file-text-line"></i>
+                        Answer Sheet Review
+                    </a>
+                    <a href="/admin/performance-analytics" className="nav-item">
+                        <i className="ri-line-chart-line"></i>
+                        Performance Analytics
                     </a>
 
-                    <div className="nav-section-title">System</div>
+                    {/* 🟨 Business & Operations */}
+                    <div className="nav-section-title">🟨 Business & Operations</div>
+                    <a href="/admin/courses" className="nav-item">
+                        <i className="ri-shopping-cart-line"></i>
+                        Course Sales
+                    </a>
+                    <a href="/admin/coupons" className="nav-item">
+                        <i className="ri-ticket-2-line"></i>
+                        Coupon Management
+                    </a>
+                    <a href="/admin/wallets" className="nav-item">
+                        <i className="ri-wallet-3-line"></i>
+                        Wallet Management
+                    </a>
+                    <a href="/admin/transactions" className="nav-item">
+                        <i className="ri-exchange-line"></i>
+                        Transactions
+                    </a>
+                    <a href="/admin/refund-requests" className="nav-item">
+                        <i className="ri-refund-2-line"></i>
+                        Refund Requests
+                    </a>
+                    <a href="/admin/leads" className="nav-item">
+                        <i className="ri-user-search-line"></i>
+                        Leads Management
+                    </a>
+                    <a href="/admin/lead-assignment" className="nav-item">
+                        <i className="ri-user-add-line"></i>
+                        Lead Assignment
+                    </a>
+
+                    {/* 🟪 Support & Guidance */}
+                    <div className="nav-section-title">🟪 Support & Guidance</div>
+                    <a href="/admin/mentors" className="nav-item">
+                        <i className="ri-user-star-line"></i>
+                        Mentor Management
+                    </a>
+                    <a href="/admin/mentor-assignments" className="nav-item">
+                        <i className="ri-user-shared-line"></i>
+                        Mentor Assignments
+                    </a>
+                    <a href="/admin/enquiries" className="nav-item">
+                        <i className="ri-question-answer-line"></i>
+                        Student Enquiries
+                        <span className="badge badge-warning">45</span>
+                    </a>
+                    <a href="/admin/support-tickets" className="nav-item">
+                        <i className="ri-customer-service-line"></i>
+                        Support Tickets
+                    </a>
+                    <a href="/admin/student-feedback" className="nav-item">
+                        <i className="ri-feedback-line"></i>
+                        Student Feedback
+                    </a>
+
+                    {/* ⚙️ System Controls */}
+                    <div className="nav-section-title">⚙️ System Controls</div>
+                    <a href="/admin/system-configuration" className="nav-item">
+                        <i className="ri-settings-3-line"></i>
+                        System Configuration
+                    </a>
+                    <a href="/admin/push-notifications" className="nav-item">
+                        <i className="ri-notification-3-line"></i>
+                        Push Notifications
+                    </a>
+                    <a href="/admin/email-sms-templates" className="nav-item">
+                        <i className="ri-mail-send-line"></i>
+                        Email & SMS Templates
+                    </a>
                     <a href="/admin/analytics" className="nav-item">
                         <i className="ri-bar-chart-box-line"></i>
-                        Analytics & Reports
+                        Reports & Analytics
                     </a>
-                    <a href="/admin/settings" className="nav-item">
-                        <i className="ri-settings-3-line"></i>
-                        Settings
+                    <a href="/admin/audit-logs" className="nav-item">
+                        <i className="ri-file-list-line"></i>
+                        Audit Logs
                     </a>
+                    <a href="/admin/website-management" className="nav-item">
+                        <i className="ri-global-line"></i>
+                        Website Management
+                    </a>
+                    <a href="/admin/seo-settings" className="nav-item">
+                        <i className="ri-seo-line"></i>
+                        SEO Settings
+                    </a>
+                    <a href="/admin/backup-maintenance" className="nav-item">
+                        <i className="ri-database-2-line"></i>
+                        Backup & Maintenance
+                    </a>
+
                     <a href="/" className="nav-item">
                         <i className="ri-home-line"></i>
                         Back to Home
@@ -262,11 +371,10 @@ export default function AdminDashboard() {
             <main className="dashboard-main">
                 {/* Header */}
                 <header className="dashboard-header">
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+                    <div className="flex items-center gap-4">
                         <button
-                            className="menu-toggle-btn"
+                            className="menu-toggle-btn md:hidden bg-transparent border-none text-2xl cursor-pointer"
                             onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-                            style={{ display: 'none', background: 'transparent', border: 'none', fontSize: '1.5rem', cursor: 'pointer' }}
                         >
                             <i className="ri-menu-2-line"></i>
                         </button>
@@ -283,45 +391,17 @@ export default function AdminDashboard() {
                             </div>
                         </div>
                     </div>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
+                    <div className="flex items-center gap-6">
                         <button
                             onClick={() => window.open('/', '_blank')}
-                            style={{
-                                display: 'flex',
-                                alignItems: 'center',
-                                gap: '0.4rem',
-                                padding: '0.6rem 0.8rem',
-                                background: '#f0f9ff',
-                                color: '#0369a1',
-                                border: '1px solid #e0f2fe',
-                                borderRadius: '8px',
-                                fontSize: '0.8rem',
-                                fontWeight: 600,
-                                cursor: 'pointer',
-                                transition: 'all 0.2s'
-                            }}
+                            className="flex items-center gap-1.5 px-3 py-2.5 bg-cyan-50 text-cyan-700 border border-cyan-100 rounded-lg text-[0.8rem] font-semibold cursor-pointer transition-all duration-200 hover:bg-cyan-100"
                         >
                             <i className="ri-external-link-line"></i>
                             View Site
                         </button>
                         <button
                             onClick={handleResetPrototype}
-                            style={{
-                                display: 'flex',
-                                alignItems: 'center',
-                                gap: '0.4rem',
-                                padding: '0.6rem 0.8rem',
-                                background: '#fef2f2',
-                                color: '#dc2626',
-                                border: '1px solid #fee2e2',
-                                borderRadius: '8px',
-                                fontSize: '0.8rem',
-                                fontWeight: 600,
-                                cursor: 'pointer',
-                                transition: 'all 0.2s'
-                            }}
-                            onMouseOver={(e) => e.currentTarget.style.background = '#fee2e2'}
-                            onMouseOut={(e) => e.currentTarget.style.background = '#fef2f2'}
+                            className="flex items-center gap-1.5 px-3 py-2.5 bg-red-50 text-danger border border-red-200 rounded-lg text-[0.8rem] font-semibold cursor-pointer transition-all duration-200 hover:bg-red-100"
                         >
                             <i className="ri-refresh-line"></i>
                             Reset Demo
@@ -361,82 +441,58 @@ export default function AdminDashboard() {
                 <div className="section" style={{ marginTop: '2.5rem' }}>
                     <div className="section-header" style={{ marginBottom: '1.5rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                         <div>
-                            <h2 style={{ fontSize: '1.5rem', fontWeight: 700, display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-                                <i className="ri-shield-check-line" style={{ color: '#f97316' }}></i>
+                            <h2 className="text-2xl font-bold flex items-center gap-3 mb-2">
+                                <i className="ri-shield-check-line text-orange-500"></i>
                                 Course Approvals & Recent Sales
                             </h2>
-                            <p style={{ color: '#6b7280', marginTop: '0.25rem' }}>Verify and approve new wallet-based student enrollments</p>
+                            <p className="text-gray-500 mt-1">Verify and approve new wallet-based student enrollments</p>
                         </div>
-                        <div style={{ padding: '0.5rem 1rem', background: '#fffbeb', borderRadius: '8px', border: '1px solid #fed7aa', color: '#9a3412', fontWeight: 600, fontSize: '0.9rem' }}>
+                        <div className="py-2 px-4 bg-amber-50 rounded-lg border border-orange-200 text-orange-900 font-semibold text-sm">
                             <i className="ri-time-line"></i> {paymentStats?.pendingApprovals || 0} Pending Approvals
                         </div>
                     </div>
 
-                    <div className="activity-list" style={{ background: 'white', borderRadius: '16px', overflow: 'hidden', border: '1px solid #e5e7eb', boxShadow: '0 4px 6px -1px rgba(0,0,0,0.05)' }}>
+                    <div className="activity-list bg-white rounded-2xl overflow-hidden border border-gray-200 shadow-sm">
                         {recentEnrollments.length > 0 ? (
                             recentEnrollments.map(enrollment => (
-                                <div key={enrollment.id} className="activity-item" style={{
-                                    padding: '1.5rem',
-                                    borderBottom: '1px solid #f3f4f6',
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                    gap: '1.5rem',
-                                    background: enrollment.status === 'pending' ? '#fffcf0' : 'transparent',
-                                    transition: 'all 0.2s ease'
-                                }}>
-                                    <div className="activity-icon" style={{
-                                        width: '56px',
-                                        height: '56px',
-                                        borderRadius: '14px',
-                                        flexShrink: 0,
-                                        overflow: 'hidden',
-                                        border: '2px solid',
-                                        borderColor: enrollment.status === 'approved' ? '#2ecc71' : '#f97316'
-                                    }}>
-                                        <img src={enrollment.studentAvatar} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                                <div key={enrollment.id} className={`activity-item p-6 border-b border-gray-100 flex items-center gap-6 transition-all duration-200 ${enrollment.status === 'pending' ? 'bg-amber-50' : 'bg-transparent'}`}>
+                                    <div className={`activity-icon w-14 h-14 rounded-xl flex-shrink-0 overflow-hidden border-2 ${enrollment.status === 'approved' ? 'border-green-500' : 'border-orange-500'}`}>
+                                        <img src={enrollment.studentAvatar} alt="" className="w-full h-full object-cover" />
                                     </div>
 
-                                    <div className="activity-content" style={{ flex: 1 }}>
-                                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+                                    <div className="activity-content flex-1">
+                                        <div className="flex justify-between items-start">
                                             <div>
-                                                <h4 style={{ fontSize: '1.1rem', fontWeight: 700, color: '#111827', marginBottom: '0.25rem' }}>
+                                                <h4 className="text-lg font-bold text-gray-900 mb-1">
                                                     {enrollment.studentName}
-                                                    <span style={{ fontSize: '0.85rem', fontWeight: 500, color: '#6b7280', marginLeft: '0.5rem' }}>
+                                                    <span className="text-[0.85rem] font-medium text-gray-500 ml-2">
                                                         ({enrollment.studentEmail})
                                                     </span>
                                                 </h4>
-                                                <p style={{ fontSize: '0.95rem', color: '#4b5563' }}>
-                                                    Course: <span style={{ fontWeight: 600, color: '#1f2937' }}>{enrollment.courseTitle}</span>
+                                                <p className="text-[0.95rem] text-gray-600">
+                                                    Course: <span className="font-semibold text-gray-800">{enrollment.courseTitle}</span>
                                                 </p>
                                             </div>
-                                            <div style={{ textAlign: 'right' }}>
-                                                <p style={{ fontSize: '1.25rem', fontWeight: 800, color: '#111827' }}>₹{enrollment.amount}</p>
-                                                <span className={`status-badge ${enrollment.status}`} style={{
-                                                    fontSize: '0.75rem',
-                                                    padding: '2px 8px',
-                                                    borderRadius: '4px',
-                                                    textTransform: 'uppercase',
-                                                    fontWeight: 700,
-                                                    background: enrollment.status === 'approved' ? '#ecfdf5' : '#fff7ed',
-                                                    color: enrollment.status === 'approved' ? '#059669' : '#f97316'
-                                                }}>
+                                            <div className="text-right">
+                                                <p className="text-xl font-extrabold text-gray-900">₹{enrollment.amount}</p>
+                                                <span className={`status-badge ${enrollment.status} text-xs px-2 py-0.5 rounded uppercase font-bold ${enrollment.status === 'approved' ? 'bg-emerald-50 text-emerald-600' : 'bg-orange-50 text-orange-500'}`}>
                                                     {enrollment.status}
                                                 </span>
                                             </div>
                                         </div>
 
-                                        <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginTop: '0.75rem', fontSize: '0.85rem', color: '#6b7280' }}>
-                                            <span style={{ display: 'flex', alignItems: 'center', gap: '0.25rem' }}>
+                                        <div className="flex items-center gap-4 mt-3 text-[0.85rem] text-gray-500">
+                                            <span className="flex items-center gap-1">
                                                 <i className="ri-calendar-line"></i> {new Date(enrollment.enrolledAt).toLocaleDateString()}
                                             </span>
-                                            <span style={{ display: 'flex', alignItems: 'center', gap: '0.25rem' }}>
+                                            <span className="flex items-center gap-1">
                                                 <i className="ri-time-line"></i> {new Date(enrollment.enrolledAt).toLocaleTimeString()}
                                             </span>
-                                            <span style={{ display: 'flex', alignItems: 'center', gap: '0.25rem' }}>
+                                            <span className="flex items-center gap-1">
                                                 <i className="ri-bank-card-line"></i> SR Wallet
                                             </span>
                                             {enrollment.centre && (
-                                                <span style={{ display: 'flex', alignItems: 'center', gap: '0.25rem', color: '#4f46e5', fontWeight: 600 }}>
+                                                <span className="flex items-center gap-1 text-indigo-600 font-semibold">
                                                     <i className="ri-map-pin-line"></i> {enrollment.centre}
                                                 </span>
                                             )}

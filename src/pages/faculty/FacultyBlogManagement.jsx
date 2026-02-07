@@ -115,26 +115,21 @@ export default function FacultyBlogManagement() {
             {/* Sidebar Overlay */}
             {isSidebarOpen && (
                 <div
-                    className="sidebar-overlay"
+                    className="sidebar-overlay fixed top-0 left-0 w-full h-full bg-black/50 z-[999]"
                     onClick={() => setIsSidebarOpen(false)}
-                    style={{
-                        position: 'fixed', top: 0, left: 0, width: '100%', height: '100%',
-                        backgroundColor: 'rgba(0,0,0,0.5)', zIndex: 999
-                    }}
                 ></div>
             )}
 
             {/* Sidebar */}
             <aside className={`dashboard-sidebar ${isSidebarOpen ? 'open' : ''}`}>
-                <div className="sidebar-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                <div className="sidebar-header flex justify-between items-center">
                     <div>
                         <h2>SRIRAM's IAS</h2>
                         <span className="role-badge faculty">Faculty Panel</span>
                     </div>
                     <button
-                        className="mobile-close-btn"
+                        className="mobile-close-btn md:hidden bg-transparent border-none text-white text-2xl cursor-pointer"
                         onClick={() => setIsSidebarOpen(false)}
-                        style={{ background: 'transparent', border: 'none', color: 'white', fontSize: '1.5rem', cursor: 'pointer', display: 'none' }}
                     >
                         <i className="ri-close-line"></i>
                     </button>
@@ -176,11 +171,10 @@ export default function FacultyBlogManagement() {
             {/* Main Content */}
             <main className="dashboard-main">
                 <header className="dashboard-header">
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+                    <div className="flex items-center gap-4">
                         <button
-                            className="menu-toggle-btn"
+                            className="menu-toggle-btn md:hidden bg-transparent border-none text-2xl cursor-pointer"
                             onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-                            style={{ display: 'none', background: 'transparent', border: 'none', fontSize: '1.5rem', cursor: 'pointer' }}
                         >
                             <i className="ri-menu-2-line"></i>
                         </button>
@@ -191,8 +185,7 @@ export default function FacultyBlogManagement() {
                     </div>
                     <button
                         onClick={() => handleOpenModal()}
-                        className="btn btn-primary"
-                        style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}
+                        className="btn btn-primary flex items-center gap-2"
                     >
                         <i className="ri-add-line"></i>
                         Create New Blog
@@ -200,7 +193,7 @@ export default function FacultyBlogManagement() {
                 </header>
 
                 {/* Stats */}
-                <div className="stats-grid" style={{ marginBottom: '2rem' }}>
+                <div className="stats-grid mb-8">
                     <div className="stat-card stat-primary">
                         <div className="stat-icon">
                             <i className="ri-article-line"></i>
@@ -241,7 +234,7 @@ export default function FacultyBlogManagement() {
 
                 {/* Blogs Table */}
                 <div className="section">
-                    <h2 style={{ marginBottom: '1.5rem' }}>My Blog Posts</h2>
+                    <h2 className="mb-6">My Blog Posts</h2>
                     <div className="table-container">
                         <table className="data-table">
                             <thead>
@@ -259,7 +252,7 @@ export default function FacultyBlogManagement() {
                                     <tr key={blog.id}>
                                         <td>
                                             <strong>{blog.title}</strong>
-                                            <p style={{ fontSize: '0.875rem', color: '#64748b', marginTop: '0.25rem' }}>
+                                            <p className="text-sm text-slate-500 mt-1">
                                                 {blog.excerpt.substring(0, 60)}...
                                             </p>
                                         </td>
@@ -274,7 +267,7 @@ export default function FacultyBlogManagement() {
                                         <td>{blog.publishDate || '-'}</td>
                                         <td>{blog.views}</td>
                                         <td>
-                                            <div style={{ display: 'flex', gap: '0.5rem' }}>
+                                            <div className="flex gap-2">
                                                 <button
                                                     onClick={() => handleOpenModal(blog)}
                                                     className="btn btn-sm btn-outline"
@@ -309,79 +302,108 @@ export default function FacultyBlogManagement() {
 
                 {/* Create/Edit Blog Modal */}
                 {showModal && (
-                    <div className="modal-backdrop" onClick={() => setShowModal(false)}>
-                        <div className="admin-modal" onClick={(e) => e.stopPropagation()}>
-                            <div className="modal-header">
-                                <h2>{editingBlog ? 'Edit Blog Post' : 'Create New Blog Post'}</h2>
-                                <button className="close-btn" onClick={() => setShowModal(false)}>
+                    <div className="modal-backdrop fixed inset-0 bg-black/50 z-[2000] flex items-center justify-center p-4" onClick={() => setShowModal(false)}>
+                        <div
+                            className="bg-white rounded-xl shadow-2xl w-full max-w-2xl overflow-hidden"
+                            onClick={(e) => e.stopPropagation()}
+                            style={{ backgroundColor: '#ffffff', color: '#1f2937' }}
+                        >
+                            <div className="px-6 py-4 border-b border-gray-100 flex justify-between items-center bg-white" style={{ backgroundColor: '#ffffff' }}>
+                                <h2 className="text-xl font-bold text-gray-800 m-0" style={{ color: '#1f2937' }}>
+                                    {editingBlog ? 'Edit Blog Post' : 'Create New Blog Post'}
+                                </h2>
+                                <button
+                                    className="text-gray-400 hover:text-gray-600 transition-colors bg-transparent border-none cursor-pointer text-2xl flex items-center justify-center p-0"
+                                    onClick={() => setShowModal(false)}
+                                >
                                     <i className="ri-close-line"></i>
                                 </button>
                             </div>
-                            <div className="modal-body">
-                                <form onSubmit={handleSubmit} className="form-grid">
-                                    <div className="form-group full-width">
-                                        <label>Blog Title</label>
+                            <div className="p-6 max-h-[80vh] overflow-y-auto bg-white" style={{ backgroundColor: '#ffffff' }}>
+                                <form onSubmit={handleSubmit} className="flex flex-col gap-5">
+                                    <div>
+                                        <label className="block text-sm font-semibold text-gray-700 mb-1.5" style={{ color: '#374151' }}>Blog Title</label>
                                         <input
                                             type="text"
                                             value={formData.title}
                                             onChange={(e) => setFormData({ ...formData, title: e.target.value })}
                                             placeholder="Enter blog title"
                                             required
+                                            className="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 outline-none transition-all text-gray-700 bg-white"
+                                            style={{ backgroundColor: '#ffffff', color: '#374151' }}
                                         />
                                     </div>
 
-                                    <div className="form-group">
-                                        <label>Category</label>
-                                        <select
-                                            value={formData.category}
-                                            onChange={(e) => setFormData({ ...formData, category: e.target.value })}
-                                        >
-                                            <option value="Strategy">Strategy</option>
-                                            <option value="Subject Guide">Subject Guide</option>
-                                            <option value="Current Affairs">Current Affairs</option>
-                                            <option value="Tips & Tricks">Tips & Tricks</option>
-                                            <option value="Motivation">Motivation</option>
-                                        </select>
+                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                        <div>
+                                            <label className="block text-sm font-semibold text-gray-700 mb-1.5" style={{ color: '#374151' }}>Category</label>
+                                            <select
+                                                value={formData.category}
+                                                onChange={(e) => setFormData({ ...formData, category: e.target.value })}
+                                                className="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 outline-none transition-all text-gray-700 bg-white"
+                                                style={{ backgroundColor: '#ffffff', color: '#374151' }}
+                                            >
+                                                <option value="Strategy">Strategy</option>
+                                                <option value="Subject Guide">Subject Guide</option>
+                                                <option value="Current Affairs">Current Affairs</option>
+                                                <option value="Tips & Tricks">Tips & Tricks</option>
+                                                <option value="Motivation">Motivation</option>
+                                            </select>
+                                        </div>
+
+                                        <div>
+                                            <label className="block text-sm font-semibold text-gray-700 mb-1.5" style={{ color: '#374151' }}>Status</label>
+                                            <select
+                                                value={formData.status}
+                                                onChange={(e) => setFormData({ ...formData, status: e.target.value })}
+                                                className="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 outline-none transition-all text-gray-700 bg-white"
+                                                style={{ backgroundColor: '#ffffff', color: '#374151' }}
+                                            >
+                                                <option value="draft">Draft</option>
+                                                <option value="published">Published</option>
+                                            </select>
+                                        </div>
                                     </div>
 
-                                    <div className="form-group">
-                                        <label>Status</label>
-                                        <select
-                                            value={formData.status}
-                                            onChange={(e) => setFormData({ ...formData, status: e.target.value })}
-                                        >
-                                            <option value="draft">Draft</option>
-                                            <option value="published">Published</option>
-                                        </select>
-                                    </div>
-
-                                    <div className="form-group full-width">
-                                        <label>Excerpt</label>
+                                    <div>
+                                        <label className="block text-sm font-semibold text-gray-700 mb-1.5" style={{ color: '#374151' }}>Excerpt</label>
                                         <textarea
                                             value={formData.excerpt}
                                             onChange={(e) => setFormData({ ...formData, excerpt: e.target.value })}
                                             placeholder="Brief description (shown in blog list)"
                                             rows="2"
                                             required
+                                            className="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 outline-none transition-all text-gray-700 bg-white resize-y min-h-[80px]"
+                                            style={{ backgroundColor: '#ffffff', color: '#374151' }}
                                         />
                                     </div>
 
-                                    <div className="form-group full-width">
-                                        <label>Content</label>
+                                    <div>
+                                        <label className="block text-sm font-semibold text-gray-700 mb-1.5" style={{ color: '#374151' }}>Content</label>
                                         <textarea
                                             value={formData.content}
                                             onChange={(e) => setFormData({ ...formData, content: e.target.value })}
                                             placeholder="Write your blog content here..."
                                             rows="10"
                                             required
+                                            className="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 outline-none transition-all text-gray-700 bg-white resize-y min-h-[200px]"
+                                            style={{ backgroundColor: '#ffffff', color: '#374151' }}
                                         />
                                     </div>
 
-                                    <div className="form-actions full-width">
-                                        <button type="button" onClick={() => setShowModal(false)} className="btn btn-outline">
+                                    <div className="flex justify-end gap-3 pt-4 border-t border-gray-100 mt-2">
+                                        <button
+                                            type="button"
+                                            onClick={() => setShowModal(false)}
+                                            className="px-5 py-2.5 rounded-lg border border-gray-300 text-gray-700 font-medium hover:bg-gray-50 transition-colors bg-white cursor-pointer"
+                                            style={{ backgroundColor: '#ffffff', color: '#374151' }}
+                                        >
                                             Cancel
                                         </button>
-                                        <button type="submit" className="btn btn-primary">
+                                        <button
+                                            type="submit"
+                                            className="px-5 py-2.5 rounded-lg bg-indigo-600 text-white font-medium hover:bg-indigo-700 shadow-md hover:shadow-lg transition-all cursor-pointer border-none"
+                                        >
                                             {editingBlog ? 'Update Blog' : 'Create Blog'}
                                         </button>
                                     </div>

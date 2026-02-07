@@ -1,0 +1,560 @@
+/* Modern Blog Styles - modern-blog.css */
+:root {
+    --primary-color: #4f46e5;
+    --primary-dark: #4338ca;
+    --text-dark: #1e293b;
+    --text-light: #64748b;
+    --bg-light: #f8fafc;
+    --card-bg: #ffffff;
+    --border-color: #e2e8f0;
+}
+
+.modern-blog-page {
+    background-color: var(--bg-light);
+    min-height: 100vh;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    color: var(--text-dark);
+}
+
+/* 1. Hero Section */
+.blog-hero {
+    background: #0f172a;
+    background: linear-gradient(to right, #0f172a, #1e293b);
+    color: white;
+    padding: 3rem 1rem 3rem;
+    /* Balanced padding */
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.blog-hero h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.01em;
+}
+
+.blog-hero .highlight {
+    color: #818cf8;
+}
+
+.blog-hero p {
+    font-size: 0.95rem;
+    color: #94a3b8;
+    max-width: 600px;
+    margin: 0 auto 1.5rem;
+    line-height: 1.5;
+}
+
+/* Category Explorer (Mega-Menu Style) */
+.category-explorer {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    max-width: 1200px;
+    /* Wider for better layout */
+    margin: 2rem auto;
+    /* Clean spacing, no overlap */
+    position: relative;
+    z-index: 10;
+    display: flex;
+    overflow: hidden;
+    min-height: 500px;
+    /* Increased height */
+    border: 1px solid var(--border-color);
+    align-items: stretch;
+    /* Stretch children to fill height */
+}
+
+/* PREMIUM SIDEBAR STYLES START */
+.explorer-sidebar {
+    width: 280px;
+    /* Slightly wider */
+    background: #f8fafc;
+    border-right: 1px solid var(--border-color);
+    padding: 1.5rem 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    max-height: 80vh;
+    /* Sticky requirement */
+    position: sticky;
+    /* Make it sticky */
+    top: 0;
+    overflow-y: auto;
+}
+
+/* Custom Scrollbar for sidebar */
+.modern-scrollbar::-webkit-scrollbar {
+    width: 4px;
+}
+
+.modern-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.modern-scrollbar::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 4px;
+}
+
+.sidebar-section {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.sidebar-section-title {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    color: #94a3b8;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    padding-left: 0.75rem;
+    margin-bottom: 0.25rem;
+}
+
+.sidebar-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.sidebar-divider {
+    height: 1px;
+    background: #e2e8f0;
+    margin: 0.5rem 0;
+}
+
+.sidebar-item {
+    display: flex;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    color: var(--text-light);
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.sidebar-item:hover {
+    background: white;
+    color: var(--primary-color);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+    transform: translateY(-1px);
+}
+
+.sidebar-item.active {
+    background: white;
+    color: var(--primary-color);
+    font-weight: 600;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+.sidebar-item.active::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 60%;
+    width: 3px;
+    background: var(--primary-color);
+    border-radius: 0 4px 4px 0;
+}
+
+.item-icon {
+    font-size: 1.1rem;
+    margin-right: 0.75rem;
+    opacity: 0.8;
+}
+
+.sidebar-item:hover .item-icon,
+.sidebar-item.active .item-icon {
+    opacity: 1;
+}
+
+.item-badge {
+    margin-left: auto;
+    font-size: 0.75rem;
+    background: #f1f5f9;
+    color: #64748b;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-weight: 600;
+    transition: all 0.2s;
+}
+
+.sidebar-item:hover .item-badge,
+.sidebar-item.active .item-badge {
+    background: #e0e7ff;
+    color: var(--primary-color);
+}
+
+/* PREMIUM SIDEBAR STYLES END */
+
+/* Legacy / Fallback for Mobile */
+@media (max-width: 768px) {
+    .category-explorer {
+        min-height: auto;
+    }
+
+    .explorer-sidebar {
+        width: 100%;
+        flex-direction: row;
+        overflow-x: auto;
+        padding: 0.5rem;
+        border-right: none;
+        border-bottom: 1px solid var(--border-color);
+        position: relative;
+        /* Not sticky on mobile */
+        max-height: none;
+        gap: 0.5rem;
+        background: white;
+    }
+
+    .sidebar-section,
+    .sidebar-divider,
+    .sidebar-section-title {
+        display: none;
+        /* Simplify mobile view */
+    }
+
+    .sidebar-menu {
+        flex-direction: row;
+        gap: 0.5rem;
+    }
+
+    .sidebar-item {
+        white-space: nowrap;
+        padding: 0.5rem 1rem;
+        background: #f8fafc;
+        border: 1px solid var(--border-color);
+    }
+
+    .sidebar-item.active::before {
+        display: none;
+    }
+
+    .sidebar-item.active {
+        border-color: var(--primary-color);
+        background: #eef2ff;
+    }
+}
+
+
+.explorer-content {
+    flex: 1;
+    padding: 2rem;
+    background: white;
+}
+
+.explorer-content h3 {
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+    color: var(--text-dark);
+    font-family: 'serif';
+}
+
+.subcat-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+.subcat-card {
+    padding: 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-weight: 500;
+    color: var(--text-dark);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.subcat-card:hover {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+    background: #eef2ff;
+}
+
+
+/* 3. Search Bar (Hero) */
+.hero-search-container {
+    max-width: 600px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.hero-search-input {
+    width: 100%;
+    padding: 0.75rem 1rem 0.75rem 2.75rem;
+    border-radius: 8px;
+    /* Professional rounded rect */
+    border: none;
+    font-size: 0.95rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    outline: none;
+    color: var(--text-dark);
+}
+
+.hero-search-icon {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #94a3b8;
+    font-size: 1.1rem;
+}
+
+/* 4. Layout & Grid */
+.blog-container {
+    max-width: 1280px;
+    margin: 3rem auto;
+    padding: 0 1.5rem;
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: 3rem;
+}
+
+@media (max-width: 1024px) {
+    .blog-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* 5. Cluster Sections */
+.cluster-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+    cursor: pointer;
+    padding: 1rem;
+    background: white;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    transition: border-color 0.2s;
+}
+
+.cluster-header:hover {
+    border-color: var(--primary-color);
+}
+
+.cluster-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    border-left: 4px solid var(--primary-color);
+    padding-left: 1rem;
+}
+
+.cluster-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+/* 6. Blog Card */
+.modern-blog-card {
+    background: var(--card-bg);
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+    transition: transform 0.3s, box-shadow 0.3s;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    cursor: pointer;
+}
+
+.modern-blog-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+}
+
+.card-thumb-wrapper {
+    height: 200px;
+    position: relative;
+    overflow: hidden;
+}
+
+.card-thumb-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s;
+}
+
+.modern-blog-card:hover .card-thumb-img {
+    transform: scale(1.05);
+}
+
+.card-category-badge {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background: rgba(255, 255, 255, 0.95);
+    color: var(--primary-color);
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    backdrop-filter: blur(4px);
+}
+
+.card-content {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.card-meta {
+    display: flex;
+    gap: 1rem;
+    font-size: 0.8rem;
+    color: var(--text-light);
+    margin-bottom: 0.75rem;
+}
+
+.card-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    line-height: 1.4;
+    color: var(--text-dark);
+}
+
+.card-excerpt {
+    font-size: 0.95rem;
+    color: var(--text-light);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    flex: 1;
+}
+
+.card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid var(--bg-light);
+    padding-top: 1rem;
+    margin-top: auto;
+}
+
+.read-more-btn {
+    color: var(--primary-color);
+    font-weight: 600;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+/* 7. Sidebar Widgets */
+.sidebar-widget {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 16px;
+    border: 1px solid var(--border-color);
+    margin-bottom: 2rem;
+}
+
+.widget-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--text-dark);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.tag-cloud {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.tag-chip {
+    background: var(--bg-light);
+    color: var(--text-light);
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.tag-chip:hover {
+    background: #e2e8f0;
+    color: var(--text-dark);
+}
+
+/* Subcategory Pills - New Class */
+.subcat-pill {
+    font-size: 0.85rem;
+    background: #f1f5f9;
+    color: #475569;
+    padding: 6px 14px;
+    border-radius: 20px;
+    cursor: pointer;
+    border: 1px solid transparent;
+    transition: all 0.2s;
+    font-weight: 500;
+}
+
+.subcat-pill:hover {
+    background: #e0e7ff;
+    color: #4338ca;
+}
+
+.spotlight-widget {
+    background: linear-gradient(135deg, #4f46e5 0%, #4338ca 100%);
+    color: white;
+}
+
+.spotlight-btn {
+    width: 100%;
+    background: white;
+    color: var(--primary-color);
+    border: none;
+    padding: 0.75rem;
+    border-radius: 8px;
+    font-weight: 700;
+    cursor: pointer;
+    margin-top: 1rem;
+}
+
+.recent-post-item {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    cursor: pointer;
+}
+
+.recent-post-item:last-child {
+    margin-bottom: 0;
+}
+
+.recent-thumb {
+    width: 60px;
+    height: 60px;
+    border-radius: 8px;
+    object-fit: cover;
+}

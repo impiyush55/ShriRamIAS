@@ -202,26 +202,22 @@ export default function DailyMCQManagement() {
             {/* Mobile Sidebar Overlay */}
             {isSidebarOpen && (
                 <div
-                    className="sidebar-overlay"
+                    className="sidebar-overlay fixed top-0 left-0 w-full h-full bg-black/50 z-[999]"
                     onClick={() => setIsSidebarOpen(false)}
-                    style={{
-                        position: 'fixed', top: 0, left: 0, width: '100%', height: '100%',
-                        backgroundColor: 'rgba(0,0,0,0.5)', zIndex: 999
-                    }}
                 ></div>
             )}
 
             {/* Sidebar */}
             <aside className={`dashboard-sidebar ${isSidebarOpen ? 'open' : ''}`}>
-                <div className="sidebar-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                <div className="sidebar-header flex justify-between items-center">
                     <div>
                         <h2>SRIRAM's IAS</h2>
                         <span className="role-badge admin">Admin Panel</span>
                     </div>
                     <button
-                        className="mobile-close-btn"
+                        className="mobile-close-btn bg-transparent border-none text-white text-2xl cursor-pointer"
                         onClick={() => setIsSidebarOpen(false)}
-                        style={{ background: 'transparent', border: 'none', color: 'white', fontSize: '1.5rem', cursor: 'pointer', display: 'none' }}
+                        style={{ display: 'none' }}
                     >
                         <i className="ri-close-line"></i>
                     </button>
@@ -316,11 +312,10 @@ export default function DailyMCQManagement() {
             <main className="dashboard-main">
                 {/* Header */}
                 <header className="dashboard-header">
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+                    <div className="flex items-center gap-4">
                         <button
-                            className="menu-toggle-btn"
+                            className="menu-toggle-btn md:hidden bg-transparent border-none text-2xl cursor-pointer"
                             onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-                            style={{ display: 'none', background: 'transparent', border: 'none', fontSize: '1.5rem', cursor: 'pointer' }}
                         >
                             <i className="ri-menu-2-line"></i>
                         </button>
@@ -409,8 +404,7 @@ export default function DailyMCQManagement() {
                     <div className="filters-actions">
                         <input
                             type="date"
-                            className="pill-select"
-                            style={{ minWidth: 'auto', paddingRight: '1rem' }}
+                            className="pill-select min-w-auto pr-4"
                             value={selectedDateFilter}
                             onChange={(e) => setSelectedDateFilter(e.target.value)}
                         />
@@ -440,32 +434,32 @@ export default function DailyMCQManagement() {
                 </div>
 
                 {/* Question Table */}
-                <div className="section" style={{ padding: 0, overflow: 'hidden' }}>
-                    <div className="table-container" style={{ margin: 0 }}>
+                <div className="section p-0 overflow-hidden">
+                    <div className="table-container m-0">
                         <table className="data-table">
                             <thead>
                                 <tr>
-                                    <th style={{ paddingLeft: '1.5rem', width: '120px' }}>Date</th>
+                                    <th className="pl-6 w-[120px]">Date</th>
                                     <th>Question</th>
                                     <th>Category</th>
                                     <th>Status</th>
-                                    <th style={{ textAlign: 'center' }}>Correct</th>
-                                    <th style={{ textAlign: 'right', paddingRight: '1.5rem' }}>Actions</th>
+                                    <th className="text-center">Correct</th>
+                                    <th className="text-right pr-6">Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 {filteredMcqs.map(item => (
                                     <tr key={item.id}>
-                                        <td style={{ paddingLeft: '1.5rem', whiteSpace: 'nowrap' }}>
+                                        <td className="pl-6 whitespace-nowrap">
                                             {new Date(item.date).toLocaleDateString('en-GB')}
                                         </td>
                                         <td>
-                                            <div style={{ fontWeight: 500, color: '#1f2937', maxWidth: '400px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                                            <div className="font-medium text-gray-800 max-w-[400px] overflow-hidden overflow-ellipsis whitespace-nowrap">
                                                 {item.question}
                                             </div>
                                         </td>
                                         <td>
-                                            <span className="role-badge" style={{ backgroundColor: '#f3f4f6', color: '#374151' }}>
+                                            <span className="role-badge bg-gray-100 text-gray-700">
                                                 {item.category}
                                             </span>
                                         </td>
@@ -474,18 +468,18 @@ export default function DailyMCQManagement() {
                                                 {item.status}
                                             </span>
                                         </td>
-                                        <td style={{ textAlign: 'center', fontWeight: 'bold', color: '#10b981' }}>
+                                        <td className="text-center font-bold text-emerald-500">
                                             {item.correct}
                                         </td>
-                                        <td style={{ textAlign: 'right', paddingRight: '1.5rem' }}>
-                                            <div className="action-buttons" style={{ justifyContent: 'flex-end' }}>
+                                        <td className="text-right pr-6">
+                                            <div className="action-buttons justify-end">
                                                 <button className="btn-icon" title="View Details">
                                                     <i className="ri-eye-line"></i>
                                                 </button>
                                                 <button className="btn-icon" title="Edit">
                                                     <i className="ri-pencil-line"></i>
                                                 </button>
-                                                <button className="btn-icon" style={{ color: '#dc2626', background: '#fee2e2' }} title="Delete">
+                                                <button className="btn-icon text-red-600 bg-red-100" title="Delete">
                                                     <i className="ri-delete-bin-line"></i>
                                                 </button>
                                             </div>
@@ -496,7 +490,7 @@ export default function DailyMCQManagement() {
                         </table>
 
                         {filteredMcqs.length === 0 && (
-                            <div className="empty-state" style={{ padding: '4rem 2rem' }}>
+                            <div className="empty-state py-16 px-8">
                                 <i className="ri-question-answer-line"></i>
                                 <p>No MCQs found matching your criteria</p>
                             </div>
@@ -510,7 +504,7 @@ export default function DailyMCQManagement() {
                 <div className="drawer-backdrop" onClick={() => setIsAddMCQOpen(false)}></div>
             )}
 
-            <div className={`user-drawer ${isAddMCQOpen ? 'open' : ''}`} style={{ width: '550px' }}>
+            <div className={`user-drawer ${isAddMCQOpen ? 'open' : ''} w-[550px]`}>
                 <div className="drawer-header">
                     <h2>Add Daily MCQ</h2>
                     <button className="close-drawer-btn" onClick={() => setIsAddMCQOpen(false)}>
@@ -535,8 +529,8 @@ export default function DailyMCQManagement() {
                             ></textarea>
                         </div>
 
-                        <div style={{ display: 'flex', gap: '1rem' }}>
-                            <div className="drawer-form-group" style={{ flex: 1 }}>
+                        <div className="flex gap-4">
+                            <div className="drawer-form-group flex-1">
                                 <label>Date</label>
                                 <input
                                     type="date"
@@ -547,7 +541,7 @@ export default function DailyMCQManagement() {
                                     required
                                 />
                             </div>
-                            <div className="drawer-form-group" style={{ flex: 1 }}>
+                            <div className="drawer-form-group flex-1">
                                 <label>Category</label>
                                 <select
                                     name="category"
@@ -635,9 +629,9 @@ export default function DailyMCQManagement() {
 
                         <div className="drawer-form-group">
                             <label>Correct Answer</label>
-                            <div style={{ display: 'flex', gap: '1rem' }}>
+                            <div className="flex gap-4">
                                 {['A', 'B', 'C', 'D'].map(opt => (
-                                    <label key={opt} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', cursor: 'pointer', fontWeight: 'normal' }}>
+                                    <label key={opt} className="flex items-center gap-2 cursor-pointer font-normal">
                                         <input
                                             type="radio"
                                             name="correctOption"

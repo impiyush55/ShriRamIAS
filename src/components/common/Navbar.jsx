@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import LanguageSelector from './LanguageSelector';
 
 export default function Navbar() {
     const location = useLocation();
@@ -353,7 +354,7 @@ export default function Navbar() {
                             </div>
                         </div>
 
-                        <a href={getHashLink('#blog-collection')} className="nav-link">Blogs</a>
+                        <Link to="/blogs" className="nav-link">Blogs</Link>
                         <a href={getHashLink('#mentorship')} className="nav-link">Mentorship</a>
                     </nav>
 
@@ -363,11 +364,8 @@ export default function Navbar() {
                     </div>
 
                     <div className="nav-right">
-                        <div className="utility-links">
-                            <a href="#" className="util-link" title="Download App"><i className="ri-smartphone-line"></i> <span>App</span></a>
-                            <a href="#" className="util-link" title="Help"><i className="ri-question-line"></i> <span>Help</span></a>
-                        </div>
                         <div className="auth-buttons">
+                            <LanguageSelector />
                             <div className="nav-item dropdown login-dropdown" ref={loginDropdownRef}>
                                 <button
                                     className="btn btn-outline"
@@ -445,7 +443,7 @@ export default function Navbar() {
                             <a href={getHashLink('#ts-optional')}>Optional Subjects</a>
                         </div>
                     </div>
-                    <a href={getHashLink('#blog-collection')}>Blogs</a>
+                    <Link to="/blogs">Blogs</Link>
                     <a href={getHashLink('#mentorship')}>Mentorship</a>
 
                     <div className="mobile-dropdown">
