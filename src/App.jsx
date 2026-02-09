@@ -57,6 +57,21 @@ import MentorManagement from './pages/admin/MentorManagement';
 import CurrentAffairsManagement from './pages/admin/CurrentAffairsManagement';
 import EvaluationSystem from './pages/admin/EvaluationSystem';
 import CouponManagement from './pages/admin/CouponManagement';
+import CMSPages from './pages/admin/CMSPages';
+import HomepageContent from './pages/admin/HomepageContent';
+import AdminTestSeries from './pages/admin/TestSeries';
+import AnswerSheetReview from './pages/admin/AnswerSheetReview';
+import PerformanceAnalytics from './pages/admin/PerformanceAnalytics';
+import Transactions from './pages/admin/Transactions';
+import RefundRequests from './pages/admin/RefundRequests';
+import LeadsManagement from './pages/admin/LeadsManagement';
+import LeadAssignment from './pages/admin/LeadAssignment';
+import StudentFeedback from './pages/admin/StudentFeedback';
+import EmailSMSManagement from './pages/admin/EmailSMSManagement';
+import AuditLogs from './pages/admin/AuditLogs';
+import WebsiteManagement from './pages/admin/WebsiteManagement';
+import SEOSettings from './pages/admin/SEOSettings';
+import BackupMaintenance from './pages/admin/BackupMaintenance';
 
 // Faculty Pages
 import FacultyDashboard from './pages/faculty/FacultyDashboard';
@@ -296,6 +311,14 @@ export default function App() {
           }
         />
         <Route
+          path="/admin/test-series"
+          element={
+            <ProtectedRoute allowedRoles="admin">
+              <AdminTestSeries />
+            </ProtectedRoute>
+          }
+        />
+        <Route
           path="/admin/quizzes"
           element={
             <ProtectedRoute allowedRoles="admin">
@@ -352,6 +375,22 @@ export default function App() {
           }
         />
         <Route
+          path="/admin/cms-pages"
+          element={
+            <ProtectedRoute allowedRoles="admin">
+              <CMSPages />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/admin/homepage-content"
+          element={
+            <ProtectedRoute allowedRoles="admin">
+              <HomepageContent />
+            </ProtectedRoute>
+          }
+        />
+        <Route
           path="/admin/current-affairs"
           element={
             <ProtectedRoute allowedRoles="admin">
@@ -372,6 +411,102 @@ export default function App() {
           element={
             <ProtectedRoute allowedRoles="admin">
               <CouponManagement />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/admin/answer-sheets"
+          element={
+            <ProtectedRoute allowedRoles="admin">
+              <AnswerSheetReview />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/admin/performance-analytics"
+          element={
+            <ProtectedRoute allowedRoles="admin">
+              <PerformanceAnalytics />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/admin/transactions"
+          element={
+            <ProtectedRoute allowedRoles="admin">
+              <Transactions />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/admin/refund-requests"
+          element={
+            <ProtectedRoute allowedRoles="admin">
+              <RefundRequests />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/admin/leads"
+          element={
+            <ProtectedRoute allowedRoles="admin">
+              <LeadsManagement />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/admin/lead-assignment"
+          element={
+            <ProtectedRoute allowedRoles="admin">
+              <LeadAssignment />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/admin/feedback"
+          element={
+            <ProtectedRoute allowedRoles="admin">
+              <StudentFeedback />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/admin/email-sms"
+          element={
+            <ProtectedRoute allowedRoles="admin">
+              <EmailSMSManagement />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/admin/audit-logs"
+          element={
+            <ProtectedRoute allowedRoles="admin">
+              <AuditLogs />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/admin/website-management"
+          element={
+            <ProtectedRoute allowedRoles="admin">
+              <WebsiteManagement />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/admin/seo-settings"
+          element={
+            <ProtectedRoute allowedRoles="admin">
+              <SEOSettings />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/admin/backup-maintenance"
+          element={
+            <ProtectedRoute allowedRoles="admin">
+              <BackupMaintenance />
             </ProtectedRoute>
           }
         />

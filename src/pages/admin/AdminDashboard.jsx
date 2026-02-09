@@ -375,6 +375,7 @@ export default function AdminDashboard() {
                         <button
                             className="menu-toggle-btn md:hidden bg-transparent border-none text-2xl cursor-pointer"
                             onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+                            style={{ display: 'none' }}
                         >
                             <i className="ri-menu-2-line"></i>
                         </button>
