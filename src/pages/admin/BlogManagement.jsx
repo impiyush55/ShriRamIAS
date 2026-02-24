@@ -228,12 +228,12 @@ export default function BlogManagement() {
                 </div>
                 <nav className="sidebar-nav">
                     <a href="/admin/dashboard" className="nav-item"><i className="ri-dashboard-line"></i>Overview</a>
-                    <div className="nav-section-title">Content & Media</div>
+
                     <a href="/admin/blogs" className="nav-item active"><i className="ri-article-line"></i>Blog Management</a>
 
-                    <a href="/" className="nav-item"><i className="ri-home-line"></i>Back to Home</a>
+
                 </nav>
-                <button onClick={handleLogout} className="logout-btn"><i className="ri-logout-box-line"></i>Logout</button>
+
             </aside>
 
             <main className="dashboard-main">

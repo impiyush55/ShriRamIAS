@@ -183,13 +183,13 @@ export default function LiveClassManagement() {
                     <a href="/admin/streaming-health" className="nav-item"><i className="ri-pulse-line"></i>Streaming Health (AWS)</a>
                     <a href="/admin/live-reports" className="nav-item"><i className="ri-file-chart-line"></i>Live Class Reports</a>
                 </nav>
-                <button onClick={async () => { await logoutApi(); navigate('/login.html'); }} className="logout-btn"><i className="ri-logout-box-line"></i>Logout</button>
+
             </aside>
 
             <main className="dashboard-main">
                 <header className="dashboard-header">
                     <div className="flex items-center gap-4">
-                        <button className="menu-toggle-btn" onClick={() => setIsSidebarOpen(!isSidebarOpen)}><i className="ri-menu-2-line"></i></button>
+                        <button className="menu-toggle-btn" onClick={() => setIsSidebarOpen(!isSidebarOpen)} style={{ display: 'none' }}><i className="ri-menu-2-line"></i></button>
                         <div><h1>Live Classes (AWS)</h1><p>Enterprise Control Panel</p></div>
                     </div>
                     <div className="user-info">

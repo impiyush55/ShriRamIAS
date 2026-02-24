@@ -229,83 +229,20 @@ export default function DailyMCQManagement() {
                         Dashboard Overview
                     </a>
 
-                    <div className="nav-section-title">User Management</div>
-                    <a href="/admin/users" className="nav-item">
-                        <i className="ri-user-settings-line"></i>
-                        User & Roles
-                    </a>
-                    <a href="/admin/enquiries" className="nav-item">
-                        <i className="ri-customer-service-2-line"></i>
-                        Enquiries
-                    </a>
-                    <a href="/admin/wallets" className="nav-item">
-                        <i className="ri-wallet-3-line"></i>
-                        Wallet Management
-                    </a>
 
-                    <div className="nav-section-title">Communication</div>
-                    <a href="/admin/notifications" className="nav-item">
-                        <i className="ri-notification-3-line"></i>
-                        Notifications
-                    </a>
-                    <a href="/admin/support" className="nav-item">
-                        <i className="ri-customer-service-line"></i>
-                        Support Desk
-                    </a>
-
-                    <div className="nav-section-title">Content & Media</div>
-                    <a href="/admin/blogs" className="nav-item">
-                        <i className="ri-article-line"></i>
-                        Blog Management
-                    </a>
 
                     <div className="nav-section-title">Academic Content</div>
-                    <a href="/admin/courses" className="nav-item">
-                        <i className="ri-book-2-line"></i>
-                        Courses
-                    </a>
-                    <a href="/admin/categories" className="nav-item">
-                        <i className="ri-folder-settings-line"></i>
-                        Categories
-                    </a>
-                    <a href="/admin/content" className="nav-item">
-                        <i className="ri-folder-video-line"></i>
-                        Content Library
-                    </a>
 
-                    <div className="nav-section-title">Live & Interactive</div>
-                    <a href="/admin/live-classes" className="nav-item">
-                        <i className="ri-live-line"></i>
-                        Live Classes
-                    </a>
-                    <a href="/admin/tests" className="nav-item">
-                        <i className="ri-file-list-3-line"></i>
-                        Test Management
-                    </a>
-                    <a href="/admin/quizzes" className="nav-item">
-                        <i className="ri-questionnaire-line"></i>
-                        Topic Quizzes
-                    </a>
                     <a href="/admin/daily-mcqs" className="nav-item active">
                         <i className="ri-question-mark"></i>
                         Daily MCQs
                     </a>
 
-                    <div className="nav-section-title">System</div>
-                    <a href="/admin/analytics" className="nav-item">
-                        <i className="ri-bar-chart-box-line"></i>
-                        Analytics & Reports
-                    </a>
-                    <a href="/admin/settings" className="nav-item">
-                        <i className="ri-settings-3-line"></i>
-                        Settings
-                    </a>
+
+
                 </nav>
 
-                <button onClick={handleLogout} className="logout-btn">
-                    <i className="ri-logout-box-line"></i>
-                    Logout
-                </button>
+
             </aside>
 
             {/* Main Content */}

@@ -71,23 +71,22 @@ export default function NotificationManagement() {
                     <a href="/admin/notifications" className="nav-item active"><i className="ri-notification-3-line"></i>Notifications</a>
                     <a href="/admin/support" className="nav-item"><i className="ri-customer-service-line"></i>Support Desk</a>
 
-                    <div className="nav-section-title">Content & Media</div>
-                    <a href="/admin/blogs" className="nav-item"><i className="ri-article-line"></i>Blog Management</a>
+
 
                     <a href="/" className="nav-item"><i className="ri-home-line"></i>Back to Home</a>
                 </nav>
-                <button onClick={handleLogout} className="logout-btn"><i className="ri-logout-box-line"></i>Logout</button>
+
             </aside>
 
             <main className="dashboard-main">
                 <header className="dashboard-header">
                     <div className="flex items-center gap-4">
-                    <button
-                    className="menu-toggle-btn md:hidden bg-transparent border-none text-2xl cursor-pointer"
+                        <button
+                            className="menu-toggle-btn md:hidden bg-transparent border-none text-2xl cursor-pointer"
                             onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-                            >
-
-                                <i className="ri-menu-2-line"></i>
+                            style={{ display: 'none' }}
+                        >
+                            <i className="ri-menu-2-line"></i>
                         </button>
                         <div><h1>Notifications & Alerts</h1><p>Manage announcements and push notifications</p></div>
                     </div>

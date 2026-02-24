@@ -104,7 +104,7 @@ export default function StudentDashboard() {
 
     const handleLogout = async () => {
         await logoutApi();
-        navigate('/login.html');
+        navigate('/');
     };
 
     // Helper for Status/Score Colors
@@ -180,10 +180,7 @@ export default function StudentDashboard() {
                     </a>
                 </nav>
 
-                <button onClick={handleLogout} className="logout-btn">
-                    <i className="ri-logout-box-line"></i>
-                    Logout
-                </button>
+
             </aside>
 
             {/* Main Content */}

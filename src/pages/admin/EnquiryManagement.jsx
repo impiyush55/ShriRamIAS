@@ -229,12 +229,14 @@ export default function EnquiryManagement() {
                         <span className="badge badge-warning">{stats.pending}</span>
                     </a>
 
+                    <a href="/admin/mentor-assignments" className="nav-item">
+                        <i className="ri-user-shared-line"></i>
+                        Mentor Assignments
+                    </a>
+
                 </nav>
 
-                <button onClick={handleLogout} className="logout-btn">
-                    <i className="ri-logout-box-line"></i>
-                    Logout
-                </button>
+
             </aside>
 
             {/* Main Content */}

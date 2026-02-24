@@ -86,7 +86,7 @@ export default function StreamingHealth() {
                     <a href="/admin/video-library" className="nav-item"><i className="ri-film-line"></i>Video Library</a>
                     <a href="/admin/streaming-health" className="nav-item active"><i className="ri-pulse-line"></i>Streaming Health (AWS)</a>
                 </nav>
-                <button onClick={async () => { await logoutApi(); navigate('/login.html'); }} className="logout-btn"><i className="ri-logout-box-line"></i>Logout</button>
+
             </aside>
 
             <main className="dashboard-main">

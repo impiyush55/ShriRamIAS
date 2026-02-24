@@ -136,10 +136,7 @@ export default function CourseManagement() {
 
                 </nav>
 
-                <button onClick={handleLogout} className="logout-btn">
-                    <i className="ri-logout-box-line"></i>
-                    Logout
-                </button>
+
             </aside>
 
             {/* Main Content */}

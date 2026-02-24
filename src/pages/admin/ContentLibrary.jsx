@@ -84,7 +84,7 @@ export default function ContentLibrary() {
                     <a href="/admin/live-classes" className="nav-item"><i className="ri-live-line"></i>Live Classes</a>
                     <a href="/" className="nav-item"><i className="ri-home-line"></i>Back to Home</a>
                 </nav>
-                <button onClick={handleLogout} className="logout-btn"><i className="ri-logout-box-line"></i>Logout</button>
+
             </aside>
 
             <main className="dashboard-main">

@@ -118,7 +118,7 @@ export default function VideoLibrary() {
                     <a href="/admin/live-recordings" className="nav-item"><i className="ri-video-line"></i>Live Recordings</a>
                     <a href="/admin/video-library" className="nav-item active"><i className="ri-film-line"></i>Video Library</a>
                 </nav>
-                <button onClick={async () => { await logoutApi(); navigate('/login.html'); }} className="logout-btn"><i className="ri-logout-box-line"></i>Logout</button>
+
             </aside>
 
             <main className="dashboard-main">

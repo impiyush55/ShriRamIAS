@@ -57,6 +57,7 @@ import MentorManagement from './pages/admin/MentorManagement';
 import CurrentAffairsManagement from './pages/admin/CurrentAffairsManagement';
 import EvaluationSystem from './pages/admin/EvaluationSystem';
 import CouponManagement from './pages/admin/CouponManagement';
+import MentorAssignments from './pages/admin/MentorAssignments';
 import CMSPages from './pages/admin/CMSPages';
 import HomepageContent from './pages/admin/HomepageContent';
 import AdminTestSeries from './pages/admin/TestSeries';
@@ -363,6 +364,14 @@ export default function App() {
           element={
             <ProtectedRoute allowedRoles="admin">
               <MentorManagement />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/admin/mentor-assignments"
+          element={
+            <ProtectedRoute allowedRoles="admin">
+              <MentorAssignments />
             </ProtectedRoute>
           }
         />

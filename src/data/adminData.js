@@ -132,6 +132,14 @@ export const adminDashboardStats = {
         activeUsers: 456,
         peakConcurrentUsers: 892,
         avgResponseTime: '245ms'
+    },
+
+    // Mentor Assignments
+    mentorAssignments: {
+        totalAssignments: 85,
+        activeMentors: 24,
+        averageLoad: 3.5,
+        pendingAssignments: 4
     }
 };
 
@@ -467,6 +475,15 @@ export const managementModules = [
         stats: { uptime: '99.8%', status: 'Healthy' },
         color: 'info',
         route: '/admin/settings'
+    },
+    {
+        id: 'mentor-assignments',
+        title: 'Mentor Assignments',
+        icon: 'ri-user-shared-line',
+        description: 'Assign mentors to courses & groups',
+        stats: { total: 85, active: 24 },
+        color: 'primary',
+        route: '/admin/mentor-assignments'
     }
 ];
 

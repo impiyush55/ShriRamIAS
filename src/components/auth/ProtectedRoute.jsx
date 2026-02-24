@@ -17,7 +17,7 @@ export default function ProtectedRoute({ children, allowedRoles }) {
     // Check if user is authenticated
     if (!isAuthenticated()) {
         // Redirect to login if not authenticated
-        return <Navigate to="/login.html" replace />;
+        return <Navigate to="/" replace />;
     }
 
     // Get current user

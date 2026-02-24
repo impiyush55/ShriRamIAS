@@ -27,7 +27,7 @@ export default function EmailSMSManagement() {
 
                     <a href="/admin/email-sms" className="nav-item active"><i className="ri-mail-send-line"></i>Email & SMS</a>
                 </nav>
-                <button onClick={async () => { await logoutApi(); navigate('/login.html'); }} className="logout-btn"><i className="ri-logout-box-line"></i>Logout</button>
+
             </aside>
             <main className="dashboard-main">
                 <header className="dashboard-header">

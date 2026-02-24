@@ -140,7 +140,7 @@ export default function FacultyDashboard() {
 
     const handleLogout = async () => {
         await logoutApi();
-        navigate('/login.html');
+        navigate('/');
     };
 
     // Live Session Handlers

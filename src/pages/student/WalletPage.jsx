@@ -54,7 +54,7 @@ export default function WalletPage() {
 
     const handleLogout = async () => {
         await logoutApi();
-        navigate('/login.html');
+        navigate('/');
     };
 
     if (loading) {
@@ -127,10 +127,7 @@ export default function WalletPage() {
                     </a>
                 </nav>
 
-                <button onClick={handleLogout} className="logout-btn">
-                    <i className="ri-logout-box-line"></i>
-                    Logout
-                </button>
+
             </aside>
 
             {/* Main Content */}

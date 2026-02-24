@@ -27,7 +27,7 @@ export default function LeadAssignment() {
 
                     <a href="/admin/lead-assignment" className="nav-item active"><i className="ri-user-add-line"></i>Lead Assignment</a>
                 </nav>
-                <button onClick={async () => { await logoutApi(); navigate('/login.html'); }} className="logout-btn"><i className="ri-logout-box-line"></i>Logout</button>
+
             </aside>
             <main className="dashboard-main">
                 <header className="dashboard-header">

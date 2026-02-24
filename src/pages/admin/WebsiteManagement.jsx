@@ -27,7 +27,7 @@ export default function WebsiteManagement() {
 
                     <a href="/admin/website-management" className="nav-item active"><i className="ri-window-line"></i>Website Management</a>
                 </nav>
-                <button onClick={async () => { await logoutApi(); navigate('/login.html'); }} className="logout-btn"><i className="ri-logout-box-line"></i>Logout</button>
+
             </aside>
             <main className="dashboard-main">
                 <header className="dashboard-header">

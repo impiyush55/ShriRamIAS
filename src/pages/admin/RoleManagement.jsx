@@ -55,31 +55,11 @@ export default function RoleManagement() {
                     <a href="/admin/dashboard" className="nav-item"><i className="ri-dashboard-line"></i>Dashboard</a>
 
                     <div className="nav-section-title">User & Content Admin</div>
-                    <a href="/admin/user-management" className="nav-item"><i className="ri-graduation-cap-line"></i>Students Management</a>
+
                     <a href="/admin/roles-permissions" className="nav-item active"><i className="ri-shield-user-line"></i>Roles & Permissions</a>
-                    <a href="/admin/categories" className="nav-item"><i className="ri-folder-settings-line"></i>Categories</a>
-                    <a href="/admin/banners" className="nav-item"><i className="ri-image-edit-line"></i>Banner Management</a>
-                    <a href="/admin/cms-pages" className="nav-item"><i className="ri-pages-line"></i>CMS Pages</a>
-                    <a href="/admin/homepage-content" className="nav-item"><i className="ri-home-4-line"></i>Homepage Content</a>
-                    <a href="/admin/content" className="nav-item"><i className="ri-folder-video-line"></i>Content Library</a>
-                    <a href="/admin/blogs" className="nav-item"><i className="ri-article-line"></i>Blog Management</a>
 
-                    <div className="nav-section-title">Live Class & Video</div>
-                    <a href="/admin/live-classes" className="nav-item"><i className="ri-live-line"></i>Live Classes (AWS)</a>
-                    <a href="/admin/live-schedule" className="nav-item"><i className="ri-calendar-event-line"></i>Live Class Schedule</a>
-                    <a href="/admin/live-attendance" className="nav-item"><i className="ri-user-follow-line"></i>Live Attendance</a>
-                    <a href="/admin/live-recordings" className="nav-item"><i className="ri-video-line"></i>Live Recordings</a>
-                    <a href="/admin/video-library" className="nav-item"><i className="ri-film-line"></i>Video Library</a>
-                    <a href="/admin/streaming-health" className="nav-item"><i className="ri-pulse-line"></i>Streaming Health (AWS)</a>
-                    <a href="/admin/live-reports" className="nav-item"><i className="ri-file-chart-line"></i>Live Class Reports</a>
-
-                    <div className="nav-section-title">Academic Tools</div>
-                    <a href="/admin/current-affairs" className="nav-item"><i className="ri-newspaper-line"></i>Current Affairs</a>
-                    <a href="/admin/daily-mcqs" className="nav-item"><i className="ri-question-mark"></i>Daily MCQs</a>
-                    <a href="/admin/quizzes" className="nav-item"><i className="ri-questionnaire-line"></i>Topic Quizzes</a>
-                    <a href="/admin/tests" className="nav-item"><i className="ri-file-list-3-line"></i>Test Management</a>
                 </nav>
-                <button onClick={async () => { await logoutApi(); navigate('/login.html'); }} className="logout-btn"><i className="ri-logout-box-line"></i>Logout</button>
+
             </aside>
 
             <main className="dashboard-main">

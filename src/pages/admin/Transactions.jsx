@@ -28,7 +28,7 @@ export default function Transactions() {
                     <a href="/admin/transactions" className="nav-item active"><i className="ri-exchange-line"></i>Transactions</a>
 
                 </nav>
-                <button onClick={async () => { await logoutApi(); navigate('/login.html'); }} className="logout-btn"><i className="ri-logout-box-line"></i>Logout</button>
+
             </aside>
             <main className="dashboard-main">
                 <header className="dashboard-header">

@@ -50,7 +50,7 @@ export default function FacultyBlogManagement() {
 
     const handleLogout = async () => {
         await logoutApi();
-        navigate('/login.html');
+        navigate('/');
     };
 
     const handleOpenModal = (blog = null) => {
@@ -162,10 +162,7 @@ export default function FacultyBlogManagement() {
                     </a>
                 </nav>
 
-                <button onClick={handleLogout} className="logout-btn">
-                    <i className="ri-logout-box-line"></i>
-                    Logout
-                </button>
+
             </aside>
 
             {/* Main Content */}

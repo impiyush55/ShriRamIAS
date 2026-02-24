@@ -173,7 +173,7 @@ export default function CurrentAffairsManagement() {
 
 
                 </nav>
-                <button onClick={handleLogout} className="logout-btn"><i className="ri-logout-box-line"></i>Logout</button>
+
             </aside>
 
             <main className="dashboard-main">

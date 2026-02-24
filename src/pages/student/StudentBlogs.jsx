@@ -321,10 +321,7 @@ export default function StudentBlogs() {
                     </a>
                 </nav>
 
-                <button onClick={() => navigate('/login.html')} className="logout-btn">
-                    <i className="ri-logout-box-line"></i>
-                    Logout
-                </button>
+
             </aside>
 
             {/* Main Content */}

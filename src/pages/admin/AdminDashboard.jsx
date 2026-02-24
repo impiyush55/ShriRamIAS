@@ -90,7 +90,7 @@ export default function AdminDashboard() {
 
     const handleLogout = async () => {
         await logoutApi();
-        navigate('/login.html');
+        navigate('/');
     };
 
     const handleResetPrototype = () => {

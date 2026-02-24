@@ -27,7 +27,7 @@ export default function BackupMaintenance() {
 
                     <a href="/admin/backup-maintenance" className="nav-item active"><i className="ri-database-2-line"></i>Backup & Maintenance</a>
                 </nav>
-                <button onClick={async () => { await logoutApi(); navigate('/login.html'); }} className="logout-btn"><i className="ri-logout-box-line"></i>Logout</button>
+
             </aside>
             <main className="dashboard-main">
                 <header className="dashboard-header">

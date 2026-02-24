@@ -76,18 +76,18 @@ export default function SupportHelpdesk() {
 
                     <a href="/" className="nav-item"><i className="ri-home-line"></i>Back to Home</a>
                 </nav>
-                <button onClick={handleLogout} className="logout-btn"><i className="ri-logout-box-line"></i>Logout</button>
+
             </aside>
 
             <main className="dashboard-main">
                 <header className="dashboard-header">
                     <div className="flex items-center gap-4">
-                    <button
-                    className="menu-toggle-btn md:hidden bg-transparent border-none text-2xl cursor-pointer"
+                        <button
+                            className="menu-toggle-btn md:hidden bg-transparent border-none text-2xl cursor-pointer"
                             onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-                            >
-
-                                <i className="ri-menu-2-line"></i>
+                            style={{ display: 'none' }}
+                        >
+                            <i className="ri-menu-2-line"></i>
                         </button>
                         <div><h1>Support Helpdesk</h1><p>Resolve student queries and technical issues</p></div>
                     </div>

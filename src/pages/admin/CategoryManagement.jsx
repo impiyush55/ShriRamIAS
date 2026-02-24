@@ -134,7 +134,7 @@ export default function CategoryManagement() {
                     <a href="/admin/content" className="nav-item"><i className="ri-folder-video-line"></i>Content Library</a>
 
                 </nav>
-                <button onClick={handleLogout} className="logout-btn"><i className="ri-logout-box-line"></i>Logout</button>
+
             </aside>
 
             <main className="dashboard-main">

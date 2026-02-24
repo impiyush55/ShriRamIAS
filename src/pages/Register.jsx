@@ -41,7 +41,7 @@ export default function Register() {
             <div className="register-form-wrapper">
                 <div className="form-header">
                     <h2>Create Account</h2>
-                    <p>Already have an account? <Link to="/login.html">Login</Link></p>
+                    <p>Already have an account? <Link to="/">Login</Link></p>
                 </div>
 
                 <form className="register-form">

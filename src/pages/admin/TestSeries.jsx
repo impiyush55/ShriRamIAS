@@ -76,7 +76,7 @@ export default function TestSeries() {
 
                     <a href="/admin/test-series" className="nav-item active"><i className="ri-file-list-2-line"></i>Test Series</a>
                 </nav>
-                <button onClick={async () => { await logoutApi(); navigate('/login.html'); }} className="logout-btn"><i className="ri-logout-box-line"></i>Logout</button>
+
             </aside>
 
             <main className="dashboard-main">

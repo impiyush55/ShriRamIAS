@@ -180,7 +180,7 @@ export default function EvaluationSystem() {
                     <a href="/admin/tests" className="nav-item"><i className="ri-file-list-3-line"></i>Test Management</a>
                     <a href="/admin/evaluation" className="nav-item active"><i className="ri-file-search-line"></i>Evaluation System</a>
                 </nav>
-                <button onClick={handleLogout} className="logout-btn"><i className="ri-logout-box-line"></i>Logout</button>
+
             </aside>
 
             <main className="dashboard-main">
@@ -342,8 +342,8 @@ export default function EvaluationSystem() {
                                         </td>
                                         <td>
                                             <span className={`badge-pill status-badge ${item.status === 'Evaluated' ? 'published' :
-                                                    item.status === 'Under Evaluation' ? 'review' :
-                                                        'draft'
+                                                item.status === 'Under Evaluation' ? 'review' :
+                                                    'draft'
                                                 }`}>
                                                 {item.status === 'Evaluated' && <i className="ri-checkbox-circle-line"></i>}
                                                 {item.status === 'Under Evaluation' && <i className="ri-edit-circle-line"></i>}

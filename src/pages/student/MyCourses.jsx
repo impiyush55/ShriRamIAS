@@ -101,10 +101,6 @@ export default function MyCourses() {
                     <a href="/" className="nav-item"><i className="ri-home-line"></i>Back to Home</a>
                 </nav>
 
-                <button onClick={() => navigate('/login.html')} className="logout-btn">
-                    <i className="ri-logout-box-line"></i>
-                    Logout
-                </button>
             </aside>
 
             <main className="dashboard-main">

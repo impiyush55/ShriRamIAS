@@ -188,7 +188,7 @@ export default function CouponManagement() {
                     <div className="nav-section-title">Sales & Marketing</div>
                     <a href="/admin/coupons" className="nav-item active"><i className="ri-ticket-2-line"></i>Coupon Management</a>
                 </nav>
-                <button onClick={handleLogout} className="logout-btn"><i className="ri-logout-box-line"></i>Logout</button>
+
             </aside>
 
             <main className="dashboard-main">
@@ -362,8 +362,8 @@ export default function CouponManagement() {
                                         </td>
                                         <td>
                                             <span className={`badge-pill status-badge ${item.status === 'Active' ? 'published' :
-                                                    item.status === 'Scheduled' ? 'review' :
-                                                        'draft'
+                                                item.status === 'Scheduled' ? 'review' :
+                                                    'draft'
                                                 }`}>
                                                 {item.status === 'Active' && <i className="ri-checkbox-circle-line"></i>}
                                                 {item.status === 'Scheduled' && <i className="ri-calendar-check-line"></i>}

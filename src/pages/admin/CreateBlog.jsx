@@ -87,14 +87,10 @@ export default function CreateBlog() {
                     <a href="/admin/blogs" className="nav-item active"><i className="ri-article-line"></i>Blog Management</a>
                     <a href="/admin/content" className="nav-item"><i className="ri-folder-video-line"></i>Content Library</a>
 
-                    <div className="nav-section-title">Academic Content</div>
-                    <a href="/admin/courses" className="nav-item"><i className="ri-book-2-line"></i>Courses</a>
-                    <a href="/admin/tests" className="nav-item"><i className="ri-file-list-3-line"></i>Test Management</a>
-                    <a href="/admin/quizzes" className="nav-item"><i className="ri-questionnaire-line"></i>Topic Quizzes</a>
 
                     <a href="/" className="nav-item"><i className="ri-home-line"></i>Back to Home</a>
                 </nav>
-                <button onClick={handleLogout} className="logout-btn"><i className="ri-logout-box-line"></i>Logout</button>
+
             </aside>
 
             <main className="dashboard-main">

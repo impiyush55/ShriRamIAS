@@ -172,14 +172,17 @@ export default function MentorManagement() {
                         <i className="ri-user-star-line"></i>
                         Mentor Management
                     </div>
+                    <div
+                        className="nav-item"
+                        onClick={() => navigate('/admin/mentor-assignments')}
+                        style={{ cursor: 'pointer' }}
+                    >
+                        <i className="ri-user-shared-line"></i>
+                        Mentor Assignments
+                    </div>
                 </nav>
 
-                <div className="sidebar-footer">
-                    <button className="logout-btn" onClick={handleLogout}>
-                        <i className="ri-logout-box-line"></i>
-                        Logout
-                    </button>
-                </div>
+
             </aside>
 
             {/* Mobile Overlay */}
