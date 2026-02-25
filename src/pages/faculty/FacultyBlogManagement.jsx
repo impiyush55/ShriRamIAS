@@ -124,7 +124,7 @@ export default function FacultyBlogManagement() {
             <aside className={`dashboard-sidebar ${isSidebarOpen ? 'open' : ''}`}>
                 <div className="sidebar-header flex justify-between items-center">
                     <div>
-                        <h2>SRIRAM's IAS</h2>
+                        <h2>LMS</h2>
                         <span className="role-badge faculty">Faculty Panel</span>
                     </div>
                     <button
@@ -299,62 +299,125 @@ export default function FacultyBlogManagement() {
 
                 {/* Create/Edit Blog Modal */}
                 {showModal && (
-                    <div className="modal-backdrop fixed inset-0 bg-black/50 z-[2000] flex items-center justify-center p-4" onClick={() => setShowModal(false)}>
+                    <div
+                        onClick={() => setShowModal(false)}
+                        style={{
+                            position: 'fixed', inset: 0, backgroundColor: 'rgba(0,0,0,0.55)',
+                            zIndex: 2000, display: 'flex', alignItems: 'center',
+                            justifyContent: 'center', padding: '1rem'
+                        }}
+                    >
                         <div
-                            className="bg-white rounded-xl shadow-2xl w-full max-w-2xl overflow-hidden"
                             onClick={(e) => e.stopPropagation()}
-                            style={{ backgroundColor: '#ffffff', color: '#1f2937' }}
+                            style={{
+                                backgroundColor: '#fff', borderRadius: '16px',
+                                boxShadow: '0 24px 60px rgba(0,0,0,0.2)',
+                                width: '100%', maxWidth: '680px',
+                                overflow: 'hidden', display: 'flex', flexDirection: 'column'
+                            }}
                         >
-                            <div className="px-6 py-4 border-b border-gray-100 flex justify-between items-center bg-white" style={{ backgroundColor: '#ffffff' }}>
-                                <h2 className="text-xl font-bold text-gray-800 m-0" style={{ color: '#1f2937' }}>
-                                    {editingBlog ? 'Edit Blog Post' : 'Create New Blog Post'}
-                                </h2>
+                            {/* Modal Header */}
+                            <div style={{
+                                padding: '1.25rem 1.75rem',
+                                borderBottom: '1px solid #e5e7eb',
+                                display: 'flex', alignItems: 'center',
+                                justifyContent: 'space-between',
+                                background: 'linear-gradient(135deg, #0056D2 0%, #003ea1 100%)'
+                            }}>
+                                <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+                                    <div style={{
+                                        width: '36px', height: '36px', borderRadius: '8px',
+                                        backgroundColor: 'rgba(255,255,255,0.2)',
+                                        display: 'flex', alignItems: 'center', justifyContent: 'center',
+                                        color: '#fff', fontSize: '1.1rem'
+                                    }}>
+                                        <i className="ri-article-line"></i>
+                                    </div>
+                                    <h2 style={{ margin: 0, fontSize: '1.125rem', fontWeight: 700, color: '#fff' }}>
+                                        {editingBlog ? 'Edit Blog Post' : 'Create New Blog Post'}
+                                    </h2>
+                                </div>
                                 <button
-                                    className="text-gray-400 hover:text-gray-600 transition-colors bg-transparent border-none cursor-pointer text-2xl flex items-center justify-center p-0"
                                     onClick={() => setShowModal(false)}
+                                    style={{
+                                        background: 'rgba(255,255,255,0.15)', border: 'none',
+                                        borderRadius: '8px', width: '32px', height: '32px',
+                                        display: 'flex', alignItems: 'center', justifyContent: 'center',
+                                        color: '#fff', fontSize: '1.25rem', cursor: 'pointer',
+                                        transition: 'background 0.2s'
+                                    }}
+                                    onMouseEnter={e => e.currentTarget.style.background = 'rgba(255,255,255,0.28)'}
+                                    onMouseLeave={e => e.currentTarget.style.background = 'rgba(255,255,255,0.15)'}
                                 >
                                     <i className="ri-close-line"></i>
                                 </button>
                             </div>
-                            <div className="p-6 max-h-[80vh] overflow-y-auto bg-white" style={{ backgroundColor: '#ffffff' }}>
-                                <form onSubmit={handleSubmit} className="flex flex-col gap-5">
+
+                            {/* Modal Body */}
+                            <div style={{
+                                padding: '1.75rem', overflowY: 'auto',
+                                maxHeight: '75vh', backgroundColor: '#fff'
+                            }}>
+                                <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
+
+                                    {/* Blog Title */}
                                     <div>
-                                        <label className="block text-sm font-semibold text-gray-700 mb-1.5" style={{ color: '#374151' }}>Blog Title</label>
+                                        <label style={{ display: 'block', fontSize: '0.8125rem', fontWeight: 600, color: '#374151', marginBottom: '0.4rem' }}>
+                                            Blog Title <span style={{ color: '#ef4444' }}>*</span>
+                                        </label>
                                         <input
                                             type="text"
                                             value={formData.title}
                                             onChange={(e) => setFormData({ ...formData, title: e.target.value })}
                                             placeholder="Enter blog title"
                                             required
-                                            className="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 outline-none transition-all text-gray-700 bg-white"
-                                            style={{ backgroundColor: '#ffffff', color: '#374151' }}
+                                            style={{
+                                                width: '100%', padding: '0.6rem 0.875rem',
+                                                borderRadius: '8px', border: '1.5px solid #d1d5db',
+                                                fontSize: '0.9375rem', color: '#111827',
+                                                outline: 'none', boxSizing: 'border-box',
+                                                transition: 'border-color 0.2s, box-shadow 0.2s',
+                                                backgroundColor: '#f9fafb'
+                                            }}
+                                            onFocus={e => { e.target.style.borderColor = '#0056D2'; e.target.style.boxShadow = '0 0 0 3px rgba(0,86,210,0.12)'; e.target.style.backgroundColor = '#fff'; }}
+                                            onBlur={e => { e.target.style.borderColor = '#d1d5db'; e.target.style.boxShadow = 'none'; e.target.style.backgroundColor = '#f9fafb'; }}
                                         />
                                     </div>
 
-                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    {/* Category + Status Row */}
+                                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
                                         <div>
-                                            <label className="block text-sm font-semibold text-gray-700 mb-1.5" style={{ color: '#374151' }}>Category</label>
+                                            <label style={{ display: 'block', fontSize: '0.8125rem', fontWeight: 600, color: '#374151', marginBottom: '0.4rem' }}>Category</label>
                                             <select
                                                 value={formData.category}
                                                 onChange={(e) => setFormData({ ...formData, category: e.target.value })}
-                                                className="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 outline-none transition-all text-gray-700 bg-white"
-                                                style={{ backgroundColor: '#ffffff', color: '#374151' }}
+                                                style={{
+                                                    width: '100%', padding: '0.6rem 0.875rem',
+                                                    borderRadius: '8px', border: '1.5px solid #d1d5db',
+                                                    fontSize: '0.9375rem', color: '#111827',
+                                                    outline: 'none', boxSizing: 'border-box',
+                                                    backgroundColor: '#f9fafb', cursor: 'pointer'
+                                                }}
                                             >
                                                 <option value="Strategy">Strategy</option>
                                                 <option value="Subject Guide">Subject Guide</option>
                                                 <option value="Current Affairs">Current Affairs</option>
-                                                <option value="Tips & Tricks">Tips & Tricks</option>
+                                                <option value="Tips & Tricks">Tips &amp; Tricks</option>
                                                 <option value="Motivation">Motivation</option>
                                             </select>
                                         </div>
-
                                         <div>
-                                            <label className="block text-sm font-semibold text-gray-700 mb-1.5" style={{ color: '#374151' }}>Status</label>
+                                            <label style={{ display: 'block', fontSize: '0.8125rem', fontWeight: 600, color: '#374151', marginBottom: '0.4rem' }}>Status</label>
                                             <select
                                                 value={formData.status}
                                                 onChange={(e) => setFormData({ ...formData, status: e.target.value })}
-                                                className="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 outline-none transition-all text-gray-700 bg-white"
-                                                style={{ backgroundColor: '#ffffff', color: '#374151' }}
+                                                style={{
+                                                    width: '100%', padding: '0.6rem 0.875rem',
+                                                    borderRadius: '8px', border: '1.5px solid #d1d5db',
+                                                    fontSize: '0.9375rem', color: '#111827',
+                                                    outline: 'none', boxSizing: 'border-box',
+                                                    backgroundColor: '#f9fafb', cursor: 'pointer'
+                                                }}
                                             >
                                                 <option value="draft">Draft</option>
                                                 <option value="published">Published</option>
@@ -362,45 +425,86 @@ export default function FacultyBlogManagement() {
                                         </div>
                                     </div>
 
+                                    {/* Excerpt */}
                                     <div>
-                                        <label className="block text-sm font-semibold text-gray-700 mb-1.5" style={{ color: '#374151' }}>Excerpt</label>
+                                        <label style={{ display: 'block', fontSize: '0.8125rem', fontWeight: 600, color: '#374151', marginBottom: '0.4rem' }}>
+                                            Excerpt <span style={{ color: '#6b7280', fontWeight: 400 }}>(shown in blog list)</span>
+                                        </label>
                                         <textarea
                                             value={formData.excerpt}
                                             onChange={(e) => setFormData({ ...formData, excerpt: e.target.value })}
-                                            placeholder="Brief description (shown in blog list)"
+                                            placeholder="Brief description shown in the blog listing..."
                                             rows="2"
                                             required
-                                            className="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 outline-none transition-all text-gray-700 bg-white resize-y min-h-[80px]"
-                                            style={{ backgroundColor: '#ffffff', color: '#374151' }}
+                                            style={{
+                                                width: '100%', padding: '0.6rem 0.875rem',
+                                                borderRadius: '8px', border: '1.5px solid #d1d5db',
+                                                fontSize: '0.9375rem', color: '#111827',
+                                                outline: 'none', boxSizing: 'border-box',
+                                                resize: 'vertical', minHeight: '72px',
+                                                backgroundColor: '#f9fafb', lineHeight: 1.6
+                                            }}
+                                            onFocus={e => { e.target.style.borderColor = '#0056D2'; e.target.style.boxShadow = '0 0 0 3px rgba(0,86,210,0.12)'; e.target.style.backgroundColor = '#fff'; }}
+                                            onBlur={e => { e.target.style.borderColor = '#d1d5db'; e.target.style.boxShadow = 'none'; e.target.style.backgroundColor = '#f9fafb'; }}
                                         />
                                     </div>
 
+                                    {/* Content */}
                                     <div>
-                                        <label className="block text-sm font-semibold text-gray-700 mb-1.5" style={{ color: '#374151' }}>Content</label>
+                                        <label style={{ display: 'block', fontSize: '0.8125rem', fontWeight: 600, color: '#374151', marginBottom: '0.4rem' }}>
+                                            Content <span style={{ color: '#ef4444' }}>*</span>
+                                        </label>
                                         <textarea
                                             value={formData.content}
                                             onChange={(e) => setFormData({ ...formData, content: e.target.value })}
-                                            placeholder="Write your blog content here..."
-                                            rows="10"
+                                            placeholder="Write your full blog content here..."
+                                            rows="8"
                                             required
-                                            className="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 outline-none transition-all text-gray-700 bg-white resize-y min-h-[200px]"
-                                            style={{ backgroundColor: '#ffffff', color: '#374151' }}
+                                            style={{
+                                                width: '100%', padding: '0.6rem 0.875rem',
+                                                borderRadius: '8px', border: '1.5px solid #d1d5db',
+                                                fontSize: '0.9375rem', color: '#111827',
+                                                outline: 'none', boxSizing: 'border-box',
+                                                resize: 'vertical', minHeight: '180px',
+                                                backgroundColor: '#f9fafb', lineHeight: 1.7
+                                            }}
+                                            onFocus={e => { e.target.style.borderColor = '#0056D2'; e.target.style.boxShadow = '0 0 0 3px rgba(0,86,210,0.12)'; e.target.style.backgroundColor = '#fff'; }}
+                                            onBlur={e => { e.target.style.borderColor = '#d1d5db'; e.target.style.boxShadow = 'none'; e.target.style.backgroundColor = '#f9fafb'; }}
                                         />
                                     </div>
 
-                                    <div className="flex justify-end gap-3 pt-4 border-t border-gray-100 mt-2">
+                                    {/* Footer Buttons */}
+                                    <div style={{
+                                        display: 'flex', justifyContent: 'flex-end', gap: '0.75rem',
+                                        paddingTop: '1.25rem', borderTop: '1px solid #e5e7eb', marginTop: '0.25rem'
+                                    }}>
                                         <button
                                             type="button"
                                             onClick={() => setShowModal(false)}
-                                            className="px-5 py-2.5 rounded-lg border border-gray-300 text-gray-700 font-medium hover:bg-gray-50 transition-colors bg-white cursor-pointer"
-                                            style={{ backgroundColor: '#ffffff', color: '#374151' }}
+                                            style={{
+                                                padding: '0.6rem 1.25rem', borderRadius: '8px',
+                                                border: '1.5px solid #d1d5db', backgroundColor: '#fff',
+                                                color: '#374151', fontSize: '0.9rem', fontWeight: 600,
+                                                cursor: 'pointer', transition: 'all 0.2s'
+                                            }}
+                                            onMouseEnter={e => { e.currentTarget.style.backgroundColor = '#f3f4f6'; }}
+                                            onMouseLeave={e => { e.currentTarget.style.backgroundColor = '#fff'; }}
                                         >
                                             Cancel
                                         </button>
                                         <button
                                             type="submit"
-                                            className="px-5 py-2.5 rounded-lg bg-indigo-600 text-white font-medium hover:bg-indigo-700 shadow-md hover:shadow-lg transition-all cursor-pointer border-none"
+                                            style={{
+                                                padding: '0.6rem 1.5rem', borderRadius: '8px',
+                                                border: 'none', background: 'linear-gradient(135deg, #0056D2 0%, #003ea1 100%)',
+                                                color: '#fff', fontSize: '0.9rem', fontWeight: 600,
+                                                cursor: 'pointer', boxShadow: '0 4px 12px rgba(0,86,210,0.35)',
+                                                transition: 'all 0.2s', display: 'flex', alignItems: 'center', gap: '0.4rem'
+                                            }}
+                                            onMouseEnter={e => { e.currentTarget.style.boxShadow = '0 6px 18px rgba(0,86,210,0.45)'; e.currentTarget.style.transform = 'translateY(-1px)'; }}
+                                            onMouseLeave={e => { e.currentTarget.style.boxShadow = '0 4px 12px rgba(0,86,210,0.35)'; e.currentTarget.style.transform = 'none'; }}
                                         >
+                                            <i className={editingBlog ? 'ri-save-line' : 'ri-add-line'}></i>
                                             {editingBlog ? 'Update Blog' : 'Create Blog'}
                                         </button>
                                     </div>

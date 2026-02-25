@@ -150,7 +150,7 @@ export default function MentorManagement() {
             <aside className={`dashboard-sidebar ${isSidebarOpen ? 'open' : ''}`}>
                 <div className="sidebar-header">
                     <div className="logo-section">
-                        <h2>SRIRAM's IAS</h2>
+                        <h2>LMS</h2>
                         <span className="admin-badge">ADMIN PANEL</span>
                     </div>
                 </div>
@@ -208,7 +208,7 @@ export default function MentorManagement() {
                         </div>
                         <div className="user-details">
                             <span className="user-name">{user?.name || 'Admin User'}</span>
-                            <span className="user-email">{user?.email || 'admin@shriramias.com'}</span>
+                            <span className="user-email">{user?.email || 'admin@lms.com'}</span>
                         </div>
                     </div>
                 </header>
@@ -400,7 +400,7 @@ export default function MentorManagement() {
                                 value={newMentor.email}
                                 onChange={handleInputChange}
                                 className="drawer-input"
-                                placeholder="mentor@shriramias.com"
+                                placeholder="mentor@lms.com"
                             />
                         </div>
                         <div className="drawer-form-group">

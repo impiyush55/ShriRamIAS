@@ -23,7 +23,7 @@ The existing `/login.html` page can be updated to use the new authentication sys
 ### Testing as Admin
 1. Go to `/common-login`
 2. Enter credentials:
-   - Email: `admin@shriramias.com`
+   - Email: `admin@lms.com`
    - Password: `admin123`
 3. Click "Sign In"
 4. You should be redirected to `/admin/dashboard`
@@ -37,7 +37,7 @@ The existing `/login.html` page can be updated to use the new authentication sys
 ### Testing as Faculty
 1. Go to `/common-login`
 2. Enter credentials:
-   - Email: `faculty@shriramias.com`
+   - Email: `faculty@lms.com`
    - Password: `faculty123`
 3. Click "Sign In"
 4. You should be redirected to `/faculty/dashboard`
@@ -50,7 +50,7 @@ The existing `/login.html` page can be updated to use the new authentication sys
 ### Testing as Student
 1. Go to `/common-login`
 2. Enter credentials:
-   - Email: `student@shriramias.com`
+   - Email: `student@lms.com`
    - Password: `student123`
 3. Click "Sign In"
 4. You should be redirected to `/student/dashboard`

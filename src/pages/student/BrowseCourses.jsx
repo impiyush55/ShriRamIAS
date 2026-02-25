@@ -256,7 +256,7 @@ export default function BrowseCourses() {
                                         <span style={{ fontWeight: 800, color: '#EE5253', fontSize: '1.2rem' }}>SR</span>
                                     </div>
                                     <div>
-                                        <span className="brand-name">SRIRAM's IAS</span>
+                                        <span className="brand-name">LMS</span>
                                         <span className="trusted-badge"><i className="ri-shield-check-fill"></i> Trusted Business</span>
                                     </div>
                                 </div>
@@ -276,7 +276,7 @@ export default function BrowseCourses() {
                                     </div>
                                     <div className="user-row">
                                         <i className="ri-mail-line"></i>
-                                        <span>student@shriramias.com</span>
+                                        <span>student@lms.com</span>
                                     </div>
                                     <div className="user-row">
                                         <i className="ri-phone-line"></i>
@@ -370,7 +370,7 @@ export default function BrowseCourses() {
                                                         <i className="ri-wallet-fill"></i>
                                                     </div>
                                                     <div className="option-details">
-                                                        <div className="option-name">SRIRAM Wallet (₹{getWalletBalance()})</div>
+                                                        <div className="option-name">LMS Wallet (₹{getWalletBalance()})</div>
                                                         <div className="option-sub" style={{ color: '#EE5253', fontWeight: 'bold' }}>Pay securely using your wallet balance</div>
                                                     </div>
                                                     <i className="ri-arrow-right-s-line option-arrow"></i>
@@ -391,7 +391,7 @@ export default function BrowseCourses() {
 
                                             <h3>Scan to Pay</h3>
                                             <div className="qr-container">
-                                                <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=upi://pay?pa=shriramias@upi&pn=ShriRamIAS&am=10000" alt="Payment QR" />
+                                                <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=upi://pay?pa=lms@upi&pn=LMS&am=10000" alt="Payment QR" />
                                                 <div className="payment-timer">14:59</div>
                                             </div>
                                             <p className="scan-instruction">Open any UPI app (GooglePay, PhonePe, Paytm) on your phone and scan the QR code to pay.</p>

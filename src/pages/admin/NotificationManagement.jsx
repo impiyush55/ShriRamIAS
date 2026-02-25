@@ -55,7 +55,7 @@ export default function NotificationManagement() {
 
             <aside className={`dashboard-sidebar ${isSidebarOpen ? 'open' : ''}`}>
                 <div className="sidebar-header flex justify-between items-center">
-                    <div><h2>SRIRAM's IAS</h2><span className="role-badge admin">Admin Panel</span></div>
+                    <div><h2>LMS</h2><span className="role-badge admin">Admin Panel</span></div>
                     <button
                         className="mobile-close-btn bg-transparent border-none text-white text-2xl cursor-pointer"
                         onClick={() => setIsSidebarOpen(false)}

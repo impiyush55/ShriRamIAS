@@ -141,7 +141,7 @@ export default function AdminDashboard() {
             <aside className={`dashboard-sidebar ${isSidebarOpen ? 'open' : ''}`}>
                 <div className="sidebar-header flex justify-between items-center">
                     <div>
-                        <h2>SRIRAM's IAS</h2>
+                        <h2>LMS</h2>
                         <span className="role-badge admin">Admin Panel</span>
                     </div>
                     <button

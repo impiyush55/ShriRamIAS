@@ -4,7 +4,7 @@ export default function Features() {
         <section id="why-choose-us" className="section bg-light">
             <div className="container">
                 <div className="section-header">
-                    <h2 className="section-title">Why SRIRAM's IAS?</h2>
+                    <h2 className="section-title">Why LMS?</h2>
                     <p className="section-desc">We don't just teach; we mentor you to become the future leaders of India.</p>
                 </div>
 

@@ -6,13 +6,13 @@ export default function Testimonials() {
                 <div className="section-header">
                     <span className="hero-badge">Hall of Fame</span>
                     <h2 className="section-title">Success Stories</h2>
-                    <p className="section-desc">Join the league of extraordinary achievers who turned their dreams into reality with SRIRAM's IAS.</p>
+                    <p className="section-desc">Join the league of extraordinary achievers who turned their dreams into reality with LMS.</p>
                 </div>
 
                 <div className="testimonial-carousel">
                     <div className="testimonial-card">
                         <div className="quote-icon"><i className="ri-double-quotes-l"></i></div>
-                        <p className="testimonial-text">"SRIRAM's IAS provided me with the right direction. The faculty's dedication and the comprehensive study material were instrumental in my success."</p>
+                        <p className="testimonial-text">"LMS provided me with the right direction. The faculty's dedication and the comprehensive study material were instrumental in my success."</p>
                         <div className="testimonial-profile">
                             <img src="/assets/topper-piyush.jpg" alt="Piyush Ranjan" />
                             <div className="profile-info">
@@ -24,7 +24,7 @@ export default function Testimonials() {
 
                     <div className="testimonial-card">
                         <div className="quote-icon"><i className="ri-double-quotes-l"></i></div>
-                        <p className="testimonial-text">"The structured approach and the precise study material at SRIRAM's IAS were game-changers for me. The mentorship program helped me stay consistent."</p>
+                        <p className="testimonial-text">"The structured approach and the precise study material at LMS were game-changers for me. The mentorship program helped me stay consistent."</p>
                         <div className="testimonial-profile">
                             <img src="/assets/topper-1.png" alt="Topper 1" />
                             <div className="profile-info">
@@ -60,7 +60,7 @@ export default function Testimonials() {
 
                     <div className="testimonial-card">
                         <div className="quote-icon"><i className="ri-double-quotes-l"></i></div>
-                        <p className="testimonial-text">"SRIRAM's IAS is not just an institute; it's a family. The faculty is approachable and always ready to help. Grateful for their support."</p>
+                        <p className="testimonial-text">"LMS is not just an institute; it's a family. The faculty is approachable and always ready to help. Grateful for their support."</p>
                         <div className="testimonial-profile">
                             <img src="/assets/topper-4.png" alt="Topper 4" />
                             <div className="profile-info">

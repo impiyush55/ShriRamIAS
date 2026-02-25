@@ -33,7 +33,7 @@ export default function FinanceCompliance() {
             address: 'Rajendra Place, New Delhi - 110008',
             contactPerson: 'Rajesh Kumar',
             phone: '+91-9876543210',
-            email: 'delhi@shriramias.com',
+            email: 'delhi@lms.com',
             status: 'active'
         },
         {
@@ -43,7 +43,7 @@ export default function FinanceCompliance() {
             address: 'FC Road, Pune - 411004',
             contactPerson: 'Priya Sharma',
             phone: '+91-9876543211',
-            email: 'pune@shriramias.com',
+            email: 'pune@lms.com',
             status: 'active'
         },
         {
@@ -53,7 +53,7 @@ export default function FinanceCompliance() {
             address: 'Ameerpet, Hyderabad - 500016',
             contactPerson: 'Anil Reddy',
             phone: '+91-9876543212',
-            email: 'hyderabad@shriramias.com',
+            email: 'hyderabad@lms.com',
             status: 'active'
         }
     ];
@@ -225,7 +225,7 @@ export default function FinanceCompliance() {
             <aside className={`dashboard-sidebar ${isSidebarOpen ? 'open' : ''}`}>
                 <div className="sidebar-header flex justify-between items-center">
                     <div>
-                        <h2>SRIRAM's IAS</h2>
+                        <h2>LMS</h2>
                         <span className="role-badge admin">Finance & Compliance</span>
                     </div>
                     <button

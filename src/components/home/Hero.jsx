@@ -13,7 +13,7 @@ export default function Hero() {
             </div>
             <div className="container hero-content">
                 <div className="hero-badge"><span className="pulsing-dot"></span> Prelims 2026 Batch – Admissions Open</div>
-                <h1 className="hero-title">Crack UPSC with <br /> <span className="text-gradient">SRIRAM's IAS</span></h1>
+                <h1 className="hero-title">Crack UPSC with <br /> <span className="text-gradient">LMS</span></h1>
                 <p className="hero-subtitle">Join India’s most trusted Civil Services coaching platform. Expert guidance, comprehensive study material, and a legacy of success.</p>
                 <div className="hero-buttons">
                     <a href="#courses" className="btn btn-primary btn-lg">Explore Courses <i className="ri-arrow-right-line"></i></a>

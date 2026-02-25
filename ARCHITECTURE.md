@@ -277,7 +277,7 @@
 ## Folder Structure Tree
 
 ```
-ShriRamIAS-main/
+LMS-main/
 │
 ├── public/                    # Static assets
 │   └── vite.svg

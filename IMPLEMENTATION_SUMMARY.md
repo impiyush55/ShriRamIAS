@@ -39,9 +39,9 @@ All APIs:
 
 **Demo Credentials:**
 ```
-Admin:   admin@shriramias.com / admin123
-Faculty: faculty@shriramias.com / faculty123
-Student: student@shriramias.com / student123
+Admin:   admin@lms.com / admin123
+Faculty: faculty@lms.com / faculty123
+Student: student@lms.com / student123
 ```
 
 ### 4. Role-Based Dashboards

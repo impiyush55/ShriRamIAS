@@ -60,8 +60,8 @@ export default function Navbar() {
         <>
             <header className="navbar">
                 <div className="container navbar-container">
-                    <Link to="/" className="logo">
-                        <span className="logo-text-fallback">SRIRAM's<span>IAS</span></span>
+                    <Link to="/" className="logo lms-logo">
+                        <span className="lms-logo-wordmark">Inavsys<span className="lms-logo-accent">LMS</span></span>
                     </Link>
 
                     <nav className="nav-menu">
@@ -411,7 +411,9 @@ export default function Navbar() {
 
             <div className={`mobile-menu ${isMobileMenuOpen ? 'active' : ''}`}>
                 <div className="mobile-menu-header">
-                    <Link to="/" className="logo">SRIRAM's <span>IAS</span></Link>
+                    <Link to="/" className="logo lms-logo">
+                        <span className="lms-logo-wordmark">Inavsys<span className="lms-logo-accent">LMS</span></span>
+                    </Link>
                     <div className="close-menu" onClick={toggleMobileMenu}><i className="ri-close-line"></i></div>
                 </div>
                 <div className="mobile-nav-links">

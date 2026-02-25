@@ -165,7 +165,7 @@ export default function EvaluationSystem() {
 
             <aside className={`dashboard-sidebar ${isSidebarOpen ? 'open' : ''}`}>
                 <div className="sidebar-header flex justify-between items-center">
-                    <div><h2>SRIRAM's IAS</h2><span className="role-badge admin">Admin Panel</span></div>
+                    <div><h2>LMS</h2><span className="role-badge admin">Admin Panel</span></div>
                     <button
                         className="mobile-close-btn bg-transparent border-none text-white text-2xl cursor-pointer"
                         onClick={() => setIsSidebarOpen(false)}
@@ -208,7 +208,7 @@ export default function EvaluationSystem() {
                             </div>
                             <div className="user-details">
                                 <span className="user-name">{user?.name || 'Admin User'}</span>
-                                <span className="user-email">{user?.email || 'admin@shriramias.com'}</span>
+                                <span className="user-email">{user?.email || 'admin@lms.com'}</span>
                             </div>
                         </div>
                     </div>

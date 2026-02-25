@@ -18,8 +18,8 @@ export default function AdminSettings() {
 
     // Settings State
     const [settings, setSettings] = useState({
-        siteName: "SRIRAM's IAS",
-        supportEmail: "support@sriramias.com",
+        siteName: "LMS",
+        supportEmail: "support@lms.com",
         supportPhone: "+91 98765 43210",
         maintenanceMode: false,
         allowRegistration: true,
@@ -75,7 +75,7 @@ export default function AdminSettings() {
             <aside className={`dashboard-sidebar ${isSidebarOpen ? 'open' : ''}`}>
                 <div className="sidebar-header flex justify-between items-center">
                     <div>
-                        <h2>SRIRAM's IAS</h2>
+                        <h2>LMS</h2>
                         <span className="role-badge admin">Admin Panel</span>
                     </div>
                 </div>

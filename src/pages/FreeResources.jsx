@@ -9,7 +9,7 @@ export default function FreeResourcesPage() {
             <header className="navbar" style={{ position: 'relative', background: 'white', padding: '1rem 0' }}>
                 <div className="container navbar-container">
                     <Link to="/" className="logo">
-                        <span className="logo-text-fallback">SRIRAM's<span>IAS</span></span>
+                        <span className="logo-text-fallback">LMS</span>
                     </Link>
                     <Link to="/" className="btn btn-outline" style={{ borderColor: 'var(--primary-color)', color: 'var(--primary-color)' }}>Back to Home</Link>
                 </div>
@@ -119,7 +119,7 @@ export default function FreeResourcesPage() {
             {/* Footer (Simplified) */}
             <footer style={{ background: '#0f172a', color: 'white', padding: '2rem 0', textAlign: 'center' }}>
                 <div className="container">
-                    <p>&copy; 2026 SRIRAM's IAS. All Rights Reserved.</p>
+                    <p>&copy; 2026 LMS. All Rights Reserved.</p>
                 </div>
             </footer>
         </div>

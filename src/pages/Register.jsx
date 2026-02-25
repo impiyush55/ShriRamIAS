@@ -7,9 +7,9 @@ export default function Register() {
             {/* Left Side: Visual/Branding */}
             <div className="register-branding" style={{ backgroundImage: "url('/assets/hero-bg.png')" }}>
                 <div className="branding-content">
-                    <Link to="/" className="logo text-white mb-4" style={{ display: 'inline-block', fontSize: '2rem' }}>SRIRAM's <span>IAS</span></Link>
+                    <Link to="/" className="logo text-white mb-4" style={{ display: 'inline-block', fontSize: '2rem' }}>LMS</Link>
                     <h1 className="branding-title">Begin Your Journey to <br /> <span className="text-highlight">LBSNAA</span></h1>
-                    <p className="branding-desc">Join 5000+ successful officers who started their preparation with SRIRAM's IAS. Your dream deserves the best guidance.</p>
+                    <p className="branding-desc">Join 5000+ successful officers who started their preparation with LMS. Your dream deserves the best guidance.</p>
 
                     <div className="branding-features">
                         <div className="feature-item">

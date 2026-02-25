@@ -282,7 +282,7 @@ export default function StudentBlogs() {
             <aside className={`dashboard-sidebar ${isSidebarOpen ? 'open' : ''}`}>
                 <div className="sidebar-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                     <div>
-                        <h2>SRIRAM's IAS</h2>
+                        <h2>LMS</h2>
                         <span className="role-badge student">Student</span>
                     </div>
                     <button

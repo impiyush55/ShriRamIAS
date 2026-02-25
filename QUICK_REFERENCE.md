@@ -41,7 +41,7 @@ http://localhost:5173
 
 ### 👨‍💼 Admin Account
 ```
-Email:    admin@shriramias.com
+Email:    admin@lms.com
 Password: admin123
 Role:     admin
 Redirect: /admin/dashboard
@@ -57,7 +57,7 @@ Redirect: /admin/dashboard
 
 ### 👨‍🏫 Faculty Account #1
 ```
-Email:    faculty@shriramias.com
+Email:    faculty@lms.com
 Password: faculty123
 Name:     Dr. Rajesh Kumar
 Role:     faculty
@@ -74,7 +74,7 @@ Redirect: /faculty/dashboard
 
 ### 👨‍🏫 Faculty Account #2
 ```
-Email:    faculty2@shriramias.com
+Email:    faculty2@lms.com
 Password: faculty123
 Name:     Prof. Priya Sharma
 Role:     faculty
@@ -91,7 +91,7 @@ Redirect: /faculty/dashboard
 
 ### 👨‍🎓 Student Account #1
 ```
-Email:    student@shriramias.com
+Email:    student@lms.com
 Password: student123
 Name:     Amit Verma
 Role:     student
@@ -109,7 +109,7 @@ Redirect: /student/dashboard
 
 ### 👨‍🎓 Student Account #2
 ```
-Email:    student2@shriramias.com
+Email:    student2@lms.com
 Password: student123
 Name:     Sneha Patel
 Role:     student

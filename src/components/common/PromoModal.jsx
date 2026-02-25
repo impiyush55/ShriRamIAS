@@ -31,7 +31,7 @@ export default function PromoModal() {
                 <button className="modal-close" onClick={closeModal}><i className="ri-close-line"></i></button>
                 <div className="modal-body" style={{ backgroundImage: "url('/assets/promo-bg.png')" }}>
                     <div className="modal-text-content">
-                        <div className="modal-logo">SRIRAM's <span>IAS</span></div>
+                        <div className="modal-logo">LMS</div>
                         <div className="modal-year">1 <span className="text-sm">YEAR</span></div>
                         <h2 className="modal-heading">GS FOUNDATION COURSE <br /> <span className="text-lighter">for</span> <span className="text-highlight">UPSC CSE</span></h2>
 

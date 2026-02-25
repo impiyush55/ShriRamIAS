@@ -198,8 +198,8 @@ ul {
     padding: 0 1.5rem;
     max-width: 1440px;
     margin: 0 auto;
-    gap: 1rem;
-    /* Reduced spacing between main sections */
+    gap: 0.75rem;
+    overflow: visible;
 }
 
 /* Logo */
@@ -210,23 +210,47 @@ ul {
     flex-shrink: 0;
 }
 
-.logo-text-fallback {
-    font-family: var(--font-heading);
-    font-size: 1.5rem;
-    font-weight: 800;
-    color: var(--primary-dark);
-    /* SRIRAM's in Blue/Dark */
-    line-height: 1;
+/* Premium LMS Logo */
+.lms-logo {
     display: flex;
     align-items: center;
-    gap: 4px;
-    letter-spacing: -0.5px;
+    gap: 10px;
+    text-decoration: none;
+    transition: transform 0.2s ease, opacity 0.2s ease;
 }
 
-.logo-text-fallback span {
-    color: var(--secondary-color);
-    /* IAS in distinct color or Primary */
+.lms-logo:hover {
+    transform: scale(1.04);
+    opacity: 0.92;
 }
+
+.lms-logo-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #0056D2 0%, #003ea1 100%);
+    box-shadow: 0 4px 14px rgba(0, 86, 210, 0.4);
+    color: #fff;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+}
+
+.lms-logo-wordmark {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.45rem;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    color: #0f172a;
+    line-height: 1;
+}
+
+.lms-logo-accent {
+    color: #0056D2;
+}
+
 
 /* Nav Menu */
 .nav-menu {
@@ -268,11 +292,9 @@ ul {
     align-items: center;
     background: #f3f4f6;
     padding: 0.6rem 1rem;
-    /* Reduced padding */
     border-radius: 8px;
     flex-grow: 1;
-    max-width: 350px;
-    /* Reduced max-width to give space */
+    max-width: 220px;
     margin-right: auto;
     border: 1px solid transparent;
     transition: all 0.2s;

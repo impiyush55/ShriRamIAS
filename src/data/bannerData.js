@@ -3,7 +3,7 @@
  * Manages website banners, ads, and announcements using localStorage
  */
 
-const STORAGE_KEY = 'sriram_banners';
+const STORAGE_KEY = 'lms_banners';
 
 // Initial mock data to populate if storage is empty
 const INITIAL_BANNERS = [

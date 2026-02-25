@@ -8,7 +8,7 @@ export const dummyUsers = [
     // Admin Users
     {
         id: 1,
-        email: 'admin@shriramias.com',
+        email: 'admin@lms.com',
         password: 'admin123',
         role: 'admin',
         name: 'Admin User',
@@ -19,7 +19,7 @@ export const dummyUsers = [
     // Faculty Users
     {
         id: 2,
-        email: 'faculty@shriramias.com',
+        email: 'faculty@lms.com',
         password: 'faculty123',
         role: 'faculty',
         name: 'Dr. Rajesh Kumar',
@@ -31,7 +31,7 @@ export const dummyUsers = [
     },
     {
         id: 3,
-        email: 'faculty2@shriramias.com',
+        email: 'faculty2@lms.com',
         password: 'faculty123',
         role: 'faculty',
         name: 'Prof. Priya Sharma',
@@ -45,7 +45,7 @@ export const dummyUsers = [
     // Student Users
     {
         id: 4,
-        email: 'student@shriramias.com',
+        email: 'student@lms.com',
         password: 'student123',
         role: 'student',
         name: 'Amit Verma',
@@ -57,7 +57,7 @@ export const dummyUsers = [
     },
     {
         id: 5,
-        email: 'student2@shriramias.com',
+        email: 'student2@lms.com',
         password: 'student123',
         role: 'student',
         name: 'Sneha Patel',

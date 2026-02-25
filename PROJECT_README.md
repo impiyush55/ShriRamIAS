@@ -1,4 +1,4 @@
-# ShriRam IAS - Role-Based Learning Management System (Demo)
+# LMS - Role-Based Learning Management System (Demo)
 
 ## 📋 Project Overview
 
@@ -109,7 +109,7 @@ src/
 
 1. Clone the repository
 ```bash
-cd ShriRamIAS-main
+cd LMS-main
 ```
 
 2. Install dependencies
@@ -129,17 +129,17 @@ npm run dev
 Use these credentials to test different user roles:
 
 ### Admin
-- **Email:** admin@shriramias.com
+- **Email:** admin@lms.com
 - **Password:** admin123
 - **Redirects to:** `/admin/dashboard`
 
 ### Faculty
-- **Email:** faculty@shriramias.com
+- **Email:** faculty@lms.com
 - **Password:** faculty123
 - **Redirects to:** `/faculty/dashboard`
 
 ### Student
-- **Email:** student@shriramias.com
+- **Email:** student@lms.com
 - **Password:** student123
 - **Redirects to:** `/student/dashboard`
 

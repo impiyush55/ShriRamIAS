@@ -132,13 +132,13 @@ export default function CommonLogin() {
                 <div className="demo-credentials">
                     <h3>Demo Credentials</h3>
                     <div className="credential-box">
-                        <strong>Admin:</strong> admin@shriramias.com / admin123
+                        <strong>Admin:</strong> admin@lms.com / admin123
                     </div>
                     <div className="credential-box">
-                        <strong>Faculty:</strong> faculty@shriramias.com / faculty123
+                        <strong>Faculty:</strong> faculty@lms.com / faculty123
                     </div>
                     <div className="credential-box">
-                        <strong>Student:</strong> student@shriramias.com / student123
+                        <strong>Student:</strong> student@lms.com / student123
                     </div>
                 </div>
             </div>

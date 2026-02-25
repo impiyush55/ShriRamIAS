@@ -20,7 +20,7 @@ export default function LeadsManagement() {
         <div className="dashboard-container admin-dashboard">
             {isSidebarOpen && <div className="sidebar-overlay" onClick={() => setIsSidebarOpen(false)}></div>}
             <aside className={`dashboard-sidebar ${isSidebarOpen ? 'open' : ''}`}>
-                <div className="sidebar-header"><div><h2>SRIRAM's IAS</h2><span className="role-badge admin">Admin</span></div></div>
+                <div className="sidebar-header"><div><h2>LMS</h2><span className="role-badge admin">Admin</span></div></div>
                 <nav className="sidebar-nav">
                     <a href="/admin/dashboard" className="nav-item"><i className="ri-dashboard-line"></i>Dashboard</a>
                     <div className="nav-section-title">Business & Operations</div>

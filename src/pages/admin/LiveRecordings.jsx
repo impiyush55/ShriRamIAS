@@ -127,7 +127,7 @@ export default function LiveRecordings() {
 
             <aside className={`dashboard-sidebar ${isSidebarOpen ? 'open' : ''}`}>
                 <div className="sidebar-header">
-                    <div><h2>SRIRAM's IAS</h2><span className="role-badge admin">Admin</span></div>
+                    <div><h2>LMS</h2><span className="role-badge admin">Admin</span></div>
                 </div>
                 <nav className="sidebar-nav">
                     <a href="/admin/dashboard" className="nav-item"><i className="ri-dashboard-line"></i>Dashboard</a>

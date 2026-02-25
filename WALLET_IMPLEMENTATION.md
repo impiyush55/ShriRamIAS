@@ -1,6 +1,6 @@
 # Wallet-Based Course Purchase Implementation
 
-This document outlines the implementation of the wallet-based purchase system for the ShriRamIAS platform.
+This document outlines the implementation of the wallet-based purchase system for the LMS platform.
 
 ## Backend Implementation
 

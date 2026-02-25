@@ -7,7 +7,7 @@ export default function Login() {
             {/* Left Side: Visual/Branding */}
             <div className="register-branding" style={{ backgroundImage: "url('/assets/hero-bg.png')" }}>
                 <div className="branding-content">
-                    <Link to="/" className="logo text-white mb-4" style={{ display: 'inline-block', fontSize: '2rem' }}>SRIRAM's <span>IAS</span></Link>
+                    <Link to="/" className="logo text-white mb-4" style={{ display: 'inline-block', fontSize: '2rem' }}>LMS</Link>
                     <h1 className="branding-title">Welcome Back, <br /> <span className="text-highlight">Future Leader</span></h1>
                     <p className="branding-desc">Continue your preparation journey. Access your dashboard, live classes, and test series.</p>
 
@@ -27,7 +27,7 @@ export default function Login() {
             <div className="register-form-wrapper">
                 <div className="form-header">
                     <h2>Login to Account</h2>
-                    <p>New to SRIRAM's IAS? <Link to="/register.html">Create an Account</Link></p>
+                    <p>New to LMS? <Link to="/register.html">Create an Account</Link></p>
                 </div>
 
                 <form className="register-form">

@@ -178,7 +178,7 @@ export default function StudentBlogDetail() {
                     <div className="author-meta" style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '2rem', paddingBottom: '1rem', borderBottom: '1px solid #f3f4f6' }}>
                         <img src={blog.authorAvatar || "https://ui-avatars.com/api/?name=Author"} alt="Author" style={{ width: '40px', height: '40px', borderRadius: '50%' }} />
                         <div>
-                            <p style={{ fontWeight: 600, color: '#374151', margin: 0 }}>{blog.author || "SRIRAM's IAS Team"}</p>
+                            <p style={{ fontWeight: 600, color: '#374151', margin: 0 }}>{blog.author || "LMS Team"}</p>
                             <span style={{ fontSize: '0.85rem', color: '#6b7280' }}>{blog.publishedDate} · {blog.readTime}</span>
                         </div>
                     </div>

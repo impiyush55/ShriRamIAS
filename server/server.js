@@ -13,7 +13,7 @@ app.use(cors());
 app.use('/api/courses', courseRoutes);
 
 // Database Connection
-const MONGO_URI = process.env.MONGO_URI || 'mongodb://localhost:27017/shriramias';
+const MONGO_URI = process.env.MONGO_URI || 'mongodb://localhost:27017/lms';
 mongoose.connect(MONGO_URI)
     .then(() => console.log('MongoDB Connected'))
     .catch(err => console.log(err));

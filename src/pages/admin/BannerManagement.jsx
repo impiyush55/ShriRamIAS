@@ -145,7 +145,7 @@ export default function BannerManagement() {
             <aside className={`dashboard-sidebar ${isSidebarOpen ? 'open' : ''}`}>
                 <div className="sidebar-header flex justify-between items-center">
                     <div>
-                        <h2>SRIRAM's IAS</h2>
+                        <h2>LMS</h2>
                         <span className="role-badge admin">Admin Panel</span>
                     </div>
                     <button
@@ -192,7 +192,7 @@ export default function BannerManagement() {
                         <img src={user?.avatar || "https://ui-avatars.com/api/?name=Admin"} alt={user?.name} className="user-avatar" />
                         <div>
                             <p className="user-name">{user?.name || "Admin User"}</p>
-                            <p className="user-email">{user?.email || "admin@shriramias.com"}</p>
+                            <p className="user-email">{user?.email || "admin@lms.com"}</p>
                         </div>
                     </div>
                 </header>

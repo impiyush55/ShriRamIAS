@@ -7,7 +7,7 @@ export default function Footer() {
             <div className="container">
                 <div className="footer-top">
                     <div className="footer-brand">
-                        <a href="#" className="logo text-white">SRIRAM's <span>IAS</span></a>
+                        <a href="#" className="logo text-white">LMS</a>
                         <p>Empowering aspirants since 2001. We believe in holistic education that builds character and competence.</p>
                         <div className="social-links">
                             <a href="#"><i className="ri-facebook-fill"></i></a>
@@ -50,7 +50,7 @@ export default function Footer() {
                     </div>
                 </div>
                 <div className="footer-bottom">
-                    <p>&copy; 2026 SRIRAM's IAS. All Rights Reserved.</p>
+                    <p>&copy; 2026 LMS. All Rights Reserved.</p>
                     <div className="footer-legal">
                         <a href="#">Privacy Policy</a>
                         <a href="#">Terms of Service</a>

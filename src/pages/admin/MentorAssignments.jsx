@@ -176,7 +176,7 @@ export default function MentorAssignments() {
             {/* Sidebar */}
             <aside className={`dashboard-sidebar ${isSidebarOpen ? 'open' : ''}`}>
                 <div className="sidebar-header">
-                    <h2>SRIRAM's IAS</h2>
+                    <h2>LMS</h2>
                     <span className="role-badge admin">Admin Panel</span>
                 </div>
 

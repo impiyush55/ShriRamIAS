@@ -178,7 +178,7 @@ export default function BlogListing() {
 
             {/* 1. Hero Section */}
             <section className="blog-hero">
-                <h1>SRIRAM's <span className="highlight">Insights</span></h1>
+                <h1>LMS <span className="highlight">Insights</span></h1>
                 <p>Deep dives into Civil Services, Policy, and Human Thought.</p>
 
                 {/* Search Bar */}

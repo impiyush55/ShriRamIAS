@@ -17,10 +17,10 @@ export default function RoleManagement() {
 
     // Staff Data (Mock)
     const [staff, setStaff] = useState([
-        { id: 1, name: 'Admin User', email: 'admin@shriramias.com', role: 'Super Admin', status: 'Active', lastLogin: '2026-02-07 10:00 AM' },
-        { id: 2, name: 'Dr. Rajesh Kumar', email: 'rajesh.k@shriramias.com', role: 'Faculty', status: 'Active', lastLogin: '2026-02-06 02:30 PM' },
-        { id: 3, name: 'Sarah Jenkins', email: 'sarah.j@shriramias.com', role: 'Content Manager', status: 'Active', lastLogin: '2026-02-07 09:15 AM' },
-        { id: 4, name: 'Support Team', email: 'support@shriramias.com', role: 'Support Agent', status: 'Offline', lastLogin: '2026-02-05 06:00 PM' },
+        { id: 1, name: 'Admin User', email: 'admin@lms.com', role: 'Super Admin', status: 'Active', lastLogin: '2026-02-07 10:00 AM' },
+        { id: 2, name: 'Dr. Rajesh Kumar', email: 'rajesh.k@lms.com', role: 'Faculty', status: 'Active', lastLogin: '2026-02-06 02:30 PM' },
+        { id: 3, name: 'Sarah Jenkins', email: 'sarah.j@lms.com', role: 'Content Manager', status: 'Active', lastLogin: '2026-02-07 09:15 AM' },
+        { id: 4, name: 'Support Team', email: 'support@lms.com', role: 'Support Agent', status: 'Offline', lastLogin: '2026-02-05 06:00 PM' },
     ]);
 
     // Role Definitions (Mock)
@@ -49,7 +49,7 @@ export default function RoleManagement() {
 
             <aside className={`dashboard-sidebar ${isSidebarOpen ? 'open' : ''}`}>
                 <div className="sidebar-header">
-                    <div><h2>SRIRAM's IAS</h2><span className="role-badge admin">Admin</span></div>
+                    <div><h2>LMS</h2><span className="role-badge admin">Admin</span></div>
                 </div>
                 <nav className="sidebar-nav">
                     <a href="/admin/dashboard" className="nav-item"><i className="ri-dashboard-line"></i>Dashboard</a>
